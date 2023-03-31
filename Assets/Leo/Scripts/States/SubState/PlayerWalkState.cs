@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
 
 public class PlayerWalkState : PlayerGroundedState
 {
@@ -28,7 +27,7 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.LogicUpdate();
 
-        if (input == 0f)
+        if (input == 0f && jumped == false)
         {
             stateMachine.ChangeState(player.IdleState);
         }
@@ -37,6 +36,6 @@ public class PlayerWalkState : PlayerGroundedState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        player.SetVelocity(input);
+        player.SetXVelocity(input);
     }
 }

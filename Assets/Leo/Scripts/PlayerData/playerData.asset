@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bc76d96248e0b48ad2f706a1556f06, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  jumpPower: 5
+  jumpPower: 10
   speed: 8
   ground:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  groundCheckRadius: 0.1
+  maxJumpTime: 0.3

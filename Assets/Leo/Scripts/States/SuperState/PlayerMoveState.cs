@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpState : PlayerAnimState
+public class PlayerMoveState : PlayerAnimState
 {
-    public PlayerJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    protected float input;
+
+    public PlayerMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -26,6 +28,10 @@ public class PlayerJumpState : PlayerAnimState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        input = player.InputHandler.MovementInput;
+
+        player.FlipPlayer(input);
     }
 
     public override void PhysicsUpdate()

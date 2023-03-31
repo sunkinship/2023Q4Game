@@ -5,29 +5,50 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    public float movementInput { get; private set; }
+    public float MovementInput { get; private set; }
+    public bool JumpInput { get; private set; }
+    public bool JumpHoldInput { get; private set; }
+
+    private float JumpInputStartTime;
+
+    private float InputHoldTime = 0.2f;
+
+    private void Update()
+    {
+        CheckJumpInputHoldTime();
+    }
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        movementInput = context.ReadValue<float>();
-        //Debug.Log(movementInput);
+        MovementInput = context.ReadValue<float>();
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.started) 
         {
-            Debug.Log("Start Jump");
+            JumpInput = true;
+            JumpInputStartTime = Time.time;
         }
 
         if (context.performed)
         {
-            Debug.Log("Hold Jump");
+            JumpHoldInput = true;
         }
 
         if (context.canceled) 
         {
-            Debug.Log("Stop Jump");
+            JumpHoldInput = false;
+        }
+    }
+
+    public void UseJumpInput() => JumpInput = false;
+
+    private void CheckJumpInputHoldTime()
+    {
+        if (Time.time >= JumpInputStartTime + InputHoldTime)
+        {
+            JumpInput = false;
         }
     }
 }

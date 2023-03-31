@@ -16,7 +16,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        player.SetVelocity(0);
+        player.SetXVelocity(0);
     }
 
     public override void Exit()
@@ -28,7 +28,7 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.LogicUpdate();
 
-        if (input != 0f)
+        if (input != 0f && jumped == false)
         {
             stateMachine.ChangeState(player.WalkState);
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,6 +9,8 @@ public class Player : MonoBehaviour
 
     public PlayerIdleState IdleState { get; private set; }
     public PlayerWalkState WalkState { get; private set; }
+    public PlayerJumpState JumpState { get; private set; }
+    public PlayerInAirState InAirState { get; private set; }
 
     public Rigidbody2D PlayerRb2 { get; private set; }
     public SpriteRenderer PlayerSr { get; private set; }
@@ -15,6 +18,15 @@ public class Player : MonoBehaviour
     public PlayerInputHandler InputHandler { get; private set; }
 
     public PlayerData playerData;
+
+    public Vector2 CurrentVelocity { get; private set; }
+
+    [SerializeField]
+    private Transform feetPos;
+
+    public float JumpTimeCounter { get; private set; }
+
+    private float jumpPowerModifier;
 
 
 
@@ -24,6 +36,8 @@ public class Player : MonoBehaviour
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "Idle");
         WalkState = new PlayerWalkState(this, StateMachine, playerData, "Walk");
+        JumpState = new PlayerJumpState(this, StateMachine, playerData, "Jump");
+        InAirState = new PlayerInAirState(this, StateMachine, playerData, "Jump");
     }
 
     private void Start()
@@ -36,47 +50,12 @@ public class Player : MonoBehaviour
         StateMachine.Initialize(IdleState);
     }
 
-    //private void FixedUpdate()
-    //{
-    //    float x = Input.GetAxis("Horizontal");
-    //    rb2.velocity = new Vector2(speed * x, rb2.velocity.y);
-    //    if (Input.GetButton("Jump") && IsGrounded())
-    //    {
-    //        rb2.AddForce(new Vector2(0, jumpPower));
-    //    }
-    //    bool moving = Mathf.Abs(x) > 0;
-    //    if (moving)
-    //    {
-    //        sr.flipX = x < 0;
-    //    }
-    //    animator.SetBool("Moving", moving);
-
-    //    Debug.Log(rb2.velocity.y);
-
-    //    bool crouch = Input.GetButton("Crouch");
-    //    animator.enabled = !crouch;
-    //    sr.sprite = CUBEEEE;
-
-    //    GetComponents<BoxCollider2D>()[0].enabled = !crouch;
-    //    GetComponents<BoxCollider2D>()[1].enabled = crouch;
-
-    //    animator.SetFloat("yVelocity", rb2.velocity.y);
-    //    animator.SetBool("Grounded", isGround);
-    //    if (rb2.velocity.y > 0)
-    //    {
-    //        animator.SetBool("Jumping", true);
-    //    }
-    //    else if (rb2.velocity.y < 0)
-    //    {
-    //        animator.SetBool("Jumping", false);
-    //    }
-
-    //}
-
     private void Update()
     {
-        print("Current State " + StateMachine.CurrentState.ToString() + " Input " + InputHandler.movementInput);
+        //print("Current State " + StateMachine.CurrentState.ToString());
+        CurrentVelocity = PlayerRb2.velocity;
         StateMachine.CurrentState.LogicUpdate();
+        //print(PlayerRb2.velocity.y);
     }
 
     private void FixedUpdate()
@@ -84,10 +63,57 @@ public class Player : MonoBehaviour
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
-    public void SetVelocity(float direction)
+    public void SetXVelocity(float velocityX)
     {
-        PlayerRb2.velocity = new Vector2(direction * playerData.speed, PlayerRb2.velocity.y);
+        PlayerRb2.velocity = new Vector2(velocityX * playerData.speed, CurrentVelocity.y);
+        CurrentVelocity = PlayerRb2.velocity;
     }
+
+    public bool IsGrounded()
+    {
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 20, playerData.ground);
+
+        //if (hit.collider != null)
+        //{
+        //    return hit.distance <= 0.4;
+        //}
+        //return false;
+
+        return Physics2D.OverlapCircle(feetPos.position, playerData.groundCheckRadius, playerData.ground);
+    }
+
+    public void Jump()
+    {
+        JumpTimeCounter = playerData.maxJumpTime;
+        PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.jumpPower);
+        CurrentVelocity = PlayerRb2.velocity;
+    }
+
+    public void HeldJump()
+    {
+        if (JumpTimeCounter > 0)
+        {
+            PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.jumpPower + jumpPowerModifier);
+            CurrentVelocity = PlayerRb2.velocity;
+            JumpTimeCounter -= Time.deltaTime;
+        }
+    }
+
+    public void ChangeJumpPower()
+    {
+        if (JumpTimeCounter >= playerData.maxJumpTime - (playerData.maxJumpTime * .2))
+            return;
+        else if (JumpTimeCounter >= playerData.maxJumpTime - (playerData.maxJumpTime * .4))
+            jumpPowerModifier = 3;
+        else if (JumpTimeCounter >= playerData.maxJumpTime - (playerData.maxJumpTime * .6))
+            jumpPowerModifier = 5;
+        else if (JumpTimeCounter >= playerData.maxJumpTime - (playerData.maxJumpTime * .8))
+            jumpPowerModifier = 3;
+        else
+            jumpPowerModifier = 1;
+    }
+
+    public void ResetJumpCount() => JumpTimeCounter = 0;
 
     public void FlipPlayer(float direction)
     {

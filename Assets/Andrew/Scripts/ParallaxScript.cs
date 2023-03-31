@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class ParallaxScript : MonoBehaviour {
 
-    private float length, startPos;
+    private float lengthX, lenghtY, startPosX, startPosY;
     public GameObject cam;
     public float parallaxAmount;
-    //public float yOffset;
-    //public GameObject player;
 
-    void Start() {
-        startPos = transform.position.x;
-        length = GetComponentInChildren<SpriteRenderer>().bounds.size.x;
+
+    private void Start() 
+    {
+        startPosX = transform.position.x;
+        startPosY = transform.position.y;
+        lengthX = GetComponentInChildren<SpriteRenderer>().bounds.size.x;
+        lenghtY = GetComponentInChildren<SpriteRenderer>().bounds.size.y;
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
+    private void LateUpdate() 
+    {
         float temp = (cam.transform.position.x * (1 - parallaxAmount));
-        float dist = (cam.transform.position.x * parallaxAmount);
+        float distX = (cam.transform.position.x * parallaxAmount);
+        float distY = (cam.transform.position.y * parallaxAmount);
 
-        //transform.position = new Vector3(startPos + dist, cam.transform.position.y + yOffset, transform.position.z);
-        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
-        if (temp > startPos + length) startPos += length;
-        else if (temp < startPos - length) startPos -= length;
+        transform.position = new Vector3(startPosX + distX, startPosY + distY, transform.position.z);
+
+        if (temp > startPosX + lengthX) 
+            startPosX += lengthX;
+        else if (temp < startPosX - lengthX) 
+            startPosX -= lengthX;
     }
 }
