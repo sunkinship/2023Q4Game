@@ -49,7 +49,7 @@ public class PlayerInAirState : PlayerMoveState
         }
         else if (yVecloity < 0.01f && player.IsGrounded())
         {
-            if (input != 0)
+            if (moveInput != 0)
                 stateMachine.ChangeState(player.WalkState);
             else
                 stateMachine.ChangeState(player.IdleState);
@@ -59,7 +59,7 @@ public class PlayerInAirState : PlayerMoveState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        player.SetXVelocity(input);
+        player.SetXVelocity(moveInput);
     }
 
     private void CheckIfReleasedJump()

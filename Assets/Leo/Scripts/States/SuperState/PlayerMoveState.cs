@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerAnimState
 {
-    protected float input;
+    protected float moveInput;
+    protected bool dashInput;
 
     public PlayerMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -24,9 +25,16 @@ public class PlayerMoveState : PlayerAnimState
     {
         base.LogicUpdate();
 
-        input = player.InputHandler.MovementInput;
+        moveInput = player.InputHandler.MovementInput;
+        dashInput = player.InputHandler.DashInput;
 
-        player.FlipPlayer(input);
+        player.FlipPlayer(moveInput);
+
+        if (dashInput)
+        {
+            player.InputHandler.UseDashInput();
+            stateMachine.ChangeState(player.DashState);
+        }
     }
 
     public override void PhysicsUpdate()

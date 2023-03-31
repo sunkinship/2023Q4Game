@@ -23,7 +23,7 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.LogicUpdate();
 
-        if (input != 0f && jumped == false)
+        if (moveInput != 0f && jumped == false)
         {
             stateMachine.ChangeState(player.WalkState);
         }

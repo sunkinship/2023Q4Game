@@ -22,7 +22,7 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.LogicUpdate();
 
-        if (input == 0f && jumped == false)
+        if (moveInput == 0f && jumped == false)
         {
             stateMachine.ChangeState(player.IdleState);
         }
@@ -31,6 +31,6 @@ public class PlayerWalkState : PlayerGroundedState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        player.SetXVelocity(input);
+        player.SetXVelocity(moveInput);
     }
 }
