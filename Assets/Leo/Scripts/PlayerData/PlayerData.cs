@@ -5,12 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newPlayerData", menuName = "Player Data")]
 public class PlayerData : ScriptableObject
 {
-    [Header("Movement")]
+    [Header("Move State")]
     public float jumpPower;
     public float speed;
 
-    [Header("Jump")]
+    [Header("Jump State")]
+    public float maxJumpTime;
+    public int amountOfJumps;
+
+    [Header("Check Variables")]
     public LayerMask ground;
     public float groundCheckRadius;
-    public float maxJumpTime;
 }

@@ -5,56 +5,30 @@ using UnityEngine;
 public class PlayerJumpState : PlayerMoveState
 {
     protected float playerYVecloity;
+    private int amountOfJumpsLeft;
 
     public PlayerJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-    }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
+        amountOfJumpsLeft = playerData.amountOfJumps;
     }
 
     public override void Enter()
     {
         base.Enter();
+        DecreaseAmountOfJumpsLeft();
         player.Jump();
+        stateMachine.ChangeState(player.InAirState);
     }
 
-    public override void Exit()
+    public bool CanJump()
     {
-        base.Exit();
-    }
-
-    public override void LogicUpdate()
-    {
-        base.LogicUpdate();
-
-        playerYVecloity = player.CurrentVelocity.y;
-        player.PlayerAnim.SetFloat("YVelocity", playerYVecloity);
-
-        //jumpStartTime += Time.deltaTime;
-
-        //if (player.InputHandler.JumpHoldInput && player.IsGrounded() == false)
-        //{
-        //    player.HeldJump();
-        //}
-        //else
-        if (playerYVecloity < 0.01f && player.IsGrounded())
-        {
-            //Debug.Log("exit jump");
-            stateMachine.ChangeState(player.IdleState);
-        }
+        if (amountOfJumpsLeft > 0)
+            return true;
         else
-        {
-            //Debug.Log("go to in air");
-            stateMachine.ChangeState(player.InAirState);
-        }
+            return false;
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-        player.SetXVelocity(input);
-    }
+    public void ResetAmountOfJumpsLeft() => amountOfJumpsLeft = playerData.amountOfJumps;
+
+    public void DecreaseAmountOfJumpsLeft() => amountOfJumpsLeft--;
 }

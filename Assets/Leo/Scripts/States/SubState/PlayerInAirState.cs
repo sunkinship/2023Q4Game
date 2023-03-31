@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class PlayerInAirState : PlayerMoveState
 {
-    protected float playerYVecloity;
+    protected float yVecloity;
+    protected bool jumpInput;
+    protected bool holdJumpInput;
+    protected bool canLongJump;
 
     public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
-
     public override void Enter()
     {
         base.Enter();
+        canLongJump = true;
     }
 
     public override void Exit()
@@ -32,15 +31,23 @@ public class PlayerInAirState : PlayerMoveState
     {
         base.LogicUpdate();
 
-        playerYVecloity = player.CurrentVelocity.y;
-        player.PlayerAnim.SetFloat("YVelocity", playerYVecloity);
+        yVecloity = player.CurrentVelocity.y;
+        player.PlayerAnim.SetFloat("YVelocity", yVecloity);
+        jumpInput = player.InputHandler.JumpInput;
+        holdJumpInput = player.InputHandler.JumpHoldInput;
 
-        if (player.InputHandler.JumpHoldInput && player.IsGrounded() == false)
+        CheckIfReleasedJump();
+
+        if (canLongJump && player.InputHandler.JumpHoldInput && !player.IsGrounded())
         {
             player.ChangeJumpPower();
             player.HeldJump();
         }
-        else if (playerYVecloity < 0.01f && player.IsGrounded())
+        else if (jumpInput && player.JumpState.CanJump() && !player.IsGrounded())
+        {
+            stateMachine.ChangeState(player.JumpState);
+        }
+        else if (yVecloity < 0.01f && player.IsGrounded())
         {
             if (input != 0)
                 stateMachine.ChangeState(player.WalkState);
@@ -53,5 +60,11 @@ public class PlayerInAirState : PlayerMoveState
     {
         base.PhysicsUpdate();
         player.SetXVelocity(input);
+    }
+
+    private void CheckIfReleasedJump()
+    {
+        if (holdJumpInput == false || yVecloity <= 0)
+            canLongJump = false;
     }
 }

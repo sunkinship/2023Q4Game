@@ -25,9 +25,9 @@ public class ParallaxScript : MonoBehaviour {
 
         transform.position = new Vector3(startPosX + distX, startPosY + distY, transform.position.z);
 
-        if (temp > startPosX + lengthX) 
+        if (temp > startPosX + (lengthX * 2)) 
             startPosX += lengthX;
-        else if (temp < startPosX - lengthX) 
+        else if (temp < startPosX - (lengthX * 2)) 
             startPosX -= lengthX;
     }
 }

@@ -52,10 +52,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //print("Current State " + StateMachine.CurrentState.ToString());
+        print("Current State " + StateMachine.CurrentState.ToString());
         CurrentVelocity = PlayerRb2.velocity;
         StateMachine.CurrentState.LogicUpdate();
-        //print(PlayerRb2.velocity.y);
+        //print(IsGrounded());
     }
 
     private void FixedUpdate()
@@ -111,6 +111,8 @@ public class Player : MonoBehaviour
             jumpPowerModifier = 3;
         else
             jumpPowerModifier = 1;
+
+        jumpPowerModifier = 0;
     }
 
     public void ResetJumpCount() => JumpTimeCounter = 0;
