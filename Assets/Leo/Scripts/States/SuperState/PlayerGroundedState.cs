@@ -17,11 +17,6 @@ public class PlayerGroundedState : PlayerMoveState
         player.JumpState.ResetAmountOfJumpsLeft();
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -31,6 +26,7 @@ public class PlayerGroundedState : PlayerMoveState
 
         if (player.IsGrounded() == false && yVelocity < 0)
         {
+            player.JumpState.DecreaseAmountOfJumpsLeft();
             stateMachine.ChangeState(player.InAirState);
         }
         else if (jumped)
@@ -38,10 +34,5 @@ public class PlayerGroundedState : PlayerMoveState
             player.InputHandler.UseJumpInput();
             stateMachine.ChangeState(player.JumpState);
         }
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
     }
 }

@@ -11,16 +11,6 @@ public class PlayerMoveState : PlayerAnimState
     {
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -35,10 +25,5 @@ public class PlayerMoveState : PlayerAnimState
             player.InputHandler.UseDashInput();
             stateMachine.ChangeState(player.DashState);
         }
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
     }
 }

@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   jumpPower: 12
-  speed: 8
+  walkSpeed: 8
   maxJumpTime: 0.3
   amountOfJumps: 2
+  dashSpeed: 20
+  dashTime: 0.5
+  collisionCheckRadius: 0.2
   ground:
     serializedVersion: 2
     m_Bits: 64

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAnimState : PlayerState
 {
     protected string animBoolName;
+    protected bool isAnimationFinished;
 
     public PlayerAnimState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData)
     {
@@ -14,6 +15,7 @@ public class PlayerAnimState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        isAnimationFinished = false;
     }
 
     public override void Exit()
@@ -30,4 +32,8 @@ public class PlayerAnimState : PlayerState
     {
         player.PlayerAnim.SetBool(animBoolName, false);
     }
+
+    public virtual void AnimationTrigger() { }
+
+    public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
 }

@@ -14,11 +14,6 @@ public class PlayerIdleState : PlayerGroundedState
         player.SetXVelocity(0);
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -27,10 +22,5 @@ public class PlayerIdleState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.WalkState);
         }
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
     }
 }

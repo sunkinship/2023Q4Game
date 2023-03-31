@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     public PlayerJumpState JumpState { get; private set; }
     public PlayerInAirState InAirState { get; private set; }
     public PlayerDashState DashState { get; private set; }
+    public PlayerLandState LandState { get; private set; }
     #endregion
 
     #region Components
     public Rigidbody2D PlayerRb2 { get; private set; }
+    public Collider2D PlayerCollider { get; private set; }
     public SpriteRenderer PlayerSr { get; private set; }
     public Animator PlayerAnim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
@@ -27,10 +29,14 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Transform feetPos;
+    [SerializeField]
+    private Transform bodyPos;
 
     public float JumpTimeCounter { get; private set; }
 
     private float jumpPowerModifier;
+
+    private bool facingRight;
 
 
 
@@ -43,15 +49,18 @@ public class Player : MonoBehaviour
         JumpState = new PlayerJumpState(this, StateMachine, playerData, "Jump");
         InAirState = new PlayerInAirState(this, StateMachine, playerData, "Jump");
         DashState = new PlayerDashState(this, StateMachine, playerData, "Dash");
+        LandState = new PlayerLandState(this, StateMachine, playerData, "Land");
     }
 
     private void Start()
     {
         PlayerRb2 = GetComponent<Rigidbody2D>();
+        PlayerCollider = GetComponent<Collider2D>();
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerAnim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
 
+        facingRight = true;
         StateMachine.Initialize(IdleState);
     }
 
@@ -60,7 +69,7 @@ public class Player : MonoBehaviour
         //print("Current State " + StateMachine.CurrentState.ToString());
         CurrentVelocity = PlayerRb2.velocity;
         StateMachine.CurrentState.LogicUpdate();
-        //print(InputHandler.MovementInput);
+        //print("dash " + InputHandler.DashInput);
     }
 
     private void FixedUpdate()
@@ -78,10 +87,12 @@ public class Player : MonoBehaviour
     {
         if (direction < 0)
         {
+            facingRight = false;
             PlayerSr.flipX = true;
         }
         else if (direction > 0)
         {
+            facingRight = true;
             PlayerSr.flipX = false;
         }
     }
@@ -134,9 +145,41 @@ public class Player : MonoBehaviour
     public void ResetJumpCount() => JumpTimeCounter = 0;
     #endregion
 
-    public void Dash()
+    #region Dash
+    public void Dash(int direction)
     {
-        PlayerRb2.velocity = new Vector2(playerData.dashSpeed, 0);
+        print("dash");
+        PlayerRb2.velocity = new Vector2(playerData.dashSpeed * direction, 0);
         CurrentVelocity = PlayerRb2.velocity;
     }
+
+    public bool InCollision()
+    {
+        return Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.ground);
+    }
+
+    public int DashDirection()
+    {
+        if (facingRight)
+            return 1;
+        else
+            return - 1;
+    }
+
+    public void DisableCollision()
+    {
+        PlayerCollider.enabled = false;
+    }
+
+    public void EnableCollision()
+    {
+        PlayerCollider.enabled = true;
+    }
+    #endregion
+
+    #region Animation
+    private void AnimationTrigger() => ((PlayerAnimState)StateMachine.CurrentState).AnimationTrigger();
+
+    private void AnimationFinishTrigger() => ((PlayerAnimState)StateMachine.CurrentState).AnimationFinishTrigger();
+    #endregion
 }

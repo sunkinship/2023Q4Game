@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInAirState : PlayerMoveState
 {
@@ -45,6 +46,9 @@ public class PlayerInAirState : PlayerMoveState
         }
         else if (jumpInput && player.JumpState.CanJump() && !player.IsGrounded())
         {
+            Debug.Log("double jump");
+            player.InputHandler.UseJumpInput();
+            player.PlayerAnim.SetTrigger("Double Jump");
             stateMachine.ChangeState(player.JumpState);
         }
         else if (yVecloity < 0.01f && player.IsGrounded())
@@ -52,7 +56,7 @@ public class PlayerInAirState : PlayerMoveState
             if (moveInput != 0)
                 stateMachine.ChangeState(player.WalkState);
             else
-                stateMachine.ChangeState(player.IdleState);
+                stateMachine.ChangeState(player.LandState);
         }
     }
 

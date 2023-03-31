@@ -10,6 +10,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool JumpInput { get; private set; }
     public bool JumpHoldInput { get; private set; }
     public bool DashInput { get; private set; }
+    public bool InteractInput { get; private set; }
 
 
 
@@ -33,7 +34,7 @@ public class PlayerInputHandler : MonoBehaviour
         else
             MovementInput = 0;
 
-        print(MovementInput);
+        //print(MovementInput);
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
@@ -74,4 +75,14 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     public void UseDashInput() => DashInput = false;
+
+    public void OnInteractInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            InteractInput = true;
+        }
+    }
+
+    public void UseInteractInput() => InteractInput = false;
 }
