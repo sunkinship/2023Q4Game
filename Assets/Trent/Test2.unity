@@ -1277,8 +1277,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5ed656141f0b64ab72a3afc60b9849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2145064761}
+  target: {fileID: 0}
+  minPos: {x: 0, y: 0}
+  maxPos: {x: 0, y: 0}
   offset: {x: 0, y: 2, z: -7}
+  followSmoothing: 0
 --- !u!1 &1422759338
 GameObject:
   m_ObjectHideFlags: 0
