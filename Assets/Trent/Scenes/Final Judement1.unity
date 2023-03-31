@@ -131,8 +131,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: textSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.size
-      value: 11
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[0]
@@ -179,8 +183,32 @@ PrefabInstance:
       value: .You've become everything you've ever hated and more.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: lines.Array.data[11]
+      value: .Well it's a shame it has to end this way.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: lines.Array.data[12]
+      value: .But all good things must come to an end.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: lines.Array.data[13]
+      value: .Your final judgement is over.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: lines.Array.data[14]
+      value: .You can no longer go on.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: lines.Array.data[15]
+      value: .Goodbye.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: lines.Array.data[16]
+      value: .................................................
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.size
-      value: 11
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[0]
@@ -225,7 +253,31 @@ PrefabInstance:
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[10]
       value: 
+      objectReference: {fileID: 21300000, guid: e7708c16d6826e147a1cd4674f851e5a, type: 3}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: portraits.Array.data[11]
+      value: 
+      objectReference: {fileID: 21300000, guid: e7708c16d6826e147a1cd4674f851e5a, type: 3}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: portraits.Array.data[12]
+      value: 
+      objectReference: {fileID: 21300000, guid: e7708c16d6826e147a1cd4674f851e5a, type: 3}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: portraits.Array.data[13]
+      value: 
+      objectReference: {fileID: 21300000, guid: e7708c16d6826e147a1cd4674f851e5a, type: 3}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: portraits.Array.data[14]
+      value: 
+      objectReference: {fileID: 21300000, guid: e7708c16d6826e147a1cd4674f851e5a, type: 3}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: portraits.Array.data[15]
+      value: 
       objectReference: {fileID: 21300000, guid: c00360359da11074dbe439f538ee0db5, type: 3}
+    - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
+      propertyPath: portraits.Array.data[16]
+      value: 
+      objectReference: {fileID: 2865955794103119324, guid: 393927c466d97944c862a05a7d12f8d1, type: 3}
     - target: {fileID: 3909592375795846378, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -488,6 +540,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1394516731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3909592375204993728, guid: 471a95fec173819458687f5e04203f40, type: 3}
+  m_PrefabInstance: {fileID: 178806410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1394516736
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394516731}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f43eee319ff6264194902cfe8a6d361, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1527619587
 GameObject:
   m_ObjectHideFlags: 0
