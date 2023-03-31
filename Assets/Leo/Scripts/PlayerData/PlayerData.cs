@@ -16,6 +16,8 @@ public class PlayerData : ScriptableObject
     [Header("Dash State")]
     public float dashSpeed;
     public float dashTime;
+    public int amountOfDashes;
+    public float dashCD;
     public float collisionCheckRadius;
 
     [Header("Check Variables")]

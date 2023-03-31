@@ -7,6 +7,7 @@ public class PlayerDashState : PlayerAnimState
     protected float dashStartTime;
     protected float moveInput;
     protected float defaultGravity;
+    protected int amountOfDashesLeft;
 
     public PlayerDashState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -15,8 +16,9 @@ public class PlayerDashState : PlayerAnimState
     public override void Enter()
     {
         base.Enter();
-        defaultGravity = player.PlayerRb2.gravityScale;
+        DecreaseAmountOfDahsesLeft();
         player.DisableCollision();
+        defaultGravity = player.PlayerRb2.gravityScale;
         player.PlayerRb2.gravityScale = 0;
         dashStartTime = Time.time;
         player.Dash(player.DashDirection());
@@ -25,6 +27,8 @@ public class PlayerDashState : PlayerAnimState
     public override void Exit()
     {
         base.Exit();
+        Debug.Log("exit");
+        player.WaitForDashCD();
         player.EnableCollision();
         player.PlayerRb2.gravityScale = defaultGravity;
     }
@@ -37,15 +41,19 @@ public class PlayerDashState : PlayerAnimState
 
         if (Time.time > dashStartTime + playerData.dashTime && player.InCollision() == false)
         {
-            if (player.IsGrounded())
-            {
-                if (moveInput != 0)
-                    stateMachine.ChangeState(player.WalkState);
-                else
-                    stateMachine.ChangeState(player.IdleState);
-            }
-            else
-                stateMachine.ChangeState(player.InAirState);
+            stateMachine.ChangeState(player.FinishDashState);
         }
     }
+
+    public bool CanDash()
+    {
+        if (amountOfDashesLeft > 0 && player.canDash)
+            return true;
+        else
+            return false;
+    }
+
+    public void ResetAmountOfDashesLeft() => amountOfDashesLeft = playerData.amountOfDashes;
+
+    public void DecreaseAmountOfDahsesLeft() => amountOfDashesLeft--;
 }

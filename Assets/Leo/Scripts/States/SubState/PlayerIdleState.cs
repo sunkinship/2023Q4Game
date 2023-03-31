@@ -11,6 +11,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("idle");
         player.SetXVelocity(0);
     }
 

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public PlayerInAirState InAirState { get; private set; }
     public PlayerDashState DashState { get; private set; }
     public PlayerLandState LandState { get; private set; }
+    public PlayerFinishDashState FinishDashState { get; private set; }
     #endregion
 
     #region Components
@@ -38,6 +39,9 @@ public class Player : MonoBehaviour
 
     private bool facingRight;
 
+    [HideInInspector]
+    public bool canDash;
+
 
 
     private void Awake()
@@ -50,6 +54,7 @@ public class Player : MonoBehaviour
         InAirState = new PlayerInAirState(this, StateMachine, playerData, "Jump");
         DashState = new PlayerDashState(this, StateMachine, playerData, "Dash");
         LandState = new PlayerLandState(this, StateMachine, playerData, "Land");
+        FinishDashState = new PlayerFinishDashState(this, StateMachine, playerData, "Finish Dash");
     }
 
     private void Start()
@@ -61,6 +66,7 @@ public class Player : MonoBehaviour
         InputHandler = GetComponent<PlayerInputHandler>();
 
         facingRight = true;
+        canDash = true;
         StateMachine.Initialize(IdleState);
     }
 
@@ -174,6 +180,18 @@ public class Player : MonoBehaviour
     public void EnableCollision()
     {
         PlayerCollider.enabled = true;
+    }
+
+    public void WaitForDashCD()
+    {
+        canDash = false;
+        StartCoroutine(Wait(playerData.dashCD));
+    }
+
+    private IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canDash = true;
     }
     #endregion
 
