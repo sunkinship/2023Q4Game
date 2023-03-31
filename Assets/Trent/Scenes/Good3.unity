@@ -136,83 +136,84 @@ PrefabInstance:
       objectReference: {fileID: 493862693}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.size
-      value: 0
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[0]
-      value: 0Woah...
+      value: 0I'm back!
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[1]
-      value: 0Am I in heaven?
+      value: .You've come so far.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[2]
-      value: .You've made it!
+      value: .I'm so proud of you.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[3]
-      value: 0Who are you?
+      value: 0Without you I wouldn't even be here.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[4]
-      value: .I'm your good spirit!
+      value: 0It's all thanks to your ability you gave me.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[5]
-      value: 0My good spirit?
+      value: .Well now that you've made it here, you're going to needs some more
+        help before your final judgement...
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[6]
-      value: .Yes!
+      value: 0What's my final judgement?
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[7]
-      value: .The goodness in your heart is so overwhelming.
+      value: .It's where you will be judged for your actions.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[8]
-      value: .And I'm the embodiment of your pure soul!
+      value: .Don't worry everything will be ok.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[9]
-      value: 0Glad to meet someone nice for a change!
+      value: .You must not fall into your bad habits.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[10]
-      value: 0I ran into a creepy figure a ways back.
+      value: .You must keep going strong.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[11]
-      value: 0Would you happen to know anything about them?
+      value: .I have one last ability I must entrust you with.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[12]
-      value: .Could you give me a description?
+      value: .Close your eyes again.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[13]
-      value: '0A scary hooded figure with a menacing stare. '
+      value: ....
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[14]
-      value: 0And terrifying red eyes...
+      value: ....
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[15]
-      value: .Ah yes...
+      value: .You can now soar past your burdens.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[16]
-      value: .This scary figure you mention represents your bad habits.
+      value: .And reach new heights.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[17]
-      value: .All the things you want to forget.
+      value: .You are now able to jump twice.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[18]
-      value: .They are trying to lead you down the path of pain and suffering.
+      value: .Sprout your wings and fly.
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: lines.Array.data[19]
@@ -252,36 +253,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.size
-      value: 0
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: e72089a86ab521e43a60bee07f898533, type: 3}
+      objectReference: {fileID: 21300000, guid: 62a3c3102e17b534eab1f710418bbe04, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: e72089a86ab521e43a60bee07f898533, type: 3}
+      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+      objectReference: {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: e72089a86ab521e43a60bee07f898533, type: 3}
+      objectReference: {fileID: 21300000, guid: 09ac7c4d5b8f38c409f6129d5a5925ee, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[4]
       value: 
-      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 09ac7c4d5b8f38c409f6129d5a5925ee, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
+      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[6]
       value: 
-      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[7]
       value: 
@@ -293,27 +294,27 @@ PrefabInstance:
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[9]
       value: 
-      objectReference: {fileID: 21300000, guid: 09ac7c4d5b8f38c409f6129d5a5925ee, type: 3}
+      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[10]
       value: 
-      objectReference: {fileID: 21300000, guid: d9d89b44b559e6644a8f9dfbbe8c303a, type: 3}
+      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[11]
       value: 
-      objectReference: {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
+      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[12]
       value: 
-      objectReference: {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+      objectReference: {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[13]
       value: 
-      objectReference: {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
+      objectReference: {fileID: 21300000, guid: 9d43b8947fa450548805be4b1c282b6a, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[14]
       value: 
-      objectReference: {fileID: 21300000, guid: d9d89b44b559e6644a8f9dfbbe8c303a, type: 3}
+      objectReference: {fileID: 21300000, guid: 2506413bc3e6c8142a2a3fcd013ce850, type: 3}
     - target: {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: portraits.Array.data[15]
       value: 
