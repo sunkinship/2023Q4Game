@@ -37,6 +37,7 @@ public class PlayerInputHandler : MonoBehaviour
         //print(MovementInput);
     }
 
+    #region Jump Input
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.started) 
@@ -65,17 +66,26 @@ public class PlayerInputHandler : MonoBehaviour
             JumpInput = false;
         }
     }
+    #endregion
 
+    #region Dash Input
     public void OnDashInput(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             DashInput = true;
         }
+
+        if (context.canceled)
+        {
+            DashInput = false;
+        }
     }
 
     public void UseDashInput() => DashInput = false;
+    #endregion
 
+    #region Interact Input
     public void OnInteractInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -85,4 +95,5 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     public void UseInteractInput() => InteractInput = false;
+    #endregion
 }

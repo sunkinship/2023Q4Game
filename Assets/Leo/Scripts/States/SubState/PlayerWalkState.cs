@@ -8,6 +8,12 @@ public class PlayerWalkState : PlayerGroundedState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        Debug.Log("walk");
+    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();

@@ -18,6 +18,8 @@ MonoBehaviour:
   amountOfJumps: 2
   dashSpeed: 20
   dashTime: 0.5
+  amountOfDashes: 1
+  dashCD: 0.2
   collisionCheckRadius: 0.2
   ground:
     serializedVersion: 2

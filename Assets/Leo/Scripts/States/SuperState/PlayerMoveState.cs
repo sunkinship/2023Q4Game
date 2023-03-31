@@ -20,8 +20,9 @@ public class PlayerMoveState : PlayerAnimState
 
         player.FlipPlayer(moveInput);
 
-        if (dashInput)
+        if (dashInput && player.DashState.CanDash())
         {
+            Debug.Log("enter dash");
             player.InputHandler.UseDashInput();
             stateMachine.ChangeState(player.DashState);
         }

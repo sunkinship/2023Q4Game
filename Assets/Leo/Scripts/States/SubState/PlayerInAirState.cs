@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInAirState : PlayerMoveState
 {
@@ -18,6 +16,7 @@ public class PlayerInAirState : PlayerMoveState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("in air");
         canLongJump = true;
     }
 
@@ -46,7 +45,6 @@ public class PlayerInAirState : PlayerMoveState
         }
         else if (jumpInput && player.JumpState.CanJump() && !player.IsGrounded())
         {
-            Debug.Log("double jump");
             player.InputHandler.UseJumpInput();
             player.PlayerAnim.SetTrigger("Double Jump");
             stateMachine.ChangeState(player.JumpState);
