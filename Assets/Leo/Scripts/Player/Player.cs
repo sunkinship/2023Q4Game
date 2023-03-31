@@ -42,6 +42,12 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool canDash;
 
+    [HideInInspector]
+    public GameObject currentCheckPoint;
+
+    [SerializeField]
+    private Fade Fade;
+
 
 
     private void Awake()
@@ -199,5 +205,57 @@ public class Player : MonoBehaviour
     private void AnimationTrigger() => ((PlayerAnimState)StateMachine.CurrentState).AnimationTrigger();
 
     private void AnimationFinishTrigger() => ((PlayerAnimState)StateMachine.CurrentState).AnimationFinishTrigger();
+    #endregion
+
+    #region Hazard and Check Points
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Hazard"))
+        {
+            Fade.TriggerFade();
+            HidePlayer();
+            Respawn();
+            StartCoroutine(WaitForFade());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Check Point"))
+        {
+            SetCheckPoint(collision.gameObject);
+        }
+    }
+
+    public void SetCheckPoint(GameObject newCheckPoint)
+    {
+        //print("check point set " + newCheckPoint.name);
+        currentCheckPoint = newCheckPoint;
+    }
+
+    private void Respawn()
+    {
+        //print("reset to " + currentCheckPoint.name);
+        transform.position = currentCheckPoint.transform.position;
+    }
+
+    private IEnumerator WaitForFade()
+    {
+        while (Fade.done == false)
+        {
+            yield return null;
+        }
+        ShowPlayer();
+    }
+
+    private void HidePlayer()
+    {
+        PlayerSr.enabled = false;
+    }
+
+    private void ShowPlayer()
+    {
+        PlayerSr.enabled = true;
+    }
     #endregion
 }

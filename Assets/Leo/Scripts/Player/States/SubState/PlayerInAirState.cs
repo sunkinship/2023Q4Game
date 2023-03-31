@@ -16,7 +16,7 @@ public class PlayerInAirState : PlayerMoveState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("in air");
+        //Debug.Log("in air");
         canLongJump = true;
     }
 
