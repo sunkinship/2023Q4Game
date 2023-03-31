@@ -16,6 +16,7 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
     public Image dialoguePortrait;
     public Animator animator;
+    public Animator animator2;
 
 
     private int index;
@@ -23,7 +24,7 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-       
+        animator2 = GameObject.FindGameObjectWithTag("NPC").GetComponent<Animator>();
         textComp.text = string.Empty;
         StartDialogue();
     }
@@ -36,11 +37,13 @@ public class Dialogue : MonoBehaviour
             if (textComp.text == lines[index].Substring(1))
             {
                 NextLine();
+               
             }
             else
             {
                 StopAllCoroutines();
                 textComp.text = lines[index].Substring(1);
+                stopTalk(lines[index][0]);
             }
         }
     }
@@ -69,6 +72,10 @@ public class Dialogue : MonoBehaviour
         {
             animator.SetBool("isTalking", true);
             
+            
+        } else if (talker == '1')
+        {
+            animator2.SetBool("isTalking2", true);
         }
         
     }
@@ -79,6 +86,9 @@ public class Dialogue : MonoBehaviour
         {
             animator.SetBool("isTalking", false);
             
+        } else if (talker == '1')
+        {
+            animator2.SetBool("isTalking2", false);
         }
         
     }
@@ -98,6 +108,7 @@ public class Dialogue : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+            stopTalk(lines[index][0]);
         }
     }
 }
