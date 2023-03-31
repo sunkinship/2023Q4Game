@@ -160,7 +160,6 @@ public class Player : MonoBehaviour
     #region Dash
     public void Dash(int direction)
     {
-        print("dash");
         PlayerRb2.velocity = new Vector2(playerData.dashSpeed * direction, 0);
         CurrentVelocity = PlayerRb2.velocity;
     }

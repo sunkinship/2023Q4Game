@@ -22,7 +22,6 @@ public class PlayerMoveState : PlayerAnimState
 
         if (dashInput && player.DashState.CanDash())
         {
-            Debug.Log("enter dash");
             player.InputHandler.UseDashInput();
             stateMachine.ChangeState(player.DashState);
         }

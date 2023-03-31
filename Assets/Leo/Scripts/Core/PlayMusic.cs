@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayMusic : MonoBehaviour
 {
     private AudioSource musicSource;
-    [SerializeField] private AudioClip clip;
-    public bool overrideVolume;
+    [SerializeField] 
+    private AudioClip clip;
+    [SerializeField]
+    private float musicVol;
 
     private void Awake()
     {
@@ -21,21 +23,22 @@ public class PlayMusic : MonoBehaviour
     private void Play(AudioClip clip)
     {
         musicSource.clip = clip;
+        musicSource.volume = musicVol;
         musicSource.loop = true;
         musicSource.Play();
     }
 
-    private void StopMusic()
+    public void StopMusic()
     {
         musicSource.Stop();
     }
 
-    public void TurnMusicOn()
+    public void ResumeMusic()
     {
-        //musicSource.volume = AudioManager.Instance.musicVol;
+        musicSource.Play();
     }
 
-    public void TurnMusicOff()
+    public void MuteMusic()
     {
         musicSource.volume = 0;
     }

@@ -27,7 +27,6 @@ public class PlayerDashState : PlayerAnimState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("exit");
         player.WaitForDashCD();
         player.EnableCollision();
         player.PlayerRb2.gravityScale = defaultGravity;
