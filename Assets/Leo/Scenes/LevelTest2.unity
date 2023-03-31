@@ -1112,7 +1112,7 @@ Transform:
   - {fileID: 122922924}
   - {fileID: 1052135098}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &688595177
 GameObject:
@@ -1803,7 +1803,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &997383533
 GameObject:
@@ -1945,7 +1945,7 @@ Transform:
   m_Children:
   - {fileID: 15375186}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1116707743
 MonoBehaviour:
@@ -2405,7 +2405,7 @@ GameObject:
   - component: {fileID: 1335534391}
   - component: {fileID: 1335534390}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2425,7 +2425,7 @@ AreaEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
-  m_ForceAngle: 90
+  m_ForceAngle: 22
   m_ForceMagnitude: 20
   m_ForceVariation: 0
   m_ForceTarget: 0
@@ -2444,7 +2444,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 2.630414, y: -0.56703544}
+  m_Offset: {x: -8.3067255, y: 2.5273743}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2455,7 +2455,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.260828, y: 6.607349}
+  m_Size: {x: 28.135107, y: 12.796169}
   m_EdgeRadius: 0
 --- !u!4 &1335534392
 Transform:
@@ -3632,7 +3632,7 @@ Transform:
   - {fileID: 997383534}
   - {fileID: 1055961978}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2101808039
 GameObject:
@@ -3937,6 +3937,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moving Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 3338282442567397163, guid: 541180100a1ec424a89c3634ba9e0bc3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338282442567397166, guid: 541180100a1ec424a89c3634ba9e0bc3, type: 3}
+      propertyPath: wayPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338282442567397166, guid: 541180100a1ec424a89c3634ba9e0bc3, type: 3}
+      propertyPath: wayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 997383534}
+    - target: {fileID: 3338282442567397166, guid: 541180100a1ec424a89c3634ba9e0bc3, type: 3}
+      propertyPath: wayPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1055961978}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 541180100a1ec424a89c3634ba9e0bc3, type: 3}
 --- !u!1001 &8301938933888512874
@@ -3948,7 +3964,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8301938934594203232, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8301938934594203232, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
       propertyPath: m_LocalPosition.x
