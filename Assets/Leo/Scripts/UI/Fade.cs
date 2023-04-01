@@ -34,4 +34,9 @@ public class Fade : MonoBehaviour
 
         transition.SetTrigger("End");
     }
+
+    public bool IsDone()
+    {
+        return done;
+    }
 }

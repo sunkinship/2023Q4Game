@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,34 +6,84 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    //loads main scene
-    public void PlayButton()
+    [SerializeField]
+    private Fade fade;
+
+    #region Button Methods
+    public void LoadGameButton()
+    {
+        TriggerFade();
+        StartCoroutine(WaitForLoad(LoadGame));
+    }
+
+    public void LoadCreditsButton()
+    {
+        TriggerFade();
+        StartCoroutine(WaitForLoad(LoadCredits));
+    }
+
+    public void LoadMenuButton()
+    {
+        TriggerFade();
+        StartCoroutine(WaitForLoad(LoadMenu));
+    }
+
+    public void QuitGameButton()
+    {
+        TriggerFade();
+        StartCoroutine(WaitForLoad(QuitGame));
+    }
+
+    public void LoadMenuFromPauseButton()
+    {
+        TriggerFade();
+        StartCoroutine(WaitForLoad(LoadMenuFromPause));
+    }
+    #endregion
+
+    #region SceneLoaders
+    private bool LoadGame()
     {
         SceneManager.LoadScene(1);
+        return true;
     }
 
-    //loads credits scene
-    public void CreditsButton()
+    private bool LoadCredits()
     {
         SceneManager.LoadScene(2);
+        return true;
     }
 
-    //loads main menu scene
-    public void MainMenuButton()
+    private bool LoadMenu()
     {
         SceneManager.LoadScene(0);
+        return true;
     }
 
-    //loads main menu and unpauses game
-    public void QuitToMenuButton()
+    private bool QuitGame()
+    {
+        Application.Quit();
+        return true;
+    }
+
+    private bool LoadMenuFromPause()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+        return true;
     }
+    #endregion
 
-    //quit game
-    public void QuitGameButton()
+    #region Fade
+    private void TriggerFade() => fade.TriggerFade();
+
+    private IEnumerator WaitForLoad(Func<bool> sceneLoader)
     {
-        Application.Quit();
+        while (fade.IsDone() == false)
+        {
+            yield return null;
+        }
+        sceneLoader();
     }
+    #endregion
 }

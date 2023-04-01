@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator WaitForFade()
     {
-        while (Fade.done == false)
+        while (Fade.IsDone() == false)
         {
             yield return null;
         }
