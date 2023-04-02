@@ -11,18 +11,20 @@ public class PlayerInputHandler : MonoBehaviour
     public bool JumpHoldInput { get; private set; }
     public bool DashInput { get; private set; }
     public bool InteractInput { get; private set; }
-
+    public bool PauseInput { get; private set; }
 
 
     private float JumpInputStartTime;
 
-    private float InputHoldTime = 0.2f;
+    private float JumpInputHoldTime = 0.2f;
+
 
     private void Update()
     {
         CheckJumpInputHoldTime();
     }
 
+    #region Move Input
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         float moveVal = context.ReadValue<float>();
@@ -36,6 +38,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         //print(MovementInput);
     }
+    #endregion
 
     #region Jump Input
     public void OnJumpInput(InputAction.CallbackContext context)
@@ -61,7 +64,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void CheckJumpInputHoldTime()
     {
-        if (Time.time >= JumpInputStartTime + InputHoldTime)
+        if (Time.time >= JumpInputStartTime + JumpInputHoldTime)
         {
             JumpInput = false;
         }
@@ -95,5 +98,22 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     public void UseInteractInput() => InteractInput = false;
+    #endregion
+
+    #region Pause Input
+    public void OnPauseInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            PauseInput = true;
+        }
+
+        if (context.canceled)
+        {
+            PauseInput = false;
+        }
+    }
+
+    public void UsePauseInput() => PauseInput = false;
     #endregion
 }

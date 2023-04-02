@@ -6,10 +6,10 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Move State")]
-    public float jumpPower;
     public float walkSpeed;
 
     [Header("Jump State")]
+    public float jumpStrength;
     public float maxJumpTime;
     public int amountOfJumps;
 

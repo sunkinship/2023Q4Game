@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -81,7 +80,6 @@ public class Player : MonoBehaviour
         //print("Current State " + StateMachine.CurrentState.ToString());
         CurrentVelocity = PlayerRb2.velocity;
         StateMachine.CurrentState.LogicUpdate();
-        //print("dash " + InputHandler.DashInput);
     }
 
     private void FixedUpdate()
@@ -124,7 +122,7 @@ public class Player : MonoBehaviour
     public void Jump()
     {
         JumpTimeCounter = playerData.maxJumpTime;
-        PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.jumpPower);
+        PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.jumpStrength);
         CurrentVelocity = PlayerRb2.velocity;
     }
 
@@ -132,7 +130,7 @@ public class Player : MonoBehaviour
     {
         if (JumpTimeCounter > 0)
         {
-            PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.jumpPower + jumpPowerModifier);
+            PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.jumpStrength + jumpPowerModifier);
             CurrentVelocity = PlayerRb2.velocity;
             JumpTimeCounter -= Time.deltaTime;
         }

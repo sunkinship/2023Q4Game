@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+public class MenuController : UIController
 {
-    [SerializeField]
-    private Fade fade;
 
     #region Button Methods
     public void LoadGameButton()
@@ -32,12 +30,6 @@ public class MenuController : MonoBehaviour
     {
         TriggerFade();
         StartCoroutine(WaitForLoad(QuitGame));
-    }
-
-    public void LoadMenuFromPauseButton()
-    {
-        TriggerFade();
-        StartCoroutine(WaitForLoad(LoadMenuFromPause));
     }
     #endregion
 
@@ -64,26 +56,6 @@ public class MenuController : MonoBehaviour
     {
         Application.Quit();
         return true;
-    }
-
-    private bool LoadMenuFromPause()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(0);
-        return true;
-    }
-    #endregion
-
-    #region Fade
-    private void TriggerFade() => fade.TriggerFade();
-
-    private IEnumerator WaitForLoad(Func<bool> sceneLoader)
-    {
-        while (fade.IsDone() == false)
-        {
-            yield return null;
-        }
-        sceneLoader();
     }
     #endregion
 }
