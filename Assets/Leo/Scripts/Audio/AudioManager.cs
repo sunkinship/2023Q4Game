@@ -43,10 +43,10 @@ public class AudioManager : MonoBehaviour
     private void WaitToAssign()
     {
         //Debug.Log("Scene loaded");
-        masterSlider = GameObject.Find("Master Slider").GetComponent<Slider>();
+        /*masterSlider = GameObject.Find("Master Slider").GetComponent<Slider>();
         masterText = GameObject.Find("MasterText").GetComponent<TextMeshProUGUI>();
         musicText = GameObject.Find("MusicText").GetComponent<TextMeshProUGUI>();
-        sfxText = GameObject.Find("SFXText").GetComponent<TextMeshProUGUI>();
+        sfxText = GameObject.Find("SFXText").GetComponent<TextMeshProUGUI>();*/
     }
 
     #region Play Audio

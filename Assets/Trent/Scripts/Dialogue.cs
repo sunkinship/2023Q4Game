@@ -43,6 +43,7 @@ public class Dialogue : MonoBehaviour
     {
         if (playerInputHandler.InteractInput)
         {
+            Debug.Log("hi");
             playerInputHandler.UseInteractInput();
             //done writing go to next line
             if (textComp.text == lines[index].Substring(1))
