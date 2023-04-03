@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 3909592375204993733}
   - component: {fileID: 3909592375204993730}
   - component: {fileID: 3909592375204993732}
+  - component: {fileID: 4341481760820515352}
   m_Layer: 5
   m_Name: Dialoguebox
   m_TagString: Untagged
@@ -224,24 +225,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cbaafb9b7442042906941aabb06cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textComp: {fileID: 3909592374644332759}
   lines:
-  - Hi i am going to have a good time i love leo
-  - are you kidding?
-  - do you even know what you are saying?
-  - ...
-  - go.
-  - You are useless to me.
-  - ...
+  - 0How did I end up here?
+  - ....
+  - 0AHHHHHHHHH!!!
+  - 0Don't scare me like that you idiot, what are you thinking!!!
+  - 1Took you long enough.
+  - 1Your too pathetic to resist.
+  - 0What are you talking about?
+  - 0Who are you?
+  - 1Should've known you couldn't piece things together.
+  - 1I overestimated you.
+  - 1Don't play stupid, you know exactly why you're here.
+  - 1Have a seat.
   portraits:
   - {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
-  - {fileID: 21300000, guid: da99b20986290244fbade3f36f45a457, type: 3}
-  - {fileID: 21300000, guid: 812f104d43f863540ab062a36abb0df7, type: 3}
-  - {fileID: 21300000, guid: da99b20986290244fbade3f36f45a457, type: 3}
-  - {fileID: 21300000, guid: da99b20986290244fbade3f36f45a457, type: 3}
-  - {fileID: 21300000, guid: 5eb43d1207a6a0f44b928a1b279bac6f, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: cac5d9eaecebb9b4c9172fa77b0e1f20, type: 3}
+  - {fileID: 21300000, guid: a7d2dc5b9bef9fd46b453fc5dc37ea64, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: d9d89b44b559e6644a8f9dfbbe8c303a, type: 3}
+  - {fileID: 21300000, guid: d9d89b44b559e6644a8f9dfbbe8c303a, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 2798f9b3ed61edf4083ce8c11af7e8d5, type: 3}
   textSpeed: 0.05
+  textComp: {fileID: 3909592374644332759}
   dialoguePortrait: {fileID: 3909592376647890191}
+--- !u!114 &4341481760820515352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909592375204993728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16abf9d8b02c45d41b663f7efe1adb15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3909592375795846378
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +314,7 @@ Canvas:
   m_GameObject: {fileID: 3909592375795846378}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -299,7 +323,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 16600585
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3909592375795846380

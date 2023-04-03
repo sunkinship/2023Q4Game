@@ -50,6 +50,11 @@ public class AudioManager : MonoBehaviour
     }
 
     #region Play Audio
+    public void PlaySound(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
+    }
+
     public void PlaySound(AudioClip clip, float volume)
     {
         sfxSource.PlayOneShot(clip, volume);
