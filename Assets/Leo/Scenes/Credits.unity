@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 8774573226596367286, guid: 67c9c97a65af4ba4faf41dacb836d980, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67c9c97a65af4ba4faf41dacb836d980, type: 3}
 --- !u!1 &949392396
@@ -396,8 +400,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c1cbbd084effa2b4d8db1e101f824510, type: 2}
+  m_sharedMaterial: {fileID: -8932656905538054304, guid: c1cbbd084effa2b4d8db1e101f824510, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -421,8 +425,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53
-  m_fontSizeBase: 53
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

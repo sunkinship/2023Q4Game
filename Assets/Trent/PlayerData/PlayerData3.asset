@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bc76d96248e0b48ad2f706a1556f06, type: 3}
   m_Name: PlayerData3
   m_EditorClassIdentifier: 
-  jumpPower: 12
   walkSpeed: 8
+  jumpStrength: 12
   maxJumpTime: 0.3
   amountOfJumps: 1
   dashSpeed: 20
