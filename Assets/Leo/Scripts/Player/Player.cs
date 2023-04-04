@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
+    #region Walk
     public void SetXVelocity(float velocityX)
     {
         PlayerRb2.velocity = new Vector2(velocityX * playerData.walkSpeed, CurrentVelocity.y);
@@ -106,6 +107,7 @@ public class Player : MonoBehaviour
             PlayerSr.flipX = false;
         }
     }
+    #endregion
 
     #region Jump
     public bool IsGrounded()

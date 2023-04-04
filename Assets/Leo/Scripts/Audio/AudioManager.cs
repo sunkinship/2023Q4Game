@@ -1,26 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [SerializeField] 
     private AudioSource musicSource, sfxSource;
 
-    private bool masterMuted;
 
-    [SerializeField]
-    private Slider masterSlider;
-
-    [SerializeField]
-    private TextMeshProUGUI masterText, musicText, sfxText;
-
-    public void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -32,102 +22,73 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
         SceneManager.sceneLoaded += OnSceneLoaded;
-
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        WaitToAssign();
+        musicSource = GameObject.FindGameObjectWithTag("Music Source").GetComponent<AudioSource>();
+        sfxSource = GameObject.FindGameObjectWithTag("SFX Source").GetComponent<AudioSource>();
+
+        SetMasterVolume();
+        SetMusicVolume();
+        SetSFXVolume();
     }
 
-    private void WaitToAssign()
+    #region SFX
+    public void PlaySound(AudioClip clip) => sfxSource.PlayOneShot(clip);
+
+    public void PlaySound(AudioClip clip, float volume) => sfxSource.PlayOneShot(clip, volume);
+
+    public void StopSound() => sfxSource.Stop();
+    #endregion
+
+    #region Music
+    public void PlayMusic(AudioClip clip, bool canLoop)
     {
-        //Debug.Log("Scene loaded");
-        masterSlider = GameObject.Find("Master Slider").GetComponent<Slider>();
-        masterText = GameObject.Find("MasterText").GetComponent<TextMeshProUGUI>();
-        musicText = GameObject.Find("MusicText").GetComponent<TextMeshProUGUI>();
-        sfxText = GameObject.Find("SFXText").GetComponent<TextMeshProUGUI>();
+        musicSource.clip = clip;
+        musicSource.loop = canLoop;
+        musicSource.Play();
     }
 
-    #region Play Audio
-    public void PlaySound(AudioClip clip)
-    {
-        sfxSource.PlayOneShot(clip);
-    }
-
-    public void PlaySound(AudioClip clip, float volume)
-    {
-        sfxSource.PlayOneShot(clip, volume);
-    }
-
-    public void StopSound()
-    {
-        sfxSource.Stop();
-    }
-
-    public void PlayMusic(AudioClip clip, float volume)
+    public void PlayMusic(AudioClip clip, bool canLoop, float volume)
     {
         musicSource.clip = clip;
         musicSource.volume = volume;
-        musicSource.loop = true;
+        musicSource.loop = canLoop;
         musicSource.Play();
-    }
-    public void StopMusic()
-    {
-        musicSource.Stop();
     }
 
-    public void ResumeMusic()
-    {
-        musicSource.Play();
-    }
+    public void StopMusic() => musicSource.Stop();
+
+    public void ResumeMusic() => musicSource.Play();
     #endregion
 
 
-    #region Volume
+    #region Change Volume
     public void ChangeMasterVolume(float volume)
     {
-        AudioListener.volume = volume;
-        masterText.text = "Master Volume: " + (int)(AudioListener.volume * 100);
+        PlayerPrefs.SetFloat("masterVolume", volume);
+        AudioListener.volume = volume * 0.1f;
     }
 
     public void ChangeMusicVolume(float volume)
     {
-        musicSource.volume = volume;
-        musicText.text = "Music Volume: " + (int)(musicSource.volume * 100);
+        PlayerPrefs.SetFloat("musicVolume", volume);
+        musicSource.volume = volume * 0.1f;
     }
 
     public void ChangeSFXVolume(float volume)
     {
-        sfxSource.volume = volume;
-        sfxText.text = "SFX Volume: " + (int)(sfxSource.volume * 100);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
+        sfxSource.volume = volume * 0.1f;
     }
     #endregion
 
+    #region Initialize Volume
+    private void SetMasterVolume() => ChangeMasterVolume(PlayerPrefs.GetFloat("masterVolume"));
 
-    #region Toggle Mute
-    public void ToggleMaster()
-    {
-        if (masterMuted == false)
-        {
-            masterMuted = true;
-            AudioListener.volume = 0;
-        }
-        else if (masterMuted)
-        {
-            masterMuted = false;
-            AudioListener.volume = masterSlider.value;
-        }
-    }
+    private void SetMusicVolume() => ChangeMusicVolume(PlayerPrefs.GetFloat("musicVolume"));
 
-    public void ToggleSFX()
-    {
-        sfxSource.mute = !sfxSource.mute;
-    }
-
-    public void ToggleMusic()
-    {
-        musicSource.mute = !musicSource.mute;
-    }
+    private void SetSFXVolume() => ChangeSFXVolume(PlayerPrefs.GetFloat("sfxVolume"));
     #endregion
 }

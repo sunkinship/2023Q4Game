@@ -7,6 +7,8 @@ TagManager:
   - NPC
   - Hazard
   - Check Point
+  - Music Source
+  - SFX Source
   layers:
   - Default
   - TransparentFX

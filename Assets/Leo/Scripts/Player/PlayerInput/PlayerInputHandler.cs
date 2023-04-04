@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    public PlayerInput playerInput;
+
     public float MovementInput { get; private set; }
     public bool JumpInput { get; private set; }
     public bool JumpHoldInput { get; private set; }
@@ -18,6 +20,11 @@ public class PlayerInputHandler : MonoBehaviour
 
     private float JumpInputHoldTime = 0.2f;
 
+
+    private void Start()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     private void Update()
     {
@@ -115,5 +122,12 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     public void UsePauseInput() => PauseInput = false;
+    #endregion
+
+    #region Switch Action Maps
+    public void SwitchActionMap(string mapName)
+    {
+        playerInput.SwitchCurrentActionMap(mapName);
+    }
     #endregion
 }

@@ -86,9 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5759bc2dcdc76cf4cb56f8d02773b06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator1: {fileID: 8813710052316299973}
-  indicator2: {fileID: 4287587065197715559}
-  indicatorOffset: 0.4
+  indicator1: {fileID: 7747456116444507077}
+  indicator2: {fileID: 6058814390206326482}
+  indicatorOffset: 80
 --- !u!1 &7353585725689525143
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9a51f174de419664fbfc329b1e74b8c2, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -272,7 +272,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b6ddcc6e0dc0cac4996901791286f7ea, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

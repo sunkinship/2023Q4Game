@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Leo/Scenes/Title.unity
+    path: Assets/Leo/Scenes/Main Menu.unity
     guid: ea95225c538222349b08cebb5e051f19
   - enabled: 1
     path: Assets/Leo/Scenes/NewLevelTest.unity

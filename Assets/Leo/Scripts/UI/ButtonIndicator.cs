@@ -5,14 +5,20 @@ using UnityEngine.EventSystems;
 
 public class ButtonIndicator : MonoBehaviour
 {
+    private RectTransform thisRect;
     [SerializeField]
-    private GameObject indicator1, indicator2;
+    private RectTransform indicator1, indicator2;
     [SerializeField]
     private float indicatorOffset;
-    private Vector3 indicatorOffsetVector;
+    private Vector2 indicatorOffsetVector;
 
-    private Transform currentButton;
+    private RectTransform currentButton;
     private float currentButtonHalfLength;
+
+    private void Start()
+    {
+        thisRect = GetComponent<RectTransform>();
+    }
 
     void Update()
     {
@@ -23,18 +29,20 @@ public class ButtonIndicator : MonoBehaviour
 
     private void SetCurrentButtonInfo()
     {
-        currentButton = EventSystem.current.currentSelectedGameObject.GetComponent<Transform>();
-        currentButtonHalfLength = currentButton.GetComponent<RectTransform>().rect.width / 200;
+        currentButton = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
+        currentButtonHalfLength = currentButton.rect.width / 2;
+        thisRect.transform.position = currentButton.transform.position;
     }
 
     private void SetIndicatorOffset()
     {
-        indicatorOffsetVector = new Vector3(currentButtonHalfLength + indicatorOffset, 0, 0);
+        indicatorOffsetVector = new Vector2(currentButtonHalfLength + indicatorOffset, 0);
     }
 
     private void SetIndicatorPosition()
     {
-        indicator1.transform.SetPositionAndRotation(currentButton.position + indicatorOffsetVector, Quaternion.identity);
-        indicator2.transform.SetPositionAndRotation(currentButton.position - indicatorOffsetVector, Quaternion.identity);
+        Vector2 buttonPos = new Vector2(currentButton.anchoredPosition.x, 0);
+        indicator1.anchoredPosition = indicatorOffsetVector;
+        indicator2.anchoredPosition = Vector2.zero - indicatorOffsetVector;
     }
 }

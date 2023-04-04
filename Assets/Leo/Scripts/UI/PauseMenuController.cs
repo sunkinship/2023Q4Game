@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class PauseController : UIController
+public class PauseMenuController : UIController
 {
+    [Header("Pause Menu")]
     [SerializeField]
     private GameObject pauseCanvas;
     [SerializeField]
     private PlayerInputHandler inputHandler;
-    [SerializeField]
-    private ControlBlur blur;
     private bool paused;
 
 
     private void Start()
     {
-        paused = false;
+        EventSystem.current.SetSelectedGameObject(menuFirstSelect);
     }
 
     private void Update()
@@ -38,17 +38,17 @@ public class PauseController : UIController
 
     private void PauseGame()
     {
+        inputHandler.SwitchActionMap("UI");
         paused = true;
-        //blur.EnableBlur();
         Time.timeScale = 0;
         pauseCanvas.SetActive(true);
     }
 
     public void Unpause()
     {
+        inputHandler.SwitchActionMap("Player");
         Time.timeScale = 1;
         pauseCanvas.SetActive(false);
-        //blur.DisableBlur();
         paused = false;
     }
 
