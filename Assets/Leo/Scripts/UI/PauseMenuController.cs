@@ -1,27 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuController : UIController
 {
-    [Header("Pause Menu")]
+    [Header("Pause Canvas")]
     [SerializeField]
     private GameObject pauseCanvas;
-    [SerializeField]
-    private PlayerInputHandler inputHandler;
-    private bool paused;
+    private bool paused, canUnpause;
+    private float pauseCD = 0.2f;
 
 
-    private void Start()
-    {
-        EventSystem.current.SetSelectedGameObject(menuFirstSelect);
-    }
-
-    private void Update()
+    protected override void Update()
     {
         ReceivePauseInput();
+        if (paused)
+            ReceiveCancelInput();
     }
 
     private void ReceivePauseInput()
@@ -31,6 +28,23 @@ public class PauseMenuController : UIController
             inputHandler.UsePauseInput();
             if (paused == false)
                 PauseGame();
+            else if (inSubMenu == false)
+            {
+                Unpause();
+            }
+        }
+    }
+
+    protected override void ReceiveCancelInput()
+    {
+        if (inputHandler.CancelInput)
+        {
+            inputHandler.UseCancelInput();
+            if (inSubMenu)
+            {
+                EventSystem.current.SetSelectedGameObject(optionsFirstSelect);
+                MenuButton();
+            }
             else
                 Unpause();
         }
@@ -38,18 +52,24 @@ public class PauseMenuController : UIController
 
     private void PauseGame()
     {
-        inputHandler.SwitchActionMap("UI");
-        paused = true;
+        canUnpause = false;
+        StartCoroutine(WaitForPauseCD());
         Time.timeScale = 0;
         pauseCanvas.SetActive(true);
+        inputHandler.SwitchActionMap("UI");
+        EventSystem.current.SetSelectedGameObject(menuFirstSelect);
+        paused = true;
     }
 
     public void Unpause()
     {
-        inputHandler.SwitchActionMap("Player");
-        Time.timeScale = 1;
-        pauseCanvas.SetActive(false);
-        paused = false;
+        if (canUnpause)
+        {
+            inputHandler.SwitchActionMap("Player");
+            pauseCanvas.SetActive(false);
+            Time.timeScale = 1;
+            paused = false;
+        }
     }
 
     public void LoadMenuFromPauseButton()
@@ -63,5 +83,11 @@ public class PauseMenuController : UIController
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
         return true;
+    }
+
+    private IEnumerator WaitForPauseCD()
+    {
+        yield return new WaitForSecondsRealtime(pauseCD);
+        canUnpause = true;
     }
 }

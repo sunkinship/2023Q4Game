@@ -16,7 +16,6 @@ public class PlayerInAirState : PlayerMoveState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("in air");
         canLongJump = true;
     }
 
@@ -38,6 +37,9 @@ public class PlayerInAirState : PlayerMoveState
 
         CheckIfReleasedJump();
 
+        if (isAnimationFinished)
+            player.PlayerAnim.SetBool("Double Jump", false);
+
         if (canLongJump && player.InputHandler.JumpHoldInput && !player.IsGrounded())
         {
             player.ChangeJumpPower();
@@ -46,11 +48,14 @@ public class PlayerInAirState : PlayerMoveState
         else if (jumpInput && player.JumpState.CanJump() && !player.IsGrounded())
         {
             player.InputHandler.UseJumpInput();
-            player.PlayerAnim.SetTrigger("Double Jump");
+            player.PlayerAnim.SetBool("Double Jump", true);
+            player.PlayDoubleJumpParticles();
             stateMachine.ChangeState(player.JumpState);
         }
         else if (yVecloity < 0.01f && player.IsGrounded())
         {
+            player.PlayerAnim.SetBool("Double Jump", false);
+            player.PlayLandParticles();
             if (moveInput != 0)
                 stateMachine.ChangeState(player.WalkState);
             else

@@ -41,6 +41,7 @@ public class PlayerGroundedState : PlayerMoveState
         else if (jumped)
         {
             player.InputHandler.UseJumpInput();
+            player.PlayJumpParticles();
             stateMachine.ChangeState(player.JumpState);
         }
     }

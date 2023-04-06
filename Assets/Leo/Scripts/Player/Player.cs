@@ -24,13 +24,16 @@ public class Player : MonoBehaviour
     public PlayerInputHandler InputHandler { get; private set; }
     #endregion
 
+    #region Other References
     public PlayerData playerData;
     public Vector2 CurrentVelocity { get; private set; }
 
+    [Header("Collision Check")]
     [SerializeField]
     private Transform feetPos;
     [SerializeField]
     private Transform bodyPos;
+
 
     public float JumpTimeCounter { get; private set; }
 
@@ -41,12 +44,28 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool canDash;
 
+
     [HideInInspector]
     public GameObject currentCheckPoint;
 
+    [Header("Fade")]
     [SerializeField]
     private Fade Fade;
+    #endregion
 
+    #region Particles
+    [Header("Particles")]
+    [SerializeField]
+    private ParticleSystem jumpBurstParticle;
+    [SerializeField]
+    private ParticleSystem jumpFollowParticle;
+    [SerializeField]
+    private ParticleSystem doubleJumpParticle;
+    [SerializeField]
+    private ParticleSystem landParticle;
+    [SerializeField]
+    private ParticleSystem dashParticle;
+    #endregion
 
 
     private void Awake()
@@ -255,6 +274,38 @@ public class Player : MonoBehaviour
     private void ShowPlayer()
     {
         PlayerSr.enabled = true;
+    }
+    #endregion
+
+    #region Particles
+    public void PlayJumpParticles()
+    {
+        jumpBurstParticle.Play();
+        jumpFollowParticle.Play();
+    }
+
+    public void PlayDoubleJumpParticles()
+    {
+        doubleJumpParticle.Play();
+    }
+
+    public void PlayLandParticles()
+    {
+        landParticle.Play();
+    }
+
+    public void DashParticles(bool play)
+    {
+        if (play)
+        {
+            if (facingRight)
+                dashParticle.transform.localScale = new Vector2(1, 1);
+            else
+                dashParticle.transform.localScale = new Vector2(-1, 1);
+            dashParticle.Play();
+        }
+        else
+            dashParticle.Stop();
     }
     #endregion
 }

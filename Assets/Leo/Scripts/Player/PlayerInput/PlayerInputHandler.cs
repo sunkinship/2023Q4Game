@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    [HideInInspector]
     public PlayerInput playerInput;
 
     public float MovementInput { get; private set; }
@@ -14,6 +15,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool DashInput { get; private set; }
     public bool InteractInput { get; private set; }
     public bool PauseInput { get; private set; }
+    public bool CancelInput { get; private set; }
 
 
     private float JumpInputStartTime;
@@ -122,6 +124,23 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     public void UsePauseInput() => PauseInput = false;
+    #endregion
+
+    #region Cancel Input
+    public void OnCancelInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            CancelInput = true;
+        }
+
+        if (context.canceled)
+        {
+            CancelInput = false;
+        }
+    }
+
+    public void UseCancelInput() => CancelInput = false;
     #endregion
 
     #region Switch Action Maps

@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicator1: {fileID: 7747456116444507077}
   indicator2: {fileID: 6058814390206326482}
-  indicatorOffset: 80
+  indicatorOffset: 60
 --- !u!1 &7353585725689525143
 GameObject:
   m_ObjectHideFlags: 0

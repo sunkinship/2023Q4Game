@@ -3,9 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 
 public class UIController : MonoBehaviour
 {
+    [Header("Input Handler")]
+    [SerializeField]
+    protected PlayerInputHandler inputHandler;
+
     [Header("Fade Canvas")]
     [SerializeField]
     protected Fade fade;
@@ -14,31 +19,51 @@ public class UIController : MonoBehaviour
     [SerializeField]
     protected GameObject indicators;
 
-    [Header("Menu Canvases")]
+    [Header("General Menu Canvases")]
     [SerializeField] protected GameObject menu;
     [SerializeField] protected GameObject options;
 
-    [Header("First Select Buttons")]
+    [Header("General First Select Buttons")]
     [SerializeField] protected GameObject menuFirstSelect;
     [SerializeField] protected GameObject optionsFirstSelect;
 
     protected GameObject lastSelected, lastLastSelected;
 
+    protected bool inSubMenu;
+
+
+    protected virtual void Update()
+    {
+        ReceiveCancelInput();
+    }
+
     #region Button Methods
     public void OptionsButton()
     {
+        inSubMenu = true;
         SetLastSelectedButton();
         menu.SetActive(false);
         options.SetActive(true);
-        SetSelectedButton(optionsFirstSelect);
+        SetSelectedButton(optionsFirstSelect, true);
     }
 
-    public void MenuButton()
+    public virtual void MenuButton()
     {
+        inSubMenu = false;
         SetLastSelectedButton();
         options.SetActive(false);
         menu.SetActive(true);
-        SetSelectedButton(menuFirstSelect);
+        SetSelectedButton(menuFirstSelect, false);
+    }
+
+    protected virtual void ReceiveCancelInput()
+    {
+        if (inputHandler.CancelInput && inSubMenu)
+        {
+            inputHandler.UseCancelInput();
+            EventSystem.current.SetSelectedGameObject(optionsFirstSelect);
+            MenuButton();
+        }
     }
     #endregion
 
@@ -61,16 +86,18 @@ public class UIController : MonoBehaviour
         lastSelected = EventSystem.current.currentSelectedGameObject;
     }
 
-    protected void SetSelectedButton(GameObject deafultSelect)
+    protected void SetSelectedButton(GameObject deafultSelect, bool forceDefault)
     {
-        if (lastLastSelected != null)
+        if (forceDefault == false)
         {
-            EventSystem.current.SetSelectedGameObject(lastLastSelected);
+            if (lastLastSelected != null)
+            {
+                EventSystem.current.SetSelectedGameObject(lastLastSelected);
+                lastLastSelected = lastSelected;
+                return;
+            }
         }
-        else
-        {
-            EventSystem.current.SetSelectedGameObject(deafultSelect);
-        }
+        EventSystem.current.SetSelectedGameObject(deafultSelect);
         lastLastSelected = lastSelected;
     }
     #endregion

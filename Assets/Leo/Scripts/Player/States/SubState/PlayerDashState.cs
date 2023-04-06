@@ -22,6 +22,7 @@ public class PlayerDashState : PlayerAnimState
         player.PlayerRb2.gravityScale = 0;
         dashStartTime = Time.time;
         player.Dash(player.DashDirection());
+        player.DashParticles(true);
     }
 
     public override void Exit()
@@ -30,6 +31,7 @@ public class PlayerDashState : PlayerAnimState
         player.WaitForDashCD();
         player.EnableCollision();
         player.PlayerRb2.gravityScale = defaultGravity;
+        player.DashParticles(false);
     }
 
     public override void LogicUpdate()
