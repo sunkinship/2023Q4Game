@@ -23,7 +23,7 @@ public class PlayerInAirState : PlayerMoveState
     {
         base.Exit();
         player.PlayerAnim.SetFloat("YVelocity", 0);
-        player.ResetJumpCount();
+        player.ResetJumpTimer();
     }
 
     public override void LogicUpdate()
@@ -36,11 +36,10 @@ public class PlayerInAirState : PlayerMoveState
         holdJumpInput = player.InputHandler.JumpHoldInput;
 
         CheckIfReleasedJump();
-
         if (isAnimationFinished)
             player.PlayerAnim.SetBool("Double Jump", false);
 
-        if (canLongJump && player.InputHandler.JumpHoldInput && !player.IsGrounded())
+        if (canLongJump && holdJumpInput && !player.IsGrounded())
         {
             player.ChangeJumpPower();
             player.HeldJump();

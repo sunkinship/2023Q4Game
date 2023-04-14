@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public PlayerDashState DashState { get; private set; }
     public PlayerLandState LandState { get; private set; }
     public PlayerFinishDashState FinishDashState { get; private set; }
+    public PlayerBounceState BounceState { get; private set; }
     #endregion
 
     #region Components
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
         DashState = new PlayerDashState(this, StateMachine, playerData, "Dash");
         LandState = new PlayerLandState(this, StateMachine, playerData, "Land");
         FinishDashState = new PlayerFinishDashState(this, StateMachine, playerData, "Finish Dash");
+        BounceState = new PlayerBounceState(this, StateMachine, playerData, "Jump");
     }
 
     private void Start()
@@ -106,6 +108,13 @@ public class Player : MonoBehaviour
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
+    #region Ground Check
+    public bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(feetPos.position, playerData.groundCheckRadius, playerData.ground);
+    }
+    #endregion
+
     #region Walk
     public void SetXVelocity(float velocityX)
     {
@@ -129,17 +138,6 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Jump
-    public bool IsGrounded()
-    {
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 20, playerData.ground);
-        //if (hit.collider != null)
-        //{
-        //    return hit.distance <= 0.4;
-        //}
-        //return false;
-        return Physics2D.OverlapCircle(feetPos.position, playerData.groundCheckRadius, playerData.ground);
-    }
-
     public void Jump()
     {
         JumpTimeCounter = playerData.maxJumpTime;
@@ -173,7 +171,17 @@ public class Player : MonoBehaviour
         jumpPowerModifier = 0;
     }
 
-    public void ResetJumpCount() => JumpTimeCounter = 0;
+    public void ResetJumpTimer() => JumpTimeCounter = 0;
+
+    public bool CanDoubleJump()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 20, playerData.bounce);
+        if (hit.collider != null)
+        {
+            return hit.distance >= 2;
+        }
+        return true;
+    }
     #endregion
 
     #region Dash
@@ -216,6 +224,39 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         canDash = true;
+    }
+    #endregion
+
+    #region Bounce
+    public bool OnBounce()
+    {
+        return Physics2D.OverlapCircle(feetPos.position, playerData.groundCheckRadius, playerData.bounce);
+    }
+
+    public void Bounce(bool jumpInput)
+    {
+        if (jumpInput == false)
+        {
+            PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.bounceStrengh);
+            CurrentVelocity = PlayerRb2.velocity;
+        }
+        else
+        {
+            PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.bounceStrengh + playerData.jumpStrength / 2);
+            CurrentVelocity = PlayerRb2.velocity;
+        }
+    }
+
+    public void WaitToResetDoubleJump()
+    {
+        JumpState.SetAmountOfJumpsLeft(0);
+        StartCoroutine(WaitToResetIEnumerator());
+    }
+
+    private IEnumerator WaitToResetIEnumerator()
+    {
+        yield return new WaitForSeconds(0.5f);
+        JumpState.SetAmountOfJumpsLeft(1); 
     }
     #endregion
 

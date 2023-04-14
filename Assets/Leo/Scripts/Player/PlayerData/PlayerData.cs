@@ -12,6 +12,7 @@ public class PlayerData : ScriptableObject
     public float jumpStrength;
     public float maxJumpTime;
     public int amountOfJumps;
+    public float bounceStrengh;
 
     [Header("Dash State")]
     public float dashSpeed;
@@ -22,5 +23,6 @@ public class PlayerData : ScriptableObject
 
     [Header("Check Variables")]
     public LayerMask ground;
+    public LayerMask bounce;
     public float groundCheckRadius;
 }

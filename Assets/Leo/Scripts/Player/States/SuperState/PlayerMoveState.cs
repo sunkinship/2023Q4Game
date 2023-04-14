@@ -23,7 +23,13 @@ public class PlayerMoveState : PlayerAnimState
         if (dashInput && player.DashState.CanDash())
         {
             player.InputHandler.UseDashInput();
+            player.PlayerAnim.SetBool("Double Jump", false);
             stateMachine.ChangeState(player.DashState);
+        }
+        else if (player.OnBounce())
+        {
+            player.PlayerAnim.SetBool("Double Jump", false);
+            stateMachine.ChangeState(player.BounceState);
         }
     }
 }

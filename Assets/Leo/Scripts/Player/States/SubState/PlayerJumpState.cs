@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
 
 public class PlayerJumpState : PlayerMoveState
 {
@@ -23,7 +22,7 @@ public class PlayerJumpState : PlayerMoveState
 
     public bool CanJump()
     {
-        if (amountOfJumpsLeft > 0)
+        if (amountOfJumpsLeft > 0 && player.CanDoubleJump())
             return true;
         else
             return false;
@@ -32,4 +31,6 @@ public class PlayerJumpState : PlayerMoveState
     public void ResetAmountOfJumpsLeft() => amountOfJumpsLeft = playerData.amountOfJumps;
 
     public void DecreaseAmountOfJumpsLeft() => amountOfJumpsLeft--;
+
+    public void SetAmountOfJumpsLeft(int jumps) => amountOfJumpsLeft = jumps;
 }

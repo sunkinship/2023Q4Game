@@ -946,8 +946,8 @@ GameObject:
   - component: {fileID: 320665831}
   - component: {fileID: 320665833}
   - component: {fileID: 320665832}
-  m_Layer: 6
-  m_Name: Platform (3)
+  m_Layer: 7
+  m_Name: Bounce Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -961,7 +961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320665830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.87, y: 3.26, z: 0}
+  m_LocalPosition: {x: 1, y: -0.94, z: 0}
   m_LocalScale: {x: 3, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 2091295564}
@@ -976,7 +976,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 320665830}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 396be6a0ac5d6a74e9a838134679ce86, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5257,7 +5257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8774573226596367286, guid: 67c9c97a65af4ba4faf41dacb836d980, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67c9c97a65af4ba4faf41dacb836d980, type: 3}

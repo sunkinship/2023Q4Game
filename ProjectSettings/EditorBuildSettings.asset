@@ -11,8 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Leo/Scenes/NewLevelTest.unity
     guid: e18464859e28fc44cb6e31738863ad48
-  - enabled: 1
-    path: Assets/Leo/Scenes/Credits.unity
-    guid: f9769a7244041aa4981ef920ff90b6a9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 330c9330e92469b4d843bb4cb56f0ae3, type: 2}
