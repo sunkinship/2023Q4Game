@@ -10,6 +10,15 @@ public class PlayerFinishDashState : PlayerAnimState
     {
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        player.WaitForDashCD();
+        player.EnableCollision();
+        player.PlayerRb2.gravityScale = player.DashState.defaultGravity;
+        player.DashParticles(false);
+    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -26,7 +35,9 @@ public class PlayerFinishDashState : PlayerAnimState
                     stateMachine.ChangeState(player.IdleState);
             }
             else
+            {
                 stateMachine.ChangeState(player.InAirState);
+            }
         }
     }
 }

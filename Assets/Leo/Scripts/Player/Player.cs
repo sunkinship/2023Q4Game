@@ -235,6 +235,7 @@ public class Player : MonoBehaviour
 
     public void Bounce(bool jumpInput)
     {
+        DashState.ResetAmountOfDashesLeft();
         if (jumpInput == false)
         {
             PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.bounceStrengh);

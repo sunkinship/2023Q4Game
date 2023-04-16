@@ -6,7 +6,7 @@ public class PlayerDashState : PlayerAnimState
 {
     protected float dashStartTime;
     protected float moveInput;
-    protected float defaultGravity;
+    public float defaultGravity;
     protected int amountOfDashesLeft;
 
     public PlayerDashState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -23,15 +23,6 @@ public class PlayerDashState : PlayerAnimState
         dashStartTime = Time.time;
         player.Dash(player.DashDirection());
         player.DashParticles(true);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        player.WaitForDashCD();
-        player.EnableCollision();
-        player.PlayerRb2.gravityScale = defaultGravity;
-        player.DashParticles(false);
     }
 
     public override void LogicUpdate()

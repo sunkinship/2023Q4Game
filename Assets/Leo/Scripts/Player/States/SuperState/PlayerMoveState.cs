@@ -24,6 +24,8 @@ public class PlayerMoveState : PlayerAnimState
         {
             player.InputHandler.UseDashInput();
             player.PlayerAnim.SetBool("Double Jump", false);
+            if (player.JumpState.GetAmountOfJumpsLeft() >= 2)
+                player.JumpState.DecreaseAmountOfJumpsLeft();
             stateMachine.ChangeState(player.DashState);
         }
         else if (player.OnBounce())

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class PlayerJumpState : PlayerMoveState
@@ -33,4 +34,9 @@ public class PlayerJumpState : PlayerMoveState
     public void DecreaseAmountOfJumpsLeft() => amountOfJumpsLeft--;
 
     public void SetAmountOfJumpsLeft(int jumps) => amountOfJumpsLeft = jumps;
+
+    public int GetAmountOfJumpsLeft()
+    {
+        return amountOfJumpsLeft;
+    }
 }
