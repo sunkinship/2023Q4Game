@@ -16,12 +16,16 @@ MonoBehaviour:
   jumpStrength: 12
   maxJumpTime: 0.3
   amountOfJumps: 1
+  bounceStrengh: 0
   dashSpeed: 20
-  dashTime: 0.5
+  dashTime: 0.3
   amountOfDashes: 1
   dashCD: 0.2
   collisionCheckRadius: 0.2
   ground:
     serializedVersion: 2
     m_Bits: 64
+  bounce:
+    serializedVersion: 2
+    m_Bits: 128
   groundCheckRadius: 0.2
