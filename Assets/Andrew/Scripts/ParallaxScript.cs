@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class ParallaxScript : MonoBehaviour {
 
-    private float lengthX, lenghtY, startPosX, startPosY;
+    private float lengthX, startPosX, startPosY;
     public GameObject cam;
-    public float parallaxAmount;
+    public float xParallaxAmount, yParallaxAmount;
+    [SerializeField]
+    private bool repositionSooner;
+    [SerializeField]
+    private Vector2 offset;
 
 
     private void Start() 
@@ -14,20 +18,34 @@ public class ParallaxScript : MonoBehaviour {
         startPosX = transform.position.x;
         startPosY = transform.position.y;
         lengthX = GetComponentInChildren<SpriteRenderer>().bounds.size.x;
-        lenghtY = GetComponentInChildren<SpriteRenderer>().bounds.size.y;
     }
 
     private void LateUpdate() 
     {
-        float temp = (cam.transform.position.x * (1 - parallaxAmount));
-        float distX = (cam.transform.position.x * parallaxAmount);
-        float distY = (cam.transform.position.y * parallaxAmount);
+        float temp = (cam.transform.position.x * (1 - xParallaxAmount));
+        float distX = (cam.transform.position.x * xParallaxAmount);
+        float distY = (cam.transform.position.y * yParallaxAmount);
 
-        transform.position = new Vector3(startPosX + distX, startPosY + distY, transform.position.z);
+        transform.position = new Vector3(startPosX + distX + offset.x, startPosY + distY + offset.y, transform.position.z);
 
-        if (temp > startPosX + (lengthX * 2)) 
-            startPosX += lengthX;
-        else if (temp < startPosX - (lengthX * 2)) 
-            startPosX -= lengthX;
+        Reposition(temp);
+    }
+
+    private void Reposition(float temp)
+    {
+        if (repositionSooner == false)
+        {
+            if (temp > startPosX + (lengthX * 2))
+                startPosX += lengthX;
+            else if (temp < startPosX - (lengthX * 2))
+                startPosX -= lengthX;
+        }
+        else
+        {
+            if (temp > startPosX + lengthX)
+                startPosX += lengthX;
+            else if (temp < startPosX - lengthX)
+                startPosX -= lengthX;
+        }
     }
 }

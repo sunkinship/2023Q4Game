@@ -365,7 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 439075135}
-  parallaxAmount: 0.8
+  xParallaxAmount: 0
+  yParallaxAmount: 0
 --- !u!1 &154143501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +2243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 439075135}
-  parallaxAmount: 0.4
+  xParallaxAmount: 0
+  yParallaxAmount: 0
 --- !u!1 &576388045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,7 +3597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 439075135}
-  parallaxAmount: 0.3
+  xParallaxAmount: 0
+  yParallaxAmount: 0
 --- !u!1 &863842453
 GameObject:
   m_ObjectHideFlags: 0
@@ -4390,7 +4393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 439075135}
-  parallaxAmount: 0.9
+  xParallaxAmount: 0
+  yParallaxAmount: 0
 --- !u!1 &1055961977
 GameObject:
   m_ObjectHideFlags: 0
@@ -5257,7 +5261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8774573226596367286, guid: 67c9c97a65af4ba4faf41dacb836d980, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67c9c97a65af4ba4faf41dacb836d980, type: 3}
@@ -6570,7 +6574,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 439075135}
-  parallaxAmount: 0.5
+  xParallaxAmount: 0
+  yParallaxAmount: 0
 --- !u!1 &1724810759
 GameObject:
   m_ObjectHideFlags: 0

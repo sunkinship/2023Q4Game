@@ -16,7 +16,7 @@ MonoBehaviour:
   jumpStrength: 12
   maxJumpTime: 0.3
   amountOfJumps: 2
-  bounceStrengh: 20
+  bounceStrengh: 25
   dashSpeed: 20
   dashTime: 0.5
   amountOfDashes: 1
@@ -29,4 +29,3 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   groundCheckRadius: 0.2
-  doubleJumpCheckRadius: 0.5
