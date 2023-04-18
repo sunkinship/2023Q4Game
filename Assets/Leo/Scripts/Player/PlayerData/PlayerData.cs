@@ -24,5 +24,8 @@ public class PlayerData : ScriptableObject
     [Header("Check Variables")]
     public LayerMask ground;
     public LayerMask bounce;
+    public LayerMask checkPoint;
+    public LayerMask hazard;
+    public LayerMask camChange;
     public float groundCheckRadius;
 }

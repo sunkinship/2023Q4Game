@@ -142,10 +142,20 @@ public class PlayerInputHandler : MonoBehaviour
     public void UseCancelInput() => CancelInput = false;
     #endregion
 
-    #region Switch Action Maps
+    #region Switch Action Maps / Enable Disable
     public void SwitchActionMap(string mapName)
     {
         playerInput.SwitchCurrentActionMap(mapName);
+    }
+
+    public void EnableInput()
+    {
+        playerInput.ActivateInput();
+    }
+
+    public void DisableInput()
+    {
+        playerInput.DeactivateInput();
     }
     #endregion
 }

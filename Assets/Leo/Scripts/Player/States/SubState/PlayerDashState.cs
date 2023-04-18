@@ -45,6 +45,16 @@ public class PlayerDashState : PlayerAnimState
             return false;
     }
 
+    public override void DoChecks()
+    {
+        base.DoChecks();
+        if (player.CheckHazard())
+        {
+            player.FinishDashState.Exit();
+            stateMachine.ChangeState(player.IdleState);
+        }
+    }
+
     public void ResetAmountOfDashesLeft() => amountOfDashesLeft = playerData.amountOfDashes;
 
     public void DecreaseAmountOfDahsesLeft() => amountOfDashesLeft--;

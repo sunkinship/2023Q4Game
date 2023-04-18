@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 691967953040128613}
   - component: {fileID: 691967953040128619}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Check Point
-  m_TagString: Check Point
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

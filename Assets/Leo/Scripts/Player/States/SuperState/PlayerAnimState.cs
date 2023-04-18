@@ -18,9 +18,11 @@ public class PlayerAnimState : PlayerState
         isAnimationFinished = false;
     }
 
-    public override void Exit()
+    public override void DoChecks()
     {
-        base.Exit();
+        base.DoChecks();
+        player.CheckCheckPoint();
+        player.CheckCamChange();
     }
 
     public virtual void StartAnimation()

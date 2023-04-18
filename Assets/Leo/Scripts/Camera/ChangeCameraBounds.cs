@@ -13,15 +13,15 @@ public class ChangeCameraBounds : MonoBehaviour
         cam = Camera.main.GetComponent<CameraScript>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            UpdateCamBounds();
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        UpdateCamBounds();
+    //    }
+    //}
 
-    private void UpdateCamBounds()
+    public void UpdateCamBounds()
     {
         cam.minPos = newMin;
         cam.maxPos = newMax;

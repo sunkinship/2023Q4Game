@@ -28,4 +28,13 @@ MonoBehaviour:
   bounce:
     serializedVersion: 2
     m_Bits: 128
+  checkPoint:
+    serializedVersion: 2
+    m_Bits: 1024
+  hazard:
+    serializedVersion: 2
+    m_Bits: 512
+  camChange:
+    serializedVersion: 2
+    m_Bits: 256
   groundCheckRadius: 0.2

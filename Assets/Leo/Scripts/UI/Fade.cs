@@ -19,7 +19,7 @@ public class Fade : MonoBehaviour
 
     public void TriggerFade()
     {
-        StartCoroutine(TriggerFadeRoutine());   
+        StartCoroutine(TriggerFadeRoutine());
     }
 
     private IEnumerator TriggerFadeRoutine()

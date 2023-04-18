@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5200783650872643627}
   - component: {fileID: 5200783650872643621}
   - component: {fileID: 5200783650872643623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CamBoundChange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 3.5811408}
+  m_Offset: {x: 0, y: 6.9698076}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 16.37201}
+  m_Size: {x: 1, y: 54.77691}
   m_EdgeRadius: 0
 --- !u!114 &5200783650872643623
 MonoBehaviour:
@@ -70,5 +70,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f18053c16a31d4f97eed336b2d011f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newMin: {x: 0, y: 0}
-  newMax: {x: 0, y: 250}
+  newMin: {x: -18, y: 0.5}
+  newMax: {x: 42.5, y: 6.5}

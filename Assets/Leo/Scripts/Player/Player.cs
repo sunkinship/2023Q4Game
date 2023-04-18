@@ -267,35 +267,58 @@ public class Player : MonoBehaviour
     private void AnimationFinishTrigger() => ((PlayerAnimState)StateMachine.CurrentState).AnimationFinishTrigger();
     #endregion
 
-    #region Hazard and Check Points
+    #region Hazard, Check Points, and Cam Bound Check
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Hazard"))
-        {
-            Fade.TriggerFade();
-            HidePlayer();
-            Respawn();
-            StartCoroutine(WaitForFade());
-        }
+        if (collision.gameObject.layer == 9)
+            Death();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void CheckCheckPoint()
     {
-        if (collision.gameObject.CompareTag("Check Point"))
-        {
-            SetCheckPoint(collision.gameObject);
-        }
+        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.checkPoint);
+        if (col == null)
+            return;
+        else
+            SetCheckPoint(col.gameObject);
     }
 
-    public void SetCheckPoint(GameObject newCheckPoint)
+    public bool CheckHazard()
     {
-        //print("check point set " + newCheckPoint.name);
+        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.hazard);
+        if (col == null)
+            return false;
+        else
+        {
+            Death();
+            return true;
+        }   
+    }
+
+    public void CheckCamChange()
+    {
+        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.camChange);
+        if (col == null)
+            return;
+        else
+            col.GetComponent<ChangeCameraBounds>().UpdateCamBounds(); ;
+    }
+
+    private void SetCheckPoint(GameObject newCheckPoint)
+    {
         currentCheckPoint = newCheckPoint;
+    }
+
+    private void Death()
+    {
+        Fade.TriggerFade();
+        HidePlayer();
+        Respawn();
+        StartCoroutine(WaitForFade());
     }
 
     private void Respawn()
     {
-        //print("reset to " + currentCheckPoint.name);
         transform.position = currentCheckPoint.transform.position;
     }
 

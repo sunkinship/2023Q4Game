@@ -8,8 +8,6 @@ public class PlayerState
     protected PlayerStateMachine stateMachine;
     protected PlayerData playerData;
 
-    protected float startTime;
-
     public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData)
     {
         this.player = player;
@@ -20,7 +18,6 @@ public class PlayerState
     public virtual void Enter()
     {
         DoChecks();
-        startTime = Time.time;
     }
 
     public virtual void Exit()
