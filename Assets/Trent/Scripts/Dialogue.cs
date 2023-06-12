@@ -9,7 +9,7 @@ public class Dialogue : MonoBehaviour
     [Header("Dialogue Settings")]
     public string[] lines;
     public Sprite[] portraits;
-    public AudioClip[] playerVoices, npcVoices;
+    public AudioClip playerVoices, npcVoices;
     public float textSpeed;
 
     [Header("Game Obejct References")]
@@ -26,6 +26,7 @@ public class Dialogue : MonoBehaviour
 
     private void Start()
     {
+        
         playerInputHandler = GetComponent<PlayerInputHandler>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         npcAnimator = GameObject.FindGameObjectWithTag("NPC").GetComponent<Animator>();
@@ -36,6 +37,7 @@ public class Dialogue : MonoBehaviour
 
     private void Update()
     {
+       
         WaitForInput();
     }
 
@@ -94,6 +96,7 @@ public class Dialogue : MonoBehaviour
 
     private void StartTalkVoiceAndAni(char talkerID)
     {
+        
         isWriting = true;
         if (talkerID == '0')
         {
@@ -120,23 +123,20 @@ public class Dialogue : MonoBehaviour
         }  
     }
 
-    private IEnumerator PlayVoice(AudioClip[] voices)
+    private IEnumerator PlayVoice(AudioClip voices)
     {
+        
         while (isWriting)
         {
-            AudioClip currentClip = ChooseRandomClip(voices);
-            float clipLength = currentClip.length;
+            Debug.Log(voices);
+            float clipLength = voices.length;
             float startTime = Time.time;
-            AudioManager.Instance.PlaySound(currentClip);
+            AudioManager.Instance.PlaySound(voices);
             while (!(Time.time >= startTime + clipLength))
                 yield return null;
         }
         yield break;
     }
 
-    private AudioClip ChooseRandomClip(AudioClip[] voices)
-    {
-        int clipIndex = Random.Range(0, voices.Length);
-        return voices[clipIndex];   
-    }
+  
 }

@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Leo");
         musicSource = GameObject.FindGameObjectWithTag("Music Source").GetComponent<AudioSource>();
         sfxSource = GameObject.FindGameObjectWithTag("SFX Source").GetComponent<AudioSource>();
 
