@@ -27,5 +27,6 @@ public class PlayerData : ScriptableObject
     public LayerMask checkPoint;
     public LayerMask hazard;
     public LayerMask camChange;
+    public LayerMask sceneChange;
     public float groundCheckRadius;
 }

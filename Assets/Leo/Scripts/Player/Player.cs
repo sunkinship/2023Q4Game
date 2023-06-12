@@ -304,6 +304,15 @@ public class Player : MonoBehaviour
             col.GetComponent<ChangeCameraBounds>().UpdateCamBounds(); ;
     }
 
+    public void CheckSceneChange()
+    {
+        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.sceneChange);
+        if (col == null)
+            return;
+        else
+            col.GetComponent<SceneTransition>().ChangeScenes(); 
+    }
+
     private void SetCheckPoint(GameObject newCheckPoint)
     {
         currentCheckPoint = newCheckPoint;

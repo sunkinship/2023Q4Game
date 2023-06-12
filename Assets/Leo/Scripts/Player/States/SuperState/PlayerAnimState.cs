@@ -23,6 +23,7 @@ public class PlayerAnimState : PlayerState
         base.DoChecks();
         player.CheckCheckPoint();
         player.CheckCamChange();
+        player.CheckSceneChange();
     }
 
     public virtual void StartAnimation()
