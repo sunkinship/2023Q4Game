@@ -5,11 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : UIController
 {
-    [Header("Credits Canvas")]
-    [SerializeField] protected GameObject credits;
+    [Header("Other Canvases")]
+    [SerializeField] 
+    protected GameObject credits;
+    [SerializeField]
+    protected GameObject start;
+    [SerializeField]
+    protected GameObject freePlay;
 
     [Header("First Select Buttons")]
-    [SerializeField] protected GameObject creditsFirstSelect;
+    [SerializeField]
+    protected GameObject creditsFirstSelect;
+    [SerializeField]
+    protected GameObject startFirstSelect;
+    [SerializeField]
+    protected GameObject freePlayFirstSelect;
+
 
     #region Button Methods
     public void StartButton()

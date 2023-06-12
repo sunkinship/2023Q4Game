@@ -3381,7 +3381,11 @@ MonoBehaviour:
   menuFirstSelect: {fileID: 570325364}
   optionsFirstSelect: {fileID: 1291590465}
   credits: {fileID: 1561253818}
+  start: {fileID: 0}
+  freePlay: {fileID: 0}
   creditsFirstSelect: {fileID: 1637528730}
+  startFirstSelect: {fileID: 0}
+  freePlayFirstSelect: {fileID: 0}
 --- !u!114 &1078194210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4548,7 +4552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8774573226596367286, guid: 67c9c97a65af4ba4faf41dacb836d980, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67c9c97a65af4ba4faf41dacb836d980, type: 3}
@@ -5562,7 +5566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7353585725110264209, guid: f8708639258645b4181b3f7c1cb77217, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7353585725110264209, guid: f8708639258645b4181b3f7c1cb77217, type: 3}
       propertyPath: m_AnchorMax.x
