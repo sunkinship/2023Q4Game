@@ -29,4 +29,9 @@ public class PlayerData : ScriptableObject
     public LayerMask camChange;
     public LayerMask sceneChange;
     public float groundCheckRadius;
+
+    [Header("Audio Clips")]
+    public AudioClip walkClip;
+    public AudioClip jumpClip;
+    public AudioClip doubleJumpClip;
 }

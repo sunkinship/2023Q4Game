@@ -35,11 +35,11 @@ public class AudioManager : MonoBehaviour
     }
 
     #region SFX
-    public void PlaySound(AudioClip clip) => sfxSource.PlayOneShot(clip);
+    public void PlaySFX(AudioClip clip) => sfxSource.PlayOneShot(clip);
 
-    public void PlaySound(AudioClip clip, float volume) => sfxSource.PlayOneShot(clip, volume);
+    public void PlayerSFX(AudioClip clip, float volume) => sfxSource.PlayOneShot(clip, volume);
 
-    public void StopSound() => sfxSource.Stop();
+    public void StopSFX() => sfxSource.Stop();
     #endregion
 
     #region Music
@@ -62,7 +62,6 @@ public class AudioManager : MonoBehaviour
 
     public void ResumeMusic() => musicSource.Play();
     #endregion
-
 
     #region Change Volume
     public void ChangeMasterVolume(float volume)

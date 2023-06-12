@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class PlayerWalkState : PlayerGroundedState
 {
-    public PlayerWalkState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    protected AudioClip walkClip;
+
+    public PlayerWalkState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName, AudioClip walkClip) : base(player, stateMachine, playerData, animBoolName)
     {
+        this.walkClip = walkClip;
     }
 
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("walk");
+        PlaySound();
+    }
+
+    public override void Exit()
+    {
+        base.Enter();
+        StopSound();
     }
 
     public override void LogicUpdate()
@@ -28,5 +37,15 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.PhysicsUpdate();
         player.SetXVelocity(moveInput);
+    }
+
+    public virtual void PlaySound()
+    {
+        AudioManager.Instance.PlaySFX(walkClip);
+    }
+
+    public virtual void StopSound()
+    {
+        AudioManager.Instance.StopSFX();
     }
 }

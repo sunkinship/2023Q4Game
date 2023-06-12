@@ -18,6 +18,11 @@ public class PlayerAnimState : PlayerState
         isAnimationFinished = false;
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
     public override void DoChecks()
     {
         base.DoChecks();
@@ -26,6 +31,7 @@ public class PlayerAnimState : PlayerState
         player.CheckSceneChange();
     }
 
+    #region Animation
     public virtual void StartAnimation()
     {
         player.PlayerAnim.SetBool(animBoolName, true);
@@ -39,4 +45,5 @@ public class PlayerAnimState : PlayerState
     public virtual void AnimationTrigger() { }
 
     public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
+    #endregion
 }

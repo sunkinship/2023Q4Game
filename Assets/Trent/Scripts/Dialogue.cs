@@ -127,7 +127,7 @@ public class Dialogue : MonoBehaviour
             AudioClip currentClip = ChooseRandomClip(voices);
             float clipLength = currentClip.length;
             float startTime = Time.time;
-            AudioManager.Instance.PlaySound(currentClip);
+            AudioManager.Instance.PlaySFX(currentClip);
             while (!(Time.time >= startTime + clipLength))
                 yield return null;
         }

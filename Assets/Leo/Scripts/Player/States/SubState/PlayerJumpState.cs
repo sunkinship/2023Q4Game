@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class PlayerJumpState : PlayerMoveState
 {
     protected float playerYVecloity;
     private int amountOfJumpsLeft;
+    protected AudioClip jumpClip, doubleClip;
 
-    public PlayerJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName, AudioClip jumpClip, AudioClip doubleClip) : base(player, stateMachine, playerData, animBoolName)
     {
         amountOfJumpsLeft = playerData.amountOfJumps;
+        this.jumpClip = jumpClip;
+        this.doubleClip = doubleClip;
     }
 
     public override void Enter()
@@ -18,6 +20,7 @@ public class PlayerJumpState : PlayerMoveState
         base.Enter();
         DecreaseAmountOfJumpsLeft();
         player.Jump();
+        PlaySound();
         stateMachine.ChangeState(player.InAirState);
     }
 
@@ -38,5 +41,17 @@ public class PlayerJumpState : PlayerMoveState
     public int GetAmountOfJumpsLeft()
     {
         return amountOfJumpsLeft;
+    }
+
+    public virtual void PlaySound()
+    {
+        if (player.PlayerAnim.GetBool("Double Jump") == false)
+        {
+            AudioManager.Instance.PlaySFX(jumpClip);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySFX(doubleClip);
+        }
     }
 }
