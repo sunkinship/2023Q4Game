@@ -125,13 +125,12 @@ public class Dialogue : MonoBehaviour
 
     private IEnumerator PlayVoice(AudioClip voices)
     {
-        
         while (isWriting)
         {
             Debug.Log(voices);
             float clipLength = voices.length;
             float startTime = Time.time;
-            AudioManager.Instance.PlaySFX(currentClip);
+            AudioManager.Instance.PlaySFX(voices);
             while (!(Time.time >= startTime + clipLength))
                 yield return null;
         }
