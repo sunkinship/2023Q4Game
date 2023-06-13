@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerMoveState
 {
+    protected int totalJumps;
     protected float playerYVecloity;
     private int amountOfJumpsLeft;
     protected AudioClip jumpClip, doubleClip;
 
     public PlayerJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName, AudioClip jumpClip, AudioClip doubleClip) : base(player, stateMachine, playerData, animBoolName)
     {
+        totalJumps = playerData.amountOfJumps; 
         amountOfJumpsLeft = playerData.amountOfJumps;
         this.jumpClip = jumpClip;
         this.doubleClip = doubleClip;
@@ -26,7 +28,7 @@ public class PlayerJumpState : PlayerMoveState
 
     public bool CanJump()
     {
-        if (amountOfJumpsLeft > 0 && player.CanDoubleJump())
+        if (totalJumps > 1 && amountOfJumpsLeft > 0 && player.CanDoubleJump())
             return true;
         else
             return false;

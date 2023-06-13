@@ -15,7 +15,7 @@ MonoBehaviour:
   walkSpeed: 8
   jumpStrength: 12
   maxJumpTime: 0.3
-  amountOfJumps: 2
+  amountOfJumps: 1
   bounceStrengh: 25
   dashSpeed: 20
   dashTime: 0.3

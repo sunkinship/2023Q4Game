@@ -256,7 +256,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator WaitToResetIEnumerator()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         JumpState.SetAmountOfJumpsLeft(1); 
     }
     #endregion
