@@ -304,15 +304,6 @@ public class Player : MonoBehaviour
             col.GetComponent<ChangeCameraBounds>().UpdateCamBounds(); ;
     }
 
-    public void CheckSceneChange()
-    {
-        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.sceneChange);
-        if (col == null)
-            return;
-        else
-            col.GetComponent<SceneTransition>().ChangeScenes(); 
-    }
-
     private void SetCheckPoint(GameObject newCheckPoint)
     {
         currentCheckPoint = newCheckPoint;
@@ -320,7 +311,7 @@ public class Player : MonoBehaviour
 
     private void Death()
     {
-        Fade.TriggerFade();
+        Fade.TriggerFade("StartQuickBlack", "EndQuickBlack");
         HidePlayer();
         Respawn();
         StartCoroutine(WaitForFade());
@@ -348,6 +339,26 @@ public class Player : MonoBehaviour
     private void ShowPlayer()
     {
         PlayerSr.enabled = true;
+    }
+    #endregion
+
+    #region Dialogue and Scene Change Check
+    public void CheckDialogueStart()
+    {
+        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.startDialogue);
+        if (col == null)
+            return;
+        else
+            col.GetComponent<SceneTransition>().ChangeScenes();
+    }
+
+    public void CheckSceneChange()
+    {
+        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.sceneChange);
+        if (col == null)
+            return;
+        else
+            col.GetComponent<SceneTransition>().ChangeScenes();
     }
     #endregion
 

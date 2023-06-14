@@ -7,48 +7,82 @@ using UnityEngine.UI;
 public class Dialogue : MonoBehaviour
 {
     [Header("Dialogue Settings")]
-    public string[] lines;
-    public Sprite[] portraits;
+    public string[] lines, lines2;
+    public Sprite[] portraits, portraits2;
     public AudioClip playerVoices, npcVoices;
     public float textSpeed;
+    public bool startDialogueOnLoad;
 
     [Header("Game Obejct References")]
-    public TextMeshProUGUI textComp;
+    public TextMeshProUGUI textBox;
     public Image dialoguePortrait;
 
     private PlayerInputHandler playerInputHandler;
     private Animator playerAnimator;
     private Animator npcAnimator;
 
-    private int index;
-    private bool isWriting;
+    private int lineIndex, dialogueIndex;
+    private bool inDialogue, isWriting;
 
 
     private void Start()
     {
-        
         playerInputHandler = GetComponent<PlayerInputHandler>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         npcAnimator = GameObject.FindGameObjectWithTag("NPC").GetComponent<Animator>();
 
-        index = 0;
-        StartDialogue();
+        dialogueIndex = 0;
+        if (startDialogueOnLoad)
+        {
+            StartDialogueSequence();
+        }
     }
 
     private void Update()
+    { 
+        if (inDialogue)
+        {
+            WaitForInput();
+        }
+    }
+
+    private void StartDialogueSequence()
     {
-       
-        WaitForInput();
+        GameManager.Instance.playerState = GameManager.State.dialogue;
+        inDialogue = true;
+        lineIndex = 0;
+        StartDialogueLine(dialogueIndex);
+    }
+
+    public void NextDialogueSequence()
+    {
+        dialogueIndex++;
+        StartDialogueSequence();
+    }
+
+    private void StartDialogueLine(int sequenceIndex)
+    {
+        textBox.text = string.Empty;
+        if (sequenceIndex == 0)
+        {
+            StartTalkVoiceAndAni(lines[lineIndex][0]);
+            dialoguePortrait.sprite = portraits[lineIndex];
+        }
+        else
+        {
+            StartTalkVoiceAndAni(lines2[lineIndex][0]);
+            dialoguePortrait.sprite = portraits2[lineIndex];
+        }
+        StartCoroutine(WriteLine());
     }
 
     private void WaitForInput()
     {
         if (playerInputHandler.InteractInput)
         {
-            Debug.Log("hi");
             playerInputHandler.UseInteractInput();
             //done writing go to next line
-            if (textComp.text == lines[index].Substring(1))
+            if (textBox.text == lines[lineIndex].Substring(1))
             {
                 NextLine();
             }
@@ -56,44 +90,46 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                textComp.text = lines[index].Substring(1);
-                StopTalkVoiceAndAni(lines[index][0]);
+                textBox.text = lines[lineIndex].Substring(1);
+                StopTalkVoiceAndAni(lines[lineIndex][0]);
             }
         }
     }
 
-    private void StartDialogue()
-    {
-        textComp.text = string.Empty;
-        StartTalkVoiceAndAni(lines[index][0]);
-        StartCoroutine(WriteLine());
-        dialoguePortrait.sprite = portraits[index];
-    }
-
     private IEnumerator WriteLine()
     {
-        foreach (char c in lines[index].Substring(1).ToCharArray())
+        foreach (char c in lines[lineIndex].Substring(1).ToCharArray())
         {
-            textComp.text += c;
+            textBox.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
-        StopTalkVoiceAndAni(lines[index][0]);
+        StopTalkVoiceAndAni(lines[lineIndex][0]);
     }
 
     private void NextLine()
     {
-        if (index < lines.Length - 1)
+        //more dialogue
+        if (lineIndex < lines.Length - 1)
         {
-            index++;
-            StartDialogue();
+            lineIndex++;
+            StartDialogueLine(dialogueIndex);
         }
+        //end dialogue
         else
         {
-            gameObject.SetActive(false);
-            StopTalkVoiceAndAni(lines[index][0]);
+            ExitDialogue();
         }
     }
 
+    private void ExitDialogue()
+    {
+        inDialogue = false;
+        GameManager.Instance.playerState = GameManager.State.play;
+        gameObject.SetActive(false);
+        StopTalkVoiceAndAni(lines[lineIndex][0]);
+    }
+
+    #region Audio and Animation
     private void StartTalkVoiceAndAni(char talkerID)
     {
         
@@ -123,19 +159,17 @@ public class Dialogue : MonoBehaviour
         }  
     }
 
-    private IEnumerator PlayVoice(AudioClip voices)
+    private IEnumerator PlayVoice(AudioClip voiceClip)
     {
         while (isWriting)
         {
-            Debug.Log(voices);
-            float clipLength = voices.length;
+            float clipLength = voiceClip.length;
             float startTime = Time.time;
-            AudioManager.Instance.PlaySFX(voices);
-            while (!(Time.time >= startTime + clipLength))
+            AudioManager.Instance.PlaySFX(voiceClip);
+            while (Time.time <= startTime + clipLength)
                 yield return null;
         }
         yield break;
     }
-
-  
+    #endregion
 }

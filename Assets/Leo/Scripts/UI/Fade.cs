@@ -17,22 +17,22 @@ public class Fade : MonoBehaviour
         done = false;
     }
 
-    public void TriggerFade()
+    public void TriggerFade(string start, string end)
     {
-        StartCoroutine(TriggerFadeRoutine());
+        StartCoroutine(TriggerFadeRoutine(start, end));
     }
 
-    private IEnumerator TriggerFadeRoutine()
+    private IEnumerator TriggerFadeRoutine(string start, string end)
     {
         done = false;
 
-        transition.SetTrigger("Start");
+        transition.SetTrigger(start);
 
         yield return new WaitForSeconds(transitionTime);
 
         done = true;
 
-        transition.SetTrigger("End");
+        transition.SetTrigger(end);
     }
 
     public bool IsDone()

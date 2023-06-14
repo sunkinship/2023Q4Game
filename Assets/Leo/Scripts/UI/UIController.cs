@@ -68,15 +68,15 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Fade
-    protected void TriggerFade() => fade.TriggerFade();
+    protected void TriggerFade() => fade.TriggerFade("StartQuickBlack", "EndQuickBlack");
 
-    protected IEnumerator WaitForLoad(Func<bool> sceneLoader)
+    protected IEnumerator WaitForLoad(Func<bool> functionToCall)
     {
         while (fade.IsDone() == false)
         {
             yield return null;
         }
-        sceneLoader();
+        functionToCall();
     }
     #endregion
 

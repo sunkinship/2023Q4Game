@@ -64,7 +64,14 @@ public class PauseMenuController : UIController
     {
         if (canUnpause)
         {
-            inputHandler.SwitchActionMap("Player");
+            if (GameManager.Instance.playerState == GameManager.State.play)
+            {
+                inputHandler.SwitchActionMap("Player");
+            }
+            else if (GameManager.Instance.playerState == GameManager.State.dialogue)
+            {
+                inputHandler.SwitchActionMap("Dialogue");
+            }
             pauseCanvas.SetActive(false);
             Time.timeScale = 1;
             paused = false;

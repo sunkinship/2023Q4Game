@@ -5,19 +5,22 @@ using UnityEngine;
 public class ParallaxScript : MonoBehaviour {
 
     private float lengthX, startPosX, startPosY;
-    public GameObject cam;
+    [HideInInspector]
+    public Camera cam;
     public float xParallaxAmount, yParallaxAmount;
-    [SerializeField]
-    private bool repositionSooner;
     [SerializeField]
     private Vector2 offset;
 
+    private void Awake()
+    {
+        cam = Camera.main;
+    }
 
     private void Start() 
     {
         startPosX = transform.position.x;
         startPosY = transform.position.y;
-        lengthX = GetComponentInChildren<SpriteRenderer>().bounds.size.x;
+        lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     private void LateUpdate() 
@@ -26,26 +29,12 @@ public class ParallaxScript : MonoBehaviour {
         float distX = (cam.transform.position.x * xParallaxAmount);
         float distY = (cam.transform.position.y * yParallaxAmount);
 
-        transform.position = new Vector3(startPosX + distX + offset.x, startPosY + distY + offset.y, transform.position.z);
+        transform.position = new Vector3(startPosX + distX + offset.x, startPosY + distY + offset.y, 10);
 
-        Reposition(temp);
-    }
 
-    private void Reposition(float temp)
-    {
-        if (repositionSooner == false)
-        {
-            if (temp > startPosX + (lengthX * 2))
-                startPosX += lengthX;
-            else if (temp < startPosX - (lengthX * 2))
-                startPosX -= lengthX;
-        }
-        else
-        {
-            if (temp > startPosX + lengthX)
-                startPosX += lengthX;
-            else if (temp < startPosX - lengthX)
-                startPosX -= lengthX;
-        }
+        if (temp > startPosX + lengthX)
+            startPosX += lengthX;
+        else if (temp < startPosX - lengthX)
+            startPosX -= lengthX;
     }
 }

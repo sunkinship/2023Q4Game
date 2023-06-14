@@ -28,6 +28,7 @@ public class PlayerData : ScriptableObject
     public LayerMask hazard;
     public LayerMask camChange;
     public LayerMask sceneChange;
+    public LayerMask startDialogue;
     public float groundCheckRadius;
 
     [Header("Audio Clips")]
