@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //print("Current State " + StateMachine.CurrentState.ToString());
+        print("Current State " + StateMachine.CurrentState.ToString());
         CurrentVelocity = PlayerRb2.velocity;
         StateMachine.CurrentState.LogicUpdate();
     }
