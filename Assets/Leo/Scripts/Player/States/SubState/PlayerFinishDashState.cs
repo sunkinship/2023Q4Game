@@ -10,13 +10,18 @@ public class PlayerFinishDashState : PlayerAnimState
     {
     }
 
+    public override void Enter()
+    {
+        base.Exit();
+        Debug.Log("ENTER FINISH DASH");
+    }
+
     public override void Exit()
     {
         base.Exit();
         player.WaitForDashCD();
-        player.EnableCollision();
-        player.PlayerRb2.gravityScale = player.DashState.defaultGravity;
-        player.DashParticles(false);
+        RemoveDashProperties();
+        Debug.Log("EXIT FINISH DASH");
     }
 
     public override void LogicUpdate()
@@ -39,5 +44,12 @@ public class PlayerFinishDashState : PlayerAnimState
                 stateMachine.ChangeState(player.InAirState);
             }
         }
+    }
+
+    public void RemoveDashProperties()
+    {
+        player.EnableCollision();
+        player.PlayerRb2.gravityScale = playerData.defaultGravity;
+        player.DashParticles(false);
     }
 }

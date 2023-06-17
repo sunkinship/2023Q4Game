@@ -7,6 +7,7 @@ public class PlayerData : ScriptableObject
 {
     [Header("Move State")]
     public float walkSpeed;
+    public float defaultGravity;
 
     [Header("Jump State")]
     public float jumpStrength;

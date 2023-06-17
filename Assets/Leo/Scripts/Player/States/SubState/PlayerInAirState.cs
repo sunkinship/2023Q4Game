@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInAirState : PlayerMoveState
 {
@@ -17,6 +18,8 @@ public class PlayerInAirState : PlayerMoveState
     {
         base.Enter();
         canLongJump = true;
+        player.FinishDashState.RemoveDashProperties();
+        Debug.Log("ENTER IN AIR");
     }
 
     public override void Exit()

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   walkSpeed: 8
+  defaultGravity: 5
   jumpStrength: 12
   maxJumpTime: 0.3
   amountOfJumps: 2
@@ -38,6 +39,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   sceneChange:
+    serializedVersion: 2
+    m_Bits: 0
+  startDialogue:
     serializedVersion: 2
     m_Bits: 0
   groundCheckRadius: 0.2

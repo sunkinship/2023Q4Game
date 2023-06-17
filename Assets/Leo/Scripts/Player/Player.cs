@@ -93,12 +93,14 @@ public class Player : MonoBehaviour
 
         facingRight = true;
         canDash = true;
+        PlayerRb2.gravityScale = playerData.defaultGravity;
         StateMachine.Initialize(IdleState);
     }
 
     private void Update()
     {
-        print("Current State " + StateMachine.CurrentState.ToString());
+        //print("Current State " + StateMachine.CurrentState.ToString());
+        print(DashState.defaultGravity);
         CurrentVelocity = PlayerRb2.velocity;
         StateMachine.CurrentState.LogicUpdate();
     }
