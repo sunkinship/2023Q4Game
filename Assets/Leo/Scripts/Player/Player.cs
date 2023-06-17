@@ -100,7 +100,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         //print("Current State " + StateMachine.CurrentState.ToString());
-        print(DashState.defaultGravity);
         CurrentVelocity = PlayerRb2.velocity;
         StateMachine.CurrentState.LogicUpdate();
     }
