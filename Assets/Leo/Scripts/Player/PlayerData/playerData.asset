@@ -40,10 +40,10 @@ MonoBehaviour:
     m_Bits: 256
   sceneChange:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   startDialogue:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   groundCheckRadius: 0.2
   walkClip: {fileID: 8300000, guid: bb4a36f98f888054195ebe69b0fc3d96, type: 3}
   jumpClip: {fileID: 8300000, guid: f668290ba0d0b474a870d58d91f6f053, type: 3}

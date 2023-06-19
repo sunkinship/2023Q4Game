@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
+    public static Dialogue Instance;
+
     [Header("Dialogue Settings")]
     public string[] lines, lines2;
     public Sprite[] portraits, portraits2;

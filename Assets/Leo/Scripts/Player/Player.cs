@@ -100,7 +100,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         //print("Current State " + StateMachine.CurrentState.ToString());
-        print(DashState.defaultGravity);
         CurrentVelocity = PlayerRb2.velocity;
         StateMachine.CurrentState.LogicUpdate();
     }
@@ -351,7 +350,7 @@ public class Player : MonoBehaviour
         if (col == null)
             return;
         else
-            col.GetComponent<SceneTransition>().ChangeScenes();
+            Dialogue.Instance.NextDialogueSequence();
     }
 
     public void CheckSceneChange()
