@@ -8,18 +8,21 @@ public class Dialogue : MonoBehaviour
 {
     public static Dialogue Instance;
 
+    [Header("Load Settings")]
+    public bool startDialogueOnLoad;
+    public bool loadLevelAfterDialogue;
+
     [Header("Dialogue Settings")]
     public string[] lines, lines2;
     public Sprite[] portraits, portraits2;
     public AudioClip playerVoices, npcVoices;
     public float textSpeed;
-    public bool startDialogueOnLoad;
 
     [Header("Game Obejct References")]
     public TextMeshProUGUI textBox;
     public Image dialoguePortrait;
 
-    private PlayerInputHandler playerInputHandler;
+    private PlayerInputHandler inputHandler;
     private Animator playerAnimator;
     private Animator npcAnimator;
 
@@ -29,7 +32,7 @@ public class Dialogue : MonoBehaviour
 
     private void Start()
     {
-        playerInputHandler = GetComponent<PlayerInputHandler>();
+        inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         npcAnimator = GameObject.FindGameObjectWithTag("NPC").GetComponent<Animator>();
 
@@ -50,7 +53,7 @@ public class Dialogue : MonoBehaviour
 
     private void StartDialogueSequence()
     {
-        GameManager.Instance.playerState = GameManager.State.dialogue;
+        GameManager.Instance.SetDialogueAction();
         inDialogue = true;
         lineIndex = 0;
         StartDialogueLine(dialogueIndex);
@@ -80,9 +83,9 @@ public class Dialogue : MonoBehaviour
 
     private void WaitForInput()
     {
-        if (playerInputHandler.InteractInput)
+        if (inputHandler.InteractInput)
         {
-            playerInputHandler.UseInteractInput();
+            inputHandler.UseInteractInput();
             //done writing go to next line
             if (textBox.text == lines[lineIndex].Substring(1))
             {
@@ -126,9 +129,16 @@ public class Dialogue : MonoBehaviour
     private void ExitDialogue()
     {
         inDialogue = false;
-        GameManager.Instance.playerState = GameManager.State.play;
         gameObject.SetActive(false);
         StopTalkVoiceAndAni(lines[lineIndex][0]);
+        if (loadLevelAfterDialogue)
+        {
+            GameManager.Instance.LoadNextLevel();
+        }
+        else
+        {
+            GameManager.Instance.SetPlayAction();
+        }
     }
 
     #region Audio and Animation

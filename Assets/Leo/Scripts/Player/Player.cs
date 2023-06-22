@@ -68,7 +68,6 @@ public class Player : MonoBehaviour
     private ParticleSystem dashParticle;
     #endregion
 
-
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
@@ -89,7 +88,7 @@ public class Player : MonoBehaviour
         PlayerCollider = GetComponent<Collider2D>();
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerAnim = GetComponent<Animator>();
-        InputHandler = GetComponent<PlayerInputHandler>();
+        InputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
 
         facingRight = true;
         canDash = true;

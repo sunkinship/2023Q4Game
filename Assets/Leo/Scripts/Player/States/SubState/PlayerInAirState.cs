@@ -19,7 +19,6 @@ public class PlayerInAirState : PlayerMoveState
         base.Enter();
         canLongJump = true;
         player.FinishDashState.RemoveDashProperties();
-        Debug.Log("ENTER IN AIR");
     }
 
     public override void Exit()

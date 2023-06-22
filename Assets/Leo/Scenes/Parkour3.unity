@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &19658578 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8301938934594203238, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
-  m_PrefabInstance: {fileID: 145842249}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16abf9d8b02c45d41b663f7efe1adb15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &28717165
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,16 +680,8 @@ PrefabInstance:
       propertyPath: Fade
       value: 
       objectReference: {fileID: 1597257309}
-    - target: {fileID: 8301938934594203234, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
-      propertyPath: playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 1f0ed823a5f17724288b38d7a98d9e8a, type: 2}
     - target: {fileID: 8301938934594203241, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8301938934594203241, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2782,7 +2763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3d6fe60adf6544e98662a8345f0df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 19658578}
   fade: {fileID: 1597257309}
   indicators: {fileID: 968672580}
   menu: {fileID: 2112732026}
@@ -7631,6 +7611,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492342201}
   m_CullTransparentMesh: 1
+--- !u!1001 &1508012740
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1215280765491473168, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_Name
+      value: Input Handler
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080233292990035360, guid: e199f26b66295284eb705c925057450b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e199f26b66295284eb705c925057450b, type: 3}
 --- !u!4 &1542919662 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3338282442567397160, guid: 541180100a1ec424a89c3634ba9e0bc3, type: 3}

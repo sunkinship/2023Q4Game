@@ -16,19 +16,12 @@ public class PlayerDashState : PlayerAnimState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("ENTER DASH");
         DecreaseAmountOfDahsesLeft();
         player.DisableCollision();
         player.PlayerRb2.gravityScale = 0;
         dashStartTime = Time.time;
         player.Dash(player.DashDirection());
         player.DashParticles(true);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        Debug.Log("EXIT DASH");
     }
 
     public override void LogicUpdate()

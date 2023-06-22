@@ -10,13 +10,6 @@ public class SceneTransition : MonoBehaviour
 
     public void ChangeScenes()
     {
-        if (isSecretExit)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);  
-        }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        GameManager.Instance.LoadNextCutScene(isSecretExit);
     }
 }
