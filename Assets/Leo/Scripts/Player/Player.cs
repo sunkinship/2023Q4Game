@@ -280,7 +280,10 @@ public class Player : MonoBehaviour
         if (col == null)
             return;
         else
+        {
+            Destroy(col.gameObject);
             SetCheckPoint(col.gameObject);
+        }
     }
 
     public bool CheckHazard()
@@ -349,7 +352,10 @@ public class Player : MonoBehaviour
         if (col == null)
             return;
         else
+        {
+            Destroy(col.gameObject);
             Dialogue.Instance.NextDialogueSequence();
+        }
     }
 
     public void CheckSceneChange()
@@ -358,7 +364,10 @@ public class Player : MonoBehaviour
         if (col == null)
             return;
         else
+        {
+            Destroy(col.gameObject);
             col.GetComponent<SceneTransition>().ChangeScenes();
+        }
     }
     #endregion
 

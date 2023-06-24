@@ -18,23 +18,29 @@ public class Dialogue : MonoBehaviour
     public AudioClip playerVoices, npcVoices;
     public float textSpeed;
 
+    [Header("Animator References")]
+    public Animator playerAnimator;
+    public Animator npcAnimator;
+
     [Header("Game Obejct References")]
+    public GameObject dialogueBox;
     public TextMeshProUGUI textBox;
     public Image dialoguePortrait;
 
     private PlayerInputHandler inputHandler;
-    private Animator playerAnimator;
-    private Animator npcAnimator;
 
     private int lineIndex, dialogueIndex;
     private bool inDialogue, isWriting;
 
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
-        playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        npcAnimator = GameObject.FindGameObjectWithTag("NPC").GetComponent<Animator>();
 
         dialogueIndex = 0;
         if (startDialogueOnLoad)
@@ -53,6 +59,7 @@ public class Dialogue : MonoBehaviour
 
     private void StartDialogueSequence()
     {
+        dialogueBox.SetActive(true);
         GameManager.Instance.SetDialogueAction();
         inDialogue = true;
         lineIndex = 0;
@@ -61,8 +68,11 @@ public class Dialogue : MonoBehaviour
 
     public void NextDialogueSequence()
     {
-        dialogueIndex++;
-        StartDialogueSequence();
+        if (isWriting == false)
+        {
+            dialogueIndex++;
+            StartDialogueSequence();
+        }
     }
 
     private void StartDialogueLine(int sequenceIndex)
@@ -129,7 +139,7 @@ public class Dialogue : MonoBehaviour
     private void ExitDialogue()
     {
         inDialogue = false;
-        gameObject.SetActive(false);
+        dialogueBox.SetActive(false);
         StopTalkVoiceAndAni(lines[lineIndex][0]);
         if (loadLevelAfterDialogue)
         {
@@ -144,7 +154,6 @@ public class Dialogue : MonoBehaviour
     #region Audio and Animation
     private void StartTalkVoiceAndAni(char talkerID)
     {
-        
         isWriting = true;
         if (talkerID == '0')
         {
