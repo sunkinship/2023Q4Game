@@ -26,6 +26,7 @@ public class PlayerAnimState : PlayerState
     public override void DoChecks()
     {
         base.DoChecks();
+        player.CheckDialogueStart();
         player.CheckCheckPoint();
         player.CheckCamChange();
         player.CheckSceneChange();

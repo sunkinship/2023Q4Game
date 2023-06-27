@@ -7,8 +7,7 @@ using UnityEngine.PlayerLoop;
 
 public class UIController : MonoBehaviour
 {
-    [Header("Input Handler")]
-    [SerializeField]
+    [HideInInspector]
     protected PlayerInputHandler inputHandler;
 
     [Header("Fade Canvas")]
@@ -31,6 +30,11 @@ public class UIController : MonoBehaviour
 
     protected bool inSubMenu;
 
+
+    private void Start()
+    {
+        inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
+    }
 
     protected virtual void Update()
     {

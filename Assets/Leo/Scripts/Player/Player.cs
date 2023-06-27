@@ -68,7 +68,6 @@ public class Player : MonoBehaviour
     private ParticleSystem dashParticle;
     #endregion
 
-
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
@@ -89,7 +88,7 @@ public class Player : MonoBehaviour
         PlayerCollider = GetComponent<Collider2D>();
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerAnim = GetComponent<Animator>();
-        InputHandler = GetComponent<PlayerInputHandler>();
+        InputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
 
         facingRight = true;
         canDash = true;
@@ -350,7 +349,20 @@ public class Player : MonoBehaviour
         if (col == null)
             return;
         else
-            Dialogue.Instance.NextDialogueSequence();
+        {
+            Destroy(col.gameObject);
+            StartCoroutine(WaitToIdleBeforeStart());
+        }
+    }
+
+    private IEnumerator WaitToIdleBeforeStart()
+    {
+        while (StateMachine.CurrentState != IdleState)
+        {
+            PlayerInputHandler.Instance.DisableInput();
+            yield return null;
+        }
+        Dialogue.Instance.NextDialogueSequence();
     }
 
     public void CheckSceneChange()
@@ -359,7 +371,10 @@ public class Player : MonoBehaviour
         if (col == null)
             return;
         else
+        {
+            Destroy(col.gameObject);
             col.GetComponent<SceneTransition>().ChangeScenes();
+        }
     }
     #endregion
 
