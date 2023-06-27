@@ -4757,7 +4757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691967953040128619, guid: a7eae9092bd85034386343d8f4621cdb, type: 3}
       propertyPath: m_Size.x
-      value: 5.6721497
+      value: 2.144638
       objectReference: {fileID: 0}
     - target: {fileID: 691967953040128619, guid: a7eae9092bd85034386343d8f4621cdb, type: 3}
       propertyPath: m_Size.y
@@ -4765,7 +4765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691967953040128619, guid: a7eae9092bd85034386343d8f4621cdb, type: 3}
       propertyPath: m_Offset.x
-      value: 2.0326881
+      value: 2.1166763
       objectReference: {fileID: 0}
     - target: {fileID: 691967953040128619, guid: a7eae9092bd85034386343d8f4621cdb, type: 3}
       propertyPath: m_Offset.y
@@ -6064,9 +6064,9 @@ MonoBehaviour:
   loadLevelAfterDialogue: 0
   lines:
   - 0How did I end up here?
-  - 0......
+  - 0...... Hi testing!
   lines2:
-  - 0How did I end up here?
+  - 0wowowowowow
   - 0AHHHHHHHHH!!!
   portraits:
   - {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}

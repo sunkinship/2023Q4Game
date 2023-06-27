@@ -7,21 +7,21 @@ public class PlayerInputHandler : MonoBehaviour
 {
     public static PlayerInputHandler Instance;
 
+    private PlayerInput playerInput;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            playerInput = GetComponent<PlayerInput>();
         }
         else
         {
             Destroy(gameObject);
         }
     }
-
-    [HideInInspector]
-    public PlayerInput playerInput;
 
     public float MovementInput { get; private set; }
     public bool JumpInput { get; private set; }
@@ -36,11 +36,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     private float JumpInputHoldTime = 0.2f;
 
-
-    private void Start()
-    {
-        playerInput = GetComponent<PlayerInput>();
-    }
 
     private void Update()
     {

@@ -29,7 +29,9 @@ public class Dialogue : MonoBehaviour
 
     private PlayerInputHandler inputHandler;
 
-    private int lineIndex, dialogueIndex;
+    private string[] currentLines;
+    private Sprite[] currentPortraits;
+    private int lineIndex;
     private bool inDialogue, isWriting;
 
 
@@ -42,7 +44,8 @@ public class Dialogue : MonoBehaviour
     {
         inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
 
-        dialogueIndex = 0;
+        currentLines = lines;
+        currentPortraits = portraits;
         if (startDialogueOnLoad)
         {
             StartDialogueSequence();
@@ -63,31 +66,24 @@ public class Dialogue : MonoBehaviour
         GameManager.Instance.SetDialogueAction();
         inDialogue = true;
         lineIndex = 0;
-        StartDialogueLine(dialogueIndex);
+        StartDialogueLine();
     }
 
     public void NextDialogueSequence()
     {
         if (isWriting == false)
         {
-            dialogueIndex++;
+            currentLines = lines2;
+            currentPortraits = portraits2;
             StartDialogueSequence();
         }
     }
 
-    private void StartDialogueLine(int sequenceIndex)
+    private void StartDialogueLine()
     {
         textBox.text = string.Empty;
-        if (sequenceIndex == 0)
-        {
-            StartTalkVoiceAndAni(lines[lineIndex][0]);
-            dialoguePortrait.sprite = portraits[lineIndex];
-        }
-        else
-        {
-            StartTalkVoiceAndAni(lines2[lineIndex][0]);
-            dialoguePortrait.sprite = portraits2[lineIndex];
-        }
+        StartTalkVoiceAndAni(currentLines[lineIndex][0]);
+        dialoguePortrait.sprite = currentPortraits[lineIndex];
         StartCoroutine(WriteLine());
     }
 
@@ -97,7 +93,7 @@ public class Dialogue : MonoBehaviour
         {
             inputHandler.UseInteractInput();
             //done writing go to next line
-            if (textBox.text == lines[lineIndex].Substring(1))
+            if (textBox.text == currentLines[lineIndex].Substring(1))
             {
                 NextLine();
             }
@@ -105,20 +101,20 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                textBox.text = lines[lineIndex].Substring(1);
-                StopTalkVoiceAndAni(lines[lineIndex][0]);
+                textBox.text = currentLines[lineIndex].Substring(1);
+                StopTalkVoiceAndAni(currentLines[lineIndex][0]);
             }
         }
     }
 
     private IEnumerator WriteLine()
     {
-        foreach (char c in lines[lineIndex].Substring(1).ToCharArray())
-        {
+        foreach(char c in currentLines[lineIndex].Substring(1).ToCharArray())
+            {
             textBox.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
-        StopTalkVoiceAndAni(lines[lineIndex][0]);
+        StopTalkVoiceAndAni(currentLines[lineIndex][0]);
     }
 
     private void NextLine()
@@ -127,7 +123,7 @@ public class Dialogue : MonoBehaviour
         if (lineIndex < lines.Length - 1)
         {
             lineIndex++;
-            StartDialogueLine(dialogueIndex);
+            StartDialogueLine();
         }
         //end dialogue
         else
@@ -140,7 +136,7 @@ public class Dialogue : MonoBehaviour
     {
         inDialogue = false;
         dialogueBox.SetActive(false);
-        StopTalkVoiceAndAni(lines[lineIndex][0]);
+        StopTalkVoiceAndAni(currentLines[lineIndex][0]);
         if (loadLevelAfterDialogue)
         {
             GameManager.Instance.LoadNextLevel();
