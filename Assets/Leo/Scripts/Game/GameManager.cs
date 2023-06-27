@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [HideInInspector]
     public State playerState;
 
     public enum State 
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
         play, dialogue, ui
     }
 
+    [HideInInspector]
     public bool blackFade;
 
     private void Awake()

@@ -280,10 +280,7 @@ public class Player : MonoBehaviour
         if (col == null)
             return;
         else
-        {
-            Destroy(col.gameObject);
             SetCheckPoint(col.gameObject);
-        }
     }
 
     public bool CheckHazard()
@@ -354,8 +351,18 @@ public class Player : MonoBehaviour
         else
         {
             Destroy(col.gameObject);
-            Dialogue.Instance.NextDialogueSequence();
+            StartCoroutine(WaitToIdleBeforeStart());
         }
+    }
+
+    private IEnumerator WaitToIdleBeforeStart()
+    {
+        while (StateMachine.CurrentState != IdleState)
+        {
+            PlayerInputHandler.Instance.DisableInput();
+            yield return null;
+        }
+        Dialogue.Instance.NextDialogueSequence();
     }
 
     public void CheckSceneChange()
