@@ -6068,11 +6068,13 @@ MonoBehaviour:
   lines2:
   - 0wowowowowow
   - 0AHHHHHHHHH!!!
+  - 0Lets see if this is working?
   portraits:
   - {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   portraits2:
   - {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
+  - {fileID: 21300000, guid: 5eb43d1207a6a0f44b928a1b279bac6f, type: 3}
   - {fileID: 21300000, guid: 5eb43d1207a6a0f44b928a1b279bac6f, type: 3}
   playerVoices: {fileID: 8300000, guid: 50b1a147d0a587947b7368b769ccc7ff, type: 3}
   npcVoices: {fileID: 8300000, guid: c5fb8cfa602955e41b2b26a9fda9cc48, type: 3}

@@ -120,7 +120,7 @@ public class Dialogue : MonoBehaviour
     private void NextLine()
     {
         //more dialogue
-        if (lineIndex < lines.Length - 1)
+        if (lineIndex < currentLines.Length - 1)
         {
             lineIndex++;
             StartDialogueLine();

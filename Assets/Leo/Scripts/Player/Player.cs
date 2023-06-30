@@ -45,7 +45,6 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool canDash;
 
-
     [HideInInspector]
     public GameObject currentCheckPoint;
 
@@ -175,10 +174,25 @@ public class Player : MonoBehaviour
 
     public bool CanDoubleJump()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 20, playerData.bounce);
+        return NotTooCloseToGround() && NotTooCloseToBounce();
+    }
+
+    private bool NotTooCloseToGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1, playerData.ground);
         if (hit.collider != null)
         {
-            return hit.distance >= 2;
+            return hit.distance >= 1;
+        }
+        return true;
+    }
+
+    private bool NotTooCloseToBounce()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 2.5f, playerData.bounce);
+        if (hit.collider != null)
+        {
+            return hit.distance >= 2.5f;
         }
         return true;
     }
@@ -248,13 +262,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void WaitToResetDoubleJump()
+    public void ResetDoubleJump()
     {
         JumpState.SetAmountOfJumpsLeft(0);
-        StartCoroutine(WaitToResetIEnumerator());
+        StartCoroutine(WaitToResetDoubleJump());
     }
 
-    private IEnumerator WaitToResetIEnumerator()
+    private IEnumerator WaitToResetDoubleJump()
     {
         yield return new WaitForSeconds(0.2f);
         JumpState.SetAmountOfJumpsLeft(1); 
