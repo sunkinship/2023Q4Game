@@ -1,18 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.PlayerLoop;
 
 public class UIController : MonoBehaviour
 {
     [HideInInspector]
     protected PlayerInputHandler inputHandler;
-
-    [Header("Fade Canvas")]
-    [SerializeField]
-    protected Fade fade;
 
     [Header("Button Indicator")]
     [SerializeField]
@@ -72,16 +66,7 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Fade
-    protected void TriggerFade() => fade.TriggerFade("StartQuickBlack", "EndQuickBlack");
-
-    protected IEnumerator WaitForLoad(Func<bool> functionToCall)
-    {
-        while (fade.IsDone() == false)
-        {
-            yield return null;
-        }
-        functionToCall();
-    }
+    protected void TriggerFade(Func<bool> functionToCall) => Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", functionToCall);
     #endregion
 
     #region Selected GameObject

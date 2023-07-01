@@ -10,7 +10,7 @@ public class PauseMenuController : UIController
     [SerializeField]
     private GameObject pauseCanvas;
     private bool paused, canUnpause;
-    private float pauseCD = 0.2f;
+    private readonly float pauseCD = 0.2f;
 
 
     protected override void Update()
@@ -78,11 +78,7 @@ public class PauseMenuController : UIController
         }
     }
 
-    public void LoadMenuFromPauseButton()
-    {
-        TriggerFade();
-        StartCoroutine(WaitForLoad(LoadMenuFromPause));
-    }
+    public void LoadMenuFromPauseButton() => TriggerFade(LoadMenuFromPause);
 
     public bool LoadMenuFromPause()
     {

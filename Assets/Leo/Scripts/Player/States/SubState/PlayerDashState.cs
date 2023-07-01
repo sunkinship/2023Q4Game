@@ -18,7 +18,7 @@ public class PlayerDashState : PlayerAnimState
         base.Enter();
         DecreaseAmountOfDahsesLeft();
         player.DisableCollision();
-        player.PlayerRb2.gravityScale = 0;
+        player.TurnOffGravity();
         dashStartTime = Time.time;
         player.Dash(player.DashDirection());
         player.DashParticles(true);
@@ -49,7 +49,7 @@ public class PlayerDashState : PlayerAnimState
         base.DoChecks();
         if (player.CheckHazard())
         {
-            player.FinishDashState.Exit();
+            player.FinishDashState.RemoveDashProperties();
             stateMachine.ChangeState(player.IdleState);
         }
     }

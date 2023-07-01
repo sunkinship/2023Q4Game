@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public PlayerLandState LandState { get; private set; }
     public PlayerFinishDashState FinishDashState { get; private set; }
     public PlayerBounceState BounceState { get; private set; }
+    public PlayerDeathState DeathState { get; private set; }
     #endregion
 
     #region Components
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour
     public PlayerInputHandler InputHandler { get; private set; }
     #endregion
 
-    #region Other References
+    #region Player References
     public PlayerData playerData;
     public Vector2 CurrentVelocity { get; private set; }
 
@@ -34,8 +35,9 @@ public class Player : MonoBehaviour
     private Transform feetPos;
     [SerializeField]
     private Transform bodyPos;
+    #endregion
 
-
+    #region Other Player Values
     public float JumpTimeCounter { get; private set; }
 
     private float jumpPowerModifier;
@@ -44,13 +46,18 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public bool canDash;
+    #endregion
+
+    #region GameObject References
+    [HideInInspector]
+    public CameraScript cameraScript;
 
     [HideInInspector]
     public GameObject currentCheckPoint;
 
     [Header("Fade")]
     [SerializeField]
-    private Fade Fade;
+    private Transition Fade;
     #endregion
 
     #region Particles
@@ -79,6 +86,7 @@ public class Player : MonoBehaviour
         LandState = new PlayerLandState(this, StateMachine, playerData, "Land");
         FinishDashState = new PlayerFinishDashState(this, StateMachine, playerData, "Finish Dash");
         BounceState = new PlayerBounceState(this, StateMachine, playerData, "Jump");
+        DeathState = new PlayerDeathState(this, StateMachine, playerData, "Death");
     }
 
     private void Start()
@@ -88,6 +96,7 @@ public class Player : MonoBehaviour
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerAnim = GetComponent<Animator>();
         InputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
+        cameraScript = Camera.main.GetComponent<CameraScript>();  
 
         facingRight = true;
         canDash = true;
@@ -275,19 +284,19 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region Gravity Control
+    public void TurnOffGravity() => PlayerRb2.gravityScale = 0;
+
+    public void ResetGravity() => PlayerRb2.gravityScale = playerData.defaultGravity;
+    #endregion
+
     #region Animation
     private void AnimationTrigger() => ((PlayerAnimState)StateMachine.CurrentState).AnimationTrigger();
 
     private void AnimationFinishTrigger() => ((PlayerAnimState)StateMachine.CurrentState).AnimationFinishTrigger();
     #endregion
 
-    #region Hazard, Check Points, and Cam Bound Check
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 9)
-            Death();
-    }
-
+    #region Check Points and Cam Bound Check
     public void CheckCheckPoint()
     {
         Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.checkPoint);
@@ -295,18 +304,6 @@ public class Player : MonoBehaviour
             return;
         else
             SetCheckPoint(col.gameObject);
-    }
-
-    public bool CheckHazard()
-    {
-        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.hazard);
-        if (col == null)
-            return false;
-        else
-        {
-            Death();
-            return true;
-        }   
     }
 
     public void CheckCamChange()
@@ -322,37 +319,49 @@ public class Player : MonoBehaviour
     {
         currentCheckPoint = newCheckPoint;
     }
+    #endregion
 
-    private void Death()
+    #region Death and Hazards
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Fade.TriggerFade("StartQuickBlack", "EndQuickBlack");
-        HidePlayer();
-        Respawn();
-        StartCoroutine(WaitForFade());
+        if (collision.gameObject.layer == 9)
+            StateMachine.ChangeState(DeathState);
     }
 
-    private void Respawn()
+    public bool CheckHazard()
+    {
+        Collider2D col = Physics2D.OverlapCircle(bodyPos.position, playerData.collisionCheckRadius, playerData.hazard);
+        if (col == null)
+            return false;
+        else
+        {
+            StateMachine.ChangeState(DeathState);
+            return true;
+        }   
+    }
+
+    public void FreezePlayer()
+    {
+        PlayerRb2.velocity = Vector2.zero;
+        CurrentVelocity = PlayerRb2.velocity;
+    }  
+
+    private void HidePlayer() => PlayerSr.enabled = false;
+
+    private void ShowPlayer() => PlayerSr.enabled = true;
+
+    private bool Respawn()
     {
         transform.position = currentCheckPoint.transform.position;
-    }
-
-    private IEnumerator WaitForFade()
-    {
-        while (Fade.IsDone() == false)
-        {
-            yield return null;
-        }
         ShowPlayer();
+        cameraScript.EnableCameraFollow();
+        return true;
     }
 
-    private void HidePlayer()
+    public void DeathTransition()
     {
-        PlayerSr.enabled = false;
-    }
-
-    private void ShowPlayer()
-    {
-        PlayerSr.enabled = true;
+        HidePlayer();
+        Transition.Instance.TriggerFadeBoth("StartQuickBlack", "EndQuickBlack", Respawn);
     }
     #endregion
 

@@ -23,11 +23,7 @@ public class MainMenuController : UIController
 
 
     #region Button Methods
-    public void StartButton()
-    {
-        TriggerFade();
-        StartCoroutine(WaitForLoad(LoadGame));
-    }
+    public void StartButton() => TriggerFade(LoadGame);
 
     public void CreditsButton()
     {
@@ -48,17 +44,13 @@ public class MainMenuController : UIController
         SetSelectedButton(menuFirstSelect, false);
     }
 
-    public void QuitGameButton()
-    {
-        TriggerFade();
-        StartCoroutine(WaitForLoad(QuitGame));
-    }
+    public void QuitGameButton() => TriggerFade(QuitGame);
     #endregion
 
     #region Scene Loaders
     private bool LoadGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
         return true;
     }
 

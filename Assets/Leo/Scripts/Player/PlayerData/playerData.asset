@@ -16,7 +16,7 @@ MonoBehaviour:
   defaultGravity: 5
   jumpStrength: 12
   maxJumpTime: 0.3
-  amountOfJumps: 1
+  amountOfJumps: 2
   bounceStrengh: 25
   dashSpeed: 20
   dashTime: 0.3

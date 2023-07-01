@@ -42,7 +42,7 @@ public class PlayerFinishDashState : PlayerAnimState
     public void RemoveDashProperties()
     {
         player.EnableCollision();
-        player.PlayerRb2.gravityScale = playerData.defaultGravity;
+        player.ResetGravity();
         player.DashParticles(false);
     }
 }
