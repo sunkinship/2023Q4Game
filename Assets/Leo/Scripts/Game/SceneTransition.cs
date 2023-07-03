@@ -9,6 +9,13 @@ public class SceneTransition : MonoBehaviour
 
     public void ChangeScenes()
     {
-        GameManager.Instance.LoadNextCutScene(isSecretExit);
+        if (isSecretExit)
+        {
+            Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextNormalScene);
+        }
+        else
+        {
+            Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextNormalScene);
+        }
     }
 }

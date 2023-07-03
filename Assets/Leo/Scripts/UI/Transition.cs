@@ -10,7 +10,7 @@ public class Transition : MonoBehaviour
     [SerializeField]
     private Animator ani;
 
-    private bool isFadeFinished;
+    private bool fadeStartFinished, fadeEndFinished;
 
 
     private void Awake()
@@ -33,31 +33,40 @@ public class Transition : MonoBehaviour
     }
 
     #region Fade Animation
-    public void TriggerFadeStart(string start)
-    {
-        ani.SetTrigger(start);
-    }
-
-    public void TriggerFadeEnd(string end)
-    {
-        ani.SetTrigger(end);
-    }
-
     public void TriggerFadeBoth(string start, string end, Func<bool> functionToCall)
-    {
+    { 
+        DisableInput();
         ani.SetTrigger(start);
-        isFadeFinished = false;
+        fadeStartFinished = false;
+        fadeEndFinished = false;
         StartCoroutine(WaitForFade(end, functionToCall));
     }
 
     private IEnumerator WaitForFade(string end, Func<bool> functionToCall)
     {
-        while (isFadeFinished == false)
+        while (fadeStartFinished == false)
             yield return null;
         functionToCall();
         ani.SetTrigger(end);
+        while (fadeEndFinished == false)
+            yield return null;
+        EnableInput();
     }
 
-    public void AnimationFinishTrigger() => isFadeFinished = true;
+    public void AnimationStartFinishTrigger() => fadeStartFinished = true;
+
+    public void AnimationEndFinishTrigger() => fadeEndFinished = true;
+    #endregion
+
+    #region Input Control
+    private void EnableInput()
+    {
+        PlayerInputHandler.Instance.EnableInput();
+    }
+
+    private void DisableInput()
+    {
+        PlayerInputHandler.Instance.DisableInput();
+    }
     #endregion
 }

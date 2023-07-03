@@ -50,6 +50,7 @@ public class MainMenuController : UIController
     #region Scene Loaders
     private bool LoadGame()
     {
+        inputHandler.UseInteractInput();
         SceneManager.LoadScene(3);
         return true;
     }

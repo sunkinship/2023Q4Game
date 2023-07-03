@@ -9,8 +9,8 @@ public class Dialogue : MonoBehaviour
     public static Dialogue Instance;
 
     [Header("Load Settings")]
-    public bool startDialogueOnLoad;
     public bool loadLevelAfterDialogue;
+    public bool blackFadeAfter;
 
     [Header("Dialogue Settings")]
     public string[] lines, lines2;
@@ -46,10 +46,8 @@ public class Dialogue : MonoBehaviour
 
         currentLines = lines;
         currentPortraits = portraits;
-        if (startDialogueOnLoad)
-        {
-            StartDialogueSequence();
-        }
+        GameManager.Instance.SetDialogueAction();
+        StartCoroutine(WaitToStart());
     }
 
     private void Update()
@@ -58,6 +56,12 @@ public class Dialogue : MonoBehaviour
         {
             WaitForInput();
         }
+    }
+
+    private IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(2);
+        StartDialogueSequence();
     }
 
     private void StartDialogueSequence()
@@ -110,7 +114,7 @@ public class Dialogue : MonoBehaviour
     private IEnumerator WriteLine()
     {
         foreach(char c in currentLines[lineIndex].Substring(1).ToCharArray())
-            {
+        {
             textBox.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
@@ -135,11 +139,18 @@ public class Dialogue : MonoBehaviour
     private void ExitDialogue()
     {
         inDialogue = false;
-        dialogueBox.SetActive(false);
+        dialogueBox.SetActive(false); 
         StopTalkVoiceAndAni(currentLines[lineIndex][0]);
         if (loadLevelAfterDialogue)
         {
-            GameManager.Instance.LoadNextLevel();
+            if (blackFadeAfter)
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextLevel);
+            }
+            else
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextLevel);
+            }
         }
         else
         {

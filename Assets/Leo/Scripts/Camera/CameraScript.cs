@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
@@ -28,19 +29,27 @@ public class CameraScript : MonoBehaviour
     {
         if (followTarget && transform.position != target.position)
         {
-            Vector3 targetPosition = new Vector3(target.position.x, target.position.y, target.position.z)
-            {
-                x = Mathf.Clamp(target.position.x, minPos.x, maxPos.x),
-                y = Mathf.Clamp(target.position.y, minPos.y, maxPos.y)
-            };
-
-            transform.position = Vector3.Lerp(transform.position, targetPosition + offset, followSmoothing);
+            transform.position = Vector3.Lerp(transform.position, GetFinalPos() + offset, followSmoothing);
         }
+    }
+
+    private Vector3 GetFinalPos()
+    {
+        Vector3 targetPosition = new Vector3(target.position.x, target.position.y, target.position.z)
+        {
+            x = Mathf.Clamp(target.position.x, minPos.x, maxPos.x),
+            y = Mathf.Clamp(target.position.y, minPos.y, maxPos.y)
+        };
+        return targetPosition;
     }
 
     public void DisableCameraFollow() => followTarget = false;
 
-    public void EnableCameraFollow() => followTarget = true;
+    public void EnableCameraFollow()
+    {
+        transform.position = GetFinalPos() + offset;
+        followTarget = true;
+    }
     #endregion
 
     #region Camera Shake

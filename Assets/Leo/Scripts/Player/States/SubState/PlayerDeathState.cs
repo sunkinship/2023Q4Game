@@ -12,6 +12,7 @@ public class PlayerDeathState : PlayerAnimState
     {
         base.Enter();
         player.cameraScript.DisableCameraFollow();
+        player.DisableCollision();
         player.TurnOffGravity();
         player.FreezePlayer();
         player.cameraScript.StartShake();
@@ -20,7 +21,6 @@ public class PlayerDeathState : PlayerAnimState
     public override void Exit()
     {
         base.Exit();
-        player.ResetGravity();
     }
 
     public override void LogicUpdate()
@@ -30,14 +30,7 @@ public class PlayerDeathState : PlayerAnimState
         if (isAnimationFinished)
         {
             player.DeathTransition();
-            if (player.IsGrounded())
-            {
-                stateMachine.ChangeState(player.IdleState);
-            }
-            else
-            {
-                stateMachine.ChangeState(player.InAirState);
-            }
+            stateMachine.ChangeState(player.IdleState);
         }
     }
 }

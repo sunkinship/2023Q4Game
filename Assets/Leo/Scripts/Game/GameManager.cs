@@ -58,21 +58,22 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Load Scenes
-    public void LoadNextCutScene(bool isSecretExit)
-    {
-        if (isSecretExit)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-        }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-    }
-
-    public void LoadNextLevel()
+    public bool LoadNextNormalScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        return true;
+    }
+
+    public bool LoadNextSecretScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        return true;
+    }
+
+    public bool LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        return true;
     }
     #endregion
 }

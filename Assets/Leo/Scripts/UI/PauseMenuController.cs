@@ -78,7 +78,10 @@ public class PauseMenuController : UIController
         }
     }
 
-    public void LoadMenuFromPauseButton() => TriggerFade(LoadMenuFromPause);
+    public void LoadMenuFromPauseButton()
+    {
+        TriggerFade(LoadMenuFromPause);
+    }
 
     public bool LoadMenuFromPause()
     {

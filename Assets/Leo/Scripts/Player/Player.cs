@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Processors;
 
 public class Player : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public bool canDash;
+
+    private bool isDead;
     #endregion
 
     #region GameObject References
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour
     public CameraScript cameraScript;
 
     [HideInInspector]
-    public GameObject currentCheckPoint;
+    public CheckPoint currentCheckPoint;
 
     [Header("Fade")]
     [SerializeField]
@@ -227,16 +230,6 @@ public class Player : MonoBehaviour
             return - 1;
     }
 
-    public void DisableCollision()
-    {
-        PlayerCollider.enabled = false;
-    }
-
-    public void EnableCollision()
-    {
-        PlayerCollider.enabled = true;
-    }
-
     public void WaitForDashCD()
     {
         canDash = false;
@@ -284,10 +277,14 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    #region Gravity Control
+    #region Gravity and Player Control
     public void TurnOffGravity() => PlayerRb2.gravityScale = 0;
 
     public void ResetGravity() => PlayerRb2.gravityScale = playerData.defaultGravity;
+
+    public void DisableCollision() => PlayerCollider.enabled = false;
+
+    public void EnableCollision() => PlayerCollider.enabled = true;
     #endregion
 
     #region Animation
@@ -312,20 +309,20 @@ public class Player : MonoBehaviour
         if (col == null)
             return;
         else
-            col.GetComponent<ChangeCameraBounds>().UpdateCamBounds(); ;
+            col.GetComponent<ChangeCameraBounds>().UpdateCamBounds();
     }
 
-    private void SetCheckPoint(GameObject newCheckPoint)
-    {
-        currentCheckPoint = newCheckPoint;
-    }
+    private void SetCheckPoint(GameObject newCheckPoint) => currentCheckPoint = newCheckPoint.GetComponent<CheckPoint>();
     #endregion
 
-    #region Death and Hazards
+    #region Death, Respawn, and Hazards
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 9)
+        if (isDead == false && collision.gameObject.layer == 9)
+        {
+            isDead = true;
             StateMachine.ChangeState(DeathState);
+        }       
     }
 
     public bool CheckHazard()
@@ -335,6 +332,7 @@ public class Player : MonoBehaviour
             return false;
         else
         {
+            isDead = true;
             StateMachine.ChangeState(DeathState);
             return true;
         }   
@@ -352,7 +350,14 @@ public class Player : MonoBehaviour
 
     private bool Respawn()
     {
-        transform.position = currentCheckPoint.transform.position;
+        transform.position = currentCheckPoint.respawnPoint.position;
+        ResetGravity();
+        EnableCollision();
+        if (currentCheckPoint.faceRight)
+            FlipPlayer(1);
+        else
+            FlipPlayer(0);
+        isDead = false;
         ShowPlayer();
         cameraScript.EnableCameraFollow();
         return true;
