@@ -14,7 +14,7 @@ public class PlayerFinishDashState : PlayerAnimState
     {
         base.Exit();
         player.WaitForDashCD();
-        RemoveDashProperties();
+        RemoveAllDashProperties();
     }
 
     public override void LogicUpdate()
@@ -39,10 +39,12 @@ public class PlayerFinishDashState : PlayerAnimState
         }
     }
 
-    public void RemoveDashProperties()
+    public void RemoveAllDashProperties()
     {
         player.EnableCollision();
         player.ResetGravity();
-        player.DashParticles(false);
+        RemoveDashParticles();
     }
+
+    public void RemoveDashParticles() => player.DashParticles(false);
 }

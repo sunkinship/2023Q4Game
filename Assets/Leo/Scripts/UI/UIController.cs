@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
     [SerializeField]
     protected GameObject indicators;
 
-    [Header("General Menu Canvases")]
+    [Header("General Menus")]
     [SerializeField] protected GameObject menu;
     [SerializeField] protected GameObject options;
 
@@ -20,7 +20,8 @@ public class UIController : MonoBehaviour
     [SerializeField] protected GameObject menuFirstSelect;
     [SerializeField] protected GameObject optionsFirstSelect;
 
-    protected GameObject lastSelected, lastLastSelected;
+    protected GameObject mostRecentlySelected;
+    protected Stack previouslySelected = new Stack();
 
     protected bool inSubMenu;
 
@@ -63,31 +64,45 @@ public class UIController : MonoBehaviour
             MenuButton();
         }
     }
-    #endregion
+    #endregion  
 
-    #region Fade
-    protected void TriggerFade(Func<bool> functionToCall) => Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", functionToCall);
-    #endregion
-
-    #region Selected GameObject
+    #region Selected Buttons
     protected void SetLastSelectedButton()
     {
-        lastSelected = EventSystem.current.currentSelectedGameObject;
+        mostRecentlySelected = EventSystem.current.currentSelectedGameObject;
     }
+
+    //protected void SetSelectedButton(GameObject deafultSelect, bool forceDefault)
+    //{
+    //    if (forceDefault == false)
+    //    {
+    //        if (lastLastSelected != null)
+    //        {
+    //            EventSystem.current.SetSelectedGameObject(lastLastSelected);
+    //            lastLastSelected = mostRecentlySelected;
+    //            return;
+    //        }
+    //    }
+    //    EventSystem.current.SetSelectedGameObject(deafultSelect);
+    //    lastLastSelected = mostRecentlySelected;
+    //}
 
     protected void SetSelectedButton(GameObject deafultSelect, bool forceDefault)
     {
         if (forceDefault == false)
         {
-            if (lastLastSelected != null)
+            if (previouslySelected.Count > 0)
             {
-                EventSystem.current.SetSelectedGameObject(lastLastSelected);
-                lastLastSelected = lastSelected;
+                EventSystem.current.SetSelectedGameObject((GameObject)previouslySelected.Pop());
                 return;
             }
         }
         EventSystem.current.SetSelectedGameObject(deafultSelect);
-        lastLastSelected = lastSelected;
+        previouslySelected.Push(mostRecentlySelected); 
     }
+    #endregion
+
+    #region Fade
+    protected void TriggerFade(Func<bool> functionToCall) => Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", functionToCall);
     #endregion
 }

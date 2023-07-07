@@ -15,7 +15,7 @@ public class SceneTransition : MonoBehaviour
         }
         else
         {
-            Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextNormalScene);
+            Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextNormalScene);
         }
     }
 }

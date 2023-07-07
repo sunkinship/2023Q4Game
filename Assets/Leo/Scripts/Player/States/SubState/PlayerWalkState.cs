@@ -14,7 +14,7 @@ public class PlayerWalkState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        player.FinishDashState.RemoveDashProperties();
+        player.FinishDashState.RemoveAllDashProperties();
         PlaySound();
     }
 

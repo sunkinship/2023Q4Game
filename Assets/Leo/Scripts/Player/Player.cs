@@ -57,10 +57,6 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public CheckPoint currentCheckPoint;
-
-    [Header("Fade")]
-    [SerializeField]
-    private Transition Fade;
     #endregion
 
     #region Particles
@@ -201,10 +197,10 @@ public class Player : MonoBehaviour
 
     private bool NotTooCloseToBounce()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 2.5f, playerData.bounce);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 3f, playerData.bounce);
         if (hit.collider != null)
         {
-            return hit.distance >= 2.5f;
+            return hit.distance >= 3f;
         }
         return true;
     }

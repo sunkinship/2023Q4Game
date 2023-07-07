@@ -49,8 +49,7 @@ public class PlayerDashState : PlayerAnimState
         base.DoChecks();
         if (player.CheckHazard())
         {
-            player.FinishDashState.RemoveDashProperties();
-            stateMachine.ChangeState(player.IdleState);
+            player.FinishDashState.RemoveDashParticles();
         }
     }
 

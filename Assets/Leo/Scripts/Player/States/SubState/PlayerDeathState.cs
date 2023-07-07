@@ -18,15 +18,13 @@ public class PlayerDeathState : PlayerAnimState
         player.cameraScript.StartShake();
     }
 
-    public override void Exit()
+    public override void DoChecks()
     {
-        base.Exit();
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
         if (isAnimationFinished)
         {
             player.DeathTransition();

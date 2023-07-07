@@ -5,21 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : UIController
 {
-    [Header("Other Canvases")]
+    [Header("Specific Menus")]
     [SerializeField] 
     protected GameObject credits;
-    [SerializeField]
-    protected GameObject start;
-    [SerializeField]
-    protected GameObject freePlay;
 
     [Header("First Select Buttons")]
     [SerializeField]
     protected GameObject creditsFirstSelect;
-    [SerializeField]
-    protected GameObject startFirstSelect;
-    [SerializeField]
-    protected GameObject freePlayFirstSelect;
 
 
     #region Button Methods
