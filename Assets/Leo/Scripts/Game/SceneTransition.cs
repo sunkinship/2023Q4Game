@@ -11,11 +11,25 @@ public class SceneTransition : MonoBehaviour
     {
         if (isSecretExit)
         {
-            Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextNormalScene);
+            if (GameManager.Instance.gameState != GameManager.GameState.story)
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
+            }
+            else
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextNextScene);
+            }
         }
         else
         {
-            Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextNormalScene);
+            if (GameManager.Instance.gameState != GameManager.GameState.story)
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
+            }
+            else
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextScene);
+            }
         }
     }
 }

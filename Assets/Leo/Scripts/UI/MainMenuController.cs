@@ -15,7 +15,11 @@ public class MainMenuController : UIController
 
 
     #region Button Methods
-    public void StartButton() => TriggerFade(LoadGame);
+    public void StartButton()
+    {
+        GameManager.Instance.SetGameStory();
+        TriggerFade(LoadGame);
+    }
 
     public void CreditsButton()
     {

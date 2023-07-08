@@ -44,10 +44,8 @@ public class Dialogue : MonoBehaviour
     {
         inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
 
-        currentLines = lines;
-        currentPortraits = portraits;
-        GameManager.Instance.SetDialogueAction();
-        StartCoroutine(WaitToStart());
+        if (GameManager.Instance.gameState == GameManager.GameState.story)
+            InitializeDialgue();
     }
 
     private void Update()
@@ -56,6 +54,14 @@ public class Dialogue : MonoBehaviour
         {
             WaitForInput();
         }
+    }
+
+    private void InitializeDialgue()
+    {
+        currentLines = lines;
+        currentPortraits = portraits;
+        GameManager.Instance.SetActionDialogue();
+        StartCoroutine(WaitToStart());
     }
 
     private IEnumerator WaitToStart()
@@ -67,7 +73,7 @@ public class Dialogue : MonoBehaviour
     private void StartDialogueSequence()
     {
         dialogueBox.SetActive(true);
-        GameManager.Instance.SetDialogueAction();
+        GameManager.Instance.SetActionDialogue();
         inDialogue = true;
         lineIndex = 0;
         StartDialogueLine();
@@ -145,16 +151,16 @@ public class Dialogue : MonoBehaviour
         {
             if (blackFadeAfter)
             {
-                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextLevel);
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextNextScene);
             }
             else
             {
-                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextLevel);
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextScene);
             }
         }
         else
         {
-            GameManager.Instance.SetPlayAction();
+            GameManager.Instance.SetActionPlay();
         }
     }
 

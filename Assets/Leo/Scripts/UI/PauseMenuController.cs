@@ -64,11 +64,11 @@ public class PauseMenuController : UIController
     {
         if (canUnpause)
         {
-            if (GameManager.Instance.playerState == GameManager.State.play)
+            if (GameManager.Instance.playerState == GameManager.PlayerState.play)
             {
                 inputHandler.SwitchActionMap("Player");
             }
-            else if (GameManager.Instance.playerState == GameManager.State.dialogue)
+            else if (GameManager.Instance.playerState == GameManager.PlayerState.dialogue)
             {
                 inputHandler.SwitchActionMap("Dialogue");
             }
