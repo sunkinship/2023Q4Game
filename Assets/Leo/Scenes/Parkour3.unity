@@ -607,11 +607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598615298206772666, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: m_Size.y
-      value: 20.835987
+      value: 36.94904
       objectReference: {fileID: 0}
     - target: {fileID: 3598615298206772666, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: m_Offset.y
-      value: 1.7099991
+      value: 9.766525
       objectReference: {fileID: 0}
     - target: {fileID: 4035347141189505158, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: faceRight
@@ -2963,11 +2963,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598615298206772666, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: m_Size.y
-      value: 13.724997
+      value: 15.245095
       objectReference: {fileID: 0}
     - target: {fileID: 3598615298206772666, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: m_Offset.y
-      value: 1.101201
+      value: 1.8612504
       objectReference: {fileID: 0}
     - target: {fileID: 4035347141189505158, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: faceRight
@@ -4253,11 +4253,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598615298206772666, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: m_Size.y
-      value: 21.38038
+      value: 40.229607
       objectReference: {fileID: 0}
     - target: {fileID: 3598615298206772666, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: m_Offset.y
-      value: 1.4300737
+      value: 10.854694
       objectReference: {fileID: 0}
     - target: {fileID: 4035347141189505158, guid: bdae4793f83f1294b8d9d09d9a828204, type: 3}
       propertyPath: faceRight
@@ -92372,14 +92372,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4532615497078930566, guid: 4b4a2d35a6a6f92419915cdae9944884, type: 3}
-      propertyPath: m_Name
-      value: 'Pause Canvas '
-      objectReference: {fileID: 0}
-    - target: {fileID: 4532615497078930566, guid: 4b4a2d35a6a6f92419915cdae9944884, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4532615497078930569, guid: 4b4a2d35a6a6f92419915cdae9944884, type: 3}
       propertyPath: m_Camera
       value: 

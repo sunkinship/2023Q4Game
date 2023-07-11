@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
     protected GameObject mostRecentlySelected;
     protected Stack previouslySelected = new Stack();
 
-    protected bool inSubMenu;
+    protected int menuSubLevel = 0;
 
 
     private void Start()
@@ -39,29 +39,31 @@ public class UIController : MonoBehaviour
     #region Button Methods
     public void OptionsButton()
     {
-        inSubMenu = true;
+        menuSubLevel = 1;
         SetLastSelectedButton();
         menu.SetActive(false);
         options.SetActive(true);
         SetSelectedButton(optionsFirstSelect, true);
     }
 
-    public virtual void MenuButton()
+    public virtual void BackToMenu()
     {
-        inSubMenu = false;
+        menuSubLevel = 0;
         SetLastSelectedButton();
         options.SetActive(false);
         menu.SetActive(true);
         SetSelectedButton(menuFirstSelect, false);
     }
+    #endregion
 
+    #region Cancel
     protected virtual void ReceiveCancelInput()
     {
-        if (inputHandler.CancelInput && inSubMenu)
+        if (inputHandler.CancelInput && menuSubLevel == 1)
         {
             inputHandler.UseCancelInput();
-            EventSystem.current.SetSelectedGameObject(optionsFirstSelect);
-            MenuButton();
+            //EventSystem.current.SetSelectedGameObject(optionsFirstSelect);
+            BackToMenu();
         }
     }
     #endregion  
