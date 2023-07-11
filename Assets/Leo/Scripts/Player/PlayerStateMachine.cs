@@ -16,11 +16,11 @@ public class PlayerStateMachine
 
     public void ChangeState(PlayerState newState)
     {
-        //Debug.Log("WAS " + CurrentState.ToString());
         CurrentState.Exit();
+        //Debug.Log("WAS " + CurrentState.ToString());
         SwitchState(newState);
-        CurrentState.Enter();
         //Debug.Log("CURRENT " + CurrentState.ToString());
+        CurrentState.Enter();
     }
 
     private void SwitchState(PlayerState newState)

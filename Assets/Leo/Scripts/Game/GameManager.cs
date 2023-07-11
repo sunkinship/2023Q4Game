@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -8,11 +9,19 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [HideInInspector]
-    public State playerState;
+    public PlayerState playerState;
+    [HideInInspector]
+    public GameState gameState; 
 
-    public enum State 
+
+    public enum PlayerState 
     {
         play, dialogue, ui
+    }
+
+    public enum GameState
+    {
+        story, free
     }
 
     [HideInInspector]
@@ -37,42 +46,49 @@ public class GameManager : MonoBehaviour
     //    Debug.Log("loaded");
     //}
 
-    #region Change Action
-    public void SetPlayAction()
+    #region Change Player Action
+    public void SetActionPlay()
     {   
-        playerState = State.play;
+        playerState = PlayerState.play;
         PlayerInputHandler.Instance.SwitchActionMap("Player");
     }
 
-    public void SetDialogueAction()
+    public void SetActionDialogue()
     {
-        playerState = State.dialogue;
+        playerState = PlayerState.dialogue;
         PlayerInputHandler.Instance.SwitchActionMap("Dialogue");
     }
 
-    public void SetUIAction()
+    public void SetActionUI()
     {
-        playerState = State.ui;
+        playerState = PlayerState.ui;
         PlayerInputHandler.Instance.SwitchActionMap("UI");
     }
     #endregion
 
+    #region Set Game State
+    public void SetGameStory() => gameState = GameState.story;
+
+    public void SetGameFree() => gameState = GameState.free;
+    #endregion
+
     #region Load Scenes
-    public void LoadNextCutScene(bool isSecretExit)
+    public bool LoadMainMenu()
     {
-        if (isSecretExit)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-        }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        SceneManager.LoadScene(0);
+        return true;
     }
 
-    public void LoadNextLevel()
+    public bool LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        return true;
+    }
+
+    public bool LoadNextNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        return true;
     }
     #endregion
 }

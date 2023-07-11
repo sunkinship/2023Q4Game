@@ -17,6 +17,6 @@ public class PlayerBounceState : PlayerMoveState
 
     public override void Exit()
     {
-        player.WaitToResetDoubleJump();
+        player.ResetDoubleJump();
     }
 }

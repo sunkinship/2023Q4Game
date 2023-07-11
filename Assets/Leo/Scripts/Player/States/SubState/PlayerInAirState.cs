@@ -18,7 +18,7 @@ public class PlayerInAirState : PlayerMoveState
     {
         base.Enter();
         canLongJump = true;
-        player.FinishDashState.RemoveDashProperties();
+        player.FinishDashState.RemoveAllDashProperties();
     }
 
     public override void Exit()

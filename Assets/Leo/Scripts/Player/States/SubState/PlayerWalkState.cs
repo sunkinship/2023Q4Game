@@ -14,12 +14,13 @@ public class PlayerWalkState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+        player.FinishDashState.RemoveAllDashProperties();
         PlaySound();
     }
 
     public override void Exit()
     {
-        base.Enter();
+        base.Exit();
         StopSound();
     }
 

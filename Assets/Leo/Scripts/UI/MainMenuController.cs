@@ -5,28 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : UIController
 {
-    [Header("Other Canvases")]
+    [Header("Specific Menus")]
     [SerializeField] 
     protected GameObject credits;
-    [SerializeField]
-    protected GameObject start;
-    [SerializeField]
-    protected GameObject freePlay;
 
     [Header("First Select Buttons")]
     [SerializeField]
     protected GameObject creditsFirstSelect;
-    [SerializeField]
-    protected GameObject startFirstSelect;
-    [SerializeField]
-    protected GameObject freePlayFirstSelect;
 
 
     #region Button Methods
     public void StartButton()
     {
-        TriggerFade();
-        StartCoroutine(WaitForLoad(LoadGame));
+        GameManager.Instance.SetGameStory();
+        TriggerFade(LoadGame);
     }
 
     public void CreditsButton()
@@ -48,17 +40,14 @@ public class MainMenuController : UIController
         SetSelectedButton(menuFirstSelect, false);
     }
 
-    public void QuitGameButton()
-    {
-        TriggerFade();
-        StartCoroutine(WaitForLoad(QuitGame));
-    }
+    public void QuitGameButton() => TriggerFade(QuitGame);
     #endregion
 
     #region Scene Loaders
     private bool LoadGame()
     {
-        SceneManager.LoadScene(1);
+        inputHandler.UseInteractInput();
+        SceneManager.LoadScene(3);
         return true;
     }
 
