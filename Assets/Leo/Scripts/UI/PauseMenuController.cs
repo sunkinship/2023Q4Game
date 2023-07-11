@@ -27,7 +27,7 @@ public class PauseMenuController : UIController
             inputHandler.UsePauseInput();
             if (paused == false)
                 PauseGame();
-            else if (inSubMenu == false)
+            else if (menuSubLevel == 0)
             {
                 Unpause();
             }
@@ -39,10 +39,10 @@ public class PauseMenuController : UIController
         if (inputHandler.CancelInput)
         {
             inputHandler.UseCancelInput();
-            if (inSubMenu)
+            if (menuSubLevel == 1)
             {
                 EventSystem.current.SetSelectedGameObject(optionsFirstSelect);
-                MenuButton();
+                BackToMenu();
             }
             else
                 Unpause();

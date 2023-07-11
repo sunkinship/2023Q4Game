@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool blackFade;
 
+    private int currentLevel;
+
     private void Awake()
     {
         if (Instance == null)

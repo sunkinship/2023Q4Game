@@ -46,6 +46,8 @@ public class Dialogue : MonoBehaviour
 
         if (GameManager.Instance.gameState == GameManager.GameState.story)
             InitializeDialgue();
+        else
+            GameManager.Instance.SetActionPlay();
     }
 
     private void Update()
