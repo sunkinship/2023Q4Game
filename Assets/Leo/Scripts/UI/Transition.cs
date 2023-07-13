@@ -42,7 +42,27 @@ public class Transition : MonoBehaviour
         StartCoroutine(WaitForFade(end, functionToCall));
     }
 
+    public void TriggerFadeBothDeath(string start, string end, Func<bool> functionToCall)
+    {
+        DisableInput();
+        ani.SetTrigger(start);
+        fadeStartFinished = false;
+        fadeEndFinished = false;
+        StartCoroutine(WaitForFadeDeath(end, functionToCall));
+    }
+
     private IEnumerator WaitForFade(string end, Func<bool> functionToCall)
+    {
+        while (fadeStartFinished == false)
+            yield return null;
+        functionToCall();
+        ani.SetTrigger(end);
+        while (fadeEndFinished == false)
+            yield return null;
+        GameManager.Instance.SetActionAfterLoad();
+    }
+
+    private IEnumerator WaitForFadeDeath(string end, Func<bool> functionToCall)
     {
         while (fadeStartFinished == false)
             yield return null;

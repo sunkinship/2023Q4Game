@@ -66,6 +66,17 @@ public class GameManager : MonoBehaviour
         playerState = PlayerState.ui;
         PlayerInputHandler.Instance.SwitchActionMap("UI");
     }
+
+    public void SetActionAfterLoad()
+    {
+        if (gameState == GameState.story && Dialogue.Instance.playDialogueOnLoad)
+        {
+            SetActionDialogue();
+            Dialogue.Instance.InitializeDialgue();
+        }
+        else
+            SetActionPlay();
+    }
     #endregion
 
     #region Set Game State
