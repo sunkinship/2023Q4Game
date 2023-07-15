@@ -8,6 +8,7 @@ TagManager:
   - Music Source
   - SFX Source
   - Input
+  - FeetPos
   layers:
   - Default
   - TransparentFX
