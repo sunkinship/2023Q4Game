@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -65,17 +64,6 @@ public class GameManager : MonoBehaviour
     {
         playerState = PlayerState.ui;
         PlayerInputHandler.Instance.SwitchActionMap("UI");
-    }
-
-    public void SetActionAfterLoad()
-    {
-        if (gameState == GameState.story && Dialogue.Instance.playDialogueOnLoad)
-        {
-            SetActionDialogue();
-            Dialogue.Instance.InitializeDialgue();
-        }
-        else
-            SetActionPlay();
     }
     #endregion
 

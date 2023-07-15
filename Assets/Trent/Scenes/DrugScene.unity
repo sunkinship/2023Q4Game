@@ -642,6 +642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cbaafb9b7442042906941aabb06cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playDialogueOnLoad: 1
+  secondsToWaitBeforePlay: 2
   loadLevelAfterDialogue: 1
   blackFadeAfter: 1
   lines:

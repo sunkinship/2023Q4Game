@@ -9,7 +9,6 @@ public class Dialogue : MonoBehaviour
     public static Dialogue Instance;
 
     [Header("Load Settings")]
-    public bool overridePlay;
     public bool playDialogueOnLoad;
     public float secondsToWaitBeforePlay;
     public bool loadLevelAfterDialogue;
@@ -47,13 +46,10 @@ public class Dialogue : MonoBehaviour
     {
         inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
 
-        //if (GameManager.Instance.gameState == GameManager.GameState.story)
-        //    InitializeDialgue();
-        //else
-        //    GameManager.Instance.SetActionPlay();
-
-        if (overridePlay)
+        if (playDialogueOnLoad && GameManager.Instance.gameState == GameManager.GameState.story)
             InitializeDialgue();
+        else
+            GameManager.Instance.SetActionPlay();
     }
 
     private void Update()

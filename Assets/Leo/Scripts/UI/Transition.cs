@@ -24,13 +24,13 @@ public class Transition : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        //SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        //Debug.Log("loaded");
-    }
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    Debug.Log("loaded");
+    //}
 
     #region Fade Animation
     public void TriggerFadeBoth(string start, string end, Func<bool> functionToCall)
@@ -42,27 +42,7 @@ public class Transition : MonoBehaviour
         StartCoroutine(WaitForFade(end, functionToCall));
     }
 
-    public void TriggerFadeBothDeath(string start, string end, Func<bool> functionToCall)
-    {
-        DisableInput();
-        ani.SetTrigger(start);
-        fadeStartFinished = false;
-        fadeEndFinished = false;
-        StartCoroutine(WaitForFadeDeath(end, functionToCall));
-    }
-
     private IEnumerator WaitForFade(string end, Func<bool> functionToCall)
-    {
-        while (fadeStartFinished == false)
-            yield return null;
-        functionToCall();
-        ani.SetTrigger(end);
-        while (fadeEndFinished == false)
-            yield return null;
-        GameManager.Instance.SetActionAfterLoad();
-    }
-
-    private IEnumerator WaitForFadeDeath(string end, Func<bool> functionToCall)
     {
         while (fadeStartFinished == false)
             yield return null;

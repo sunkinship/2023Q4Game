@@ -211,7 +211,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -396333161
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3bc5fcbb01e2a0641b29964dc0a6a9d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1022,6 +1022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cbaafb9b7442042906941aabb06cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playDialogueOnLoad: 1
+  secondsToWaitBeforePlay: 2
   loadLevelAfterDialogue: 1
   blackFadeAfter: 1
   lines:
@@ -1614,7 +1616,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -396333161
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dccc6deaa04abad44aadec2c1ce841ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
