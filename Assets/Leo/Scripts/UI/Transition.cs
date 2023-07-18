@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
@@ -19,18 +20,23 @@ public class Transition : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            //SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
-        //SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     //{
-    //    Debug.Log("loaded");
+    //    print("loaded scene");
     //}
+
+    private void Start()
+    {
+        ani.SetTrigger("EndLongBlack");
+    }
 
     #region Fade Animation
     public void TriggerFadeBoth(string start, string end, Func<bool> functionToCall)
@@ -56,6 +62,13 @@ public class Transition : MonoBehaviour
     public void AnimationStartFinishTrigger() => fadeStartFinished = true;
 
     public void AnimationEndFinishTrigger() => fadeEndFinished = true;
+
+    public void ResetFadeEnd() => fadeEndFinished = false;
+
+    public bool GetFadeEnd()
+    {
+        return fadeEndFinished;
+    }
     #endregion
 
     #region Input Control

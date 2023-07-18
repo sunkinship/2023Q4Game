@@ -352,7 +352,7 @@ public class Player : MonoBehaviour
         if (currentCheckPoint.faceRight)
             FlipPlayer(1);
         else
-            FlipPlayer(0);
+            FlipPlayer(-1);
         isDead = false;
         ShowPlayer();
         cameraScript.EnableCameraFollow();

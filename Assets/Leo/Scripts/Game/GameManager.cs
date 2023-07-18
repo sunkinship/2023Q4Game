@@ -34,12 +34,12 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            //SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
-        //SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -86,9 +86,9 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    public bool LoadNextNextScene()
+    public bool LoadNextNextNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
         return true;
     }
     #endregion

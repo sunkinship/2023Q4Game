@@ -36,6 +36,10 @@ public class PlayerInputHandler : MonoBehaviour
 
     private float JumpInputHoldTime = 0.2f;
 
+    private void Start()
+    {
+        print(playerInput.currentActionMap);
+    }
 
     private void Update()
     {
@@ -155,16 +159,19 @@ public class PlayerInputHandler : MonoBehaviour
     #region Switch Action Maps / Enable Disable
     public void SwitchActionMap(string mapName)
     {
+        //print("switch to " + mapName);
         playerInput.SwitchCurrentActionMap(mapName);
     }
 
     public void EnableInput()
     {
+        //print("enable");
         playerInput.ActivateInput();
     }
 
     public void DisableInput()
     {
+        //print("disable");
         playerInput.DeactivateInput();
     }
     #endregion

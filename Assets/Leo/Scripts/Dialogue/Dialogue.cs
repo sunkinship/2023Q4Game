@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     public bool playDialogueOnLoad;
     public float secondsToWaitBeforePlay;
     public bool loadLevelAfterDialogue;
+    public bool menuAfterDialogue;
     public bool blackFadeAfter;
 
     [Header("Dialogue Settings")]
@@ -46,10 +47,7 @@ public class Dialogue : MonoBehaviour
     {
         inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
 
-        if (playDialogueOnLoad && GameManager.Instance.gameState == GameManager.GameState.story)
-            InitializeDialgue();
-        else
-            GameManager.Instance.SetActionPlay();
+        StartCoroutine(WaitToSetAction());
     }
 
     private void Update()
@@ -58,6 +56,17 @@ public class Dialogue : MonoBehaviour
         {
             WaitForInput();
         }
+    }
+
+    private IEnumerator WaitToSetAction()
+    {
+        while (Transition.Instance.GetFadeEnd() == false)
+            yield return null;
+        if (playDialogueOnLoad && GameManager.Instance.gameState == GameManager.GameState.story)
+            InitializeDialgue();
+        else
+            GameManager.Instance.SetActionPlay();
+        Transition.Instance.ResetFadeEnd();
     }
 
     public void InitializeDialgue()
@@ -154,11 +163,22 @@ public class Dialogue : MonoBehaviour
         {
             if (blackFadeAfter)
             {
-                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextNextScene);
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextNextNextScene);
             }
             else
             {
                 Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextScene);
+            }
+        }
+        else if (menuAfterDialogue)
+        {
+            if (blackFadeAfter)
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadMainMenu);
+            }
+            else
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
             }
         }
         else

@@ -45,7 +45,6 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("FeetPos"))
         {
-            print("enter");
             //collision.gameObject.transform.SetParent(transform);
             collision.transform.parent.gameObject.transform.parent.gameObject.transform.SetParent(transform);
         }
@@ -55,7 +54,6 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("FeetPos"))
         {
-            print("exit");
             //collision.gameObject.transform.SetParent(null);
             collision.transform.parent.gameObject.transform.parent.gameObject.transform.SetParent(null);
         }

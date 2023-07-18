@@ -12,6 +12,7 @@ public class PlayerDeathState : PlayerAnimState
     {
         base.Enter();
         player.cameraScript.DisableCameraFollow();
+        player.transform.SetParent(null);
         player.DisableCollision();
         player.TurnOffGravity();
         player.FreezePlayer();
