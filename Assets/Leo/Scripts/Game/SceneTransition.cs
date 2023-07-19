@@ -24,7 +24,7 @@ public class SceneTransition : MonoBehaviour
         {
             if (GameManager.Instance.gameState != GameManager.GameState.story)
             {
-                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadMainMenu);
             }
             else
             {

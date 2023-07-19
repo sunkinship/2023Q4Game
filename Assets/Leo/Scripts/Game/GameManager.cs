@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool blackFade;
 
-    private int currentLevel;
+    public int currentLevel;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            //SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -42,10 +42,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    Debug.Log("loaded");
-    //}
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 2)
+        {
+            currentLevel = 1;
+        }
+        else if (scene.buildIndex == 6)
+        {
+            currentLevel = 2;
+        }
+        if (scene.buildIndex == 10)
+        {
+            currentLevel = 3;
+        }
+    }
 
     #region Change Player Action
     public void SetActionPlay()

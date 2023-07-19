@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static GameManager;
 
 public class MainMenuController : UIController
 {
@@ -15,6 +17,19 @@ public class MainMenuController : UIController
     public GameObject playFirstSelect;
     public GameObject freeFirstSelect;
 
+    [Header("Free Play Buttons")]
+    public GameObject freePlayButton;
+    public GameObject level2;
+    public GameObject level3;
+
+    protected override void Start()
+    {
+        base.Start();
+        if (Instance.gameState == GameState.free)
+        {
+            JumpToLevelSeclect();
+        }
+    }
 
     #region Main Menu Buttons
     public void PlayButton()
@@ -25,53 +40,6 @@ public class MainMenuController : UIController
         play.SetActive(true);
         SetSelectedButton(playFirstSelect, true);
     }
-
-    #region Play Menu Buttons
-    public void NewGameButton()
-    {
-        GameManager.Instance.SetGameStory();
-        TriggerFade(LoadNewGame);
-    }
-
-    public void FreePlayButton()
-    {
-        menuSubLevel = 2;
-        SetLastSelectedButton();
-        play.SetActive(false);
-        free.SetActive(true);
-        SetSelectedButton(freeFirstSelect, true);
-    }
-
-    public void BackToPlayMenu()
-    {
-        menuSubLevel = 1;
-        SetLastSelectedButton();
-        free.SetActive(false);
-        play.SetActive(true);
-        SetSelectedButton(playFirstSelect, false);
-    }
-
-    #region Free Play Menu Buttons
-    public void Level1Button()
-    {
-        GameManager.Instance.SetGameFree();
-        TriggerFade(LoadLevel1);
-    }
-
-    public void Level2Button()
-    {
-        GameManager.Instance.SetGameFree();
-        TriggerFade(LoadLevel2);
-    }
-
-    public void Level3Button()
-    {
-        GameManager.Instance.SetGameFree();
-        TriggerFade(LoadLevel3);
-    }
-    #endregion
-
-    #endregion
 
     public void CreditsButton()
     {
@@ -94,11 +62,51 @@ public class MainMenuController : UIController
     }
 
     public void QuitGameButton() => TriggerFade(QuitGame);
+    #endregion
 
-    public void JumpToFreeMenu()
+    #region Play Menu Buttons
+    public void NewGameButton()
     {
-        PlayButton();
-        FreePlayButton();
+        Instance.SetGameStory();
+        TriggerFade(LoadNewGame);
+    }
+
+    public void FreePlayButton()
+    {
+        menuSubLevel = 2;
+        SetLastSelectedButton();
+        play.SetActive(false);
+        free.SetActive(true);
+        SetSelectedButton(freeFirstSelect, true);
+    }
+
+    public void BackToPlayMenu()
+    {
+        menuSubLevel = 1;
+        SetLastSelectedButton();
+        free.SetActive(false);
+        play.SetActive(true);
+        SetSelectedButton(playFirstSelect, false);
+    }
+    #endregion
+
+    #region Free Play Menu Buttons
+    public void Level1Button()
+    {
+        Instance.SetGameFree();
+        TriggerFade(LoadLevel1);
+    }
+
+    public void Level2Button()
+    {
+        Instance.SetGameFree();
+        TriggerFade(LoadLevel2);
+    }
+
+    public void Level3Button()
+    {
+        Instance.SetGameFree();
+        TriggerFade(LoadLevel3);
     }
     #endregion
 
@@ -122,28 +130,28 @@ public class MainMenuController : UIController
     private bool LoadNewGame()
     {
         inputHandler.UseInteractInput();
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
         return true;
     }
 
     private bool LoadLevel1()
     {
         inputHandler.UseInteractInput();
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
         return true;
     }
 
     private bool LoadLevel2()
     {
         inputHandler.UseInteractInput();
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(6);
         return true;
     }
 
     private bool LoadLevel3()
     {
         inputHandler.UseInteractInput();
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(10);
         return true;
     }
 
@@ -151,6 +159,32 @@ public class MainMenuController : UIController
     {
         Application.Quit();
         return true;
+    }
+    #endregion
+
+    #region Other
+    private void JumpToLevelSeclect()
+    {
+        AddToButtonStack(menuFirstSelect);
+        menu.SetActive(false);
+        play.SetActive(true);
+        AddToButtonStack(freePlayButton);
+        play.SetActive(false);
+        free.SetActive(true);
+        menuSubLevel = 2;
+        SetLastSelectedButton(free);
+        if (Instance.currentLevel == 1)
+        {
+            SelectButton(freeFirstSelect);
+        }
+        else if (Instance.currentLevel == 2)
+        {
+            SelectButton(level2);
+        }
+        else if (Instance.currentLevel == 3)
+        {
+            SelectButton(level3);
+        }
     }
     #endregion
 }

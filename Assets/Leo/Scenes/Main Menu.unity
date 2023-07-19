@@ -4673,6 +4673,9 @@ MonoBehaviour:
   creditsFirstSelect: {fileID: 1637528730}
   playFirstSelect: {fileID: 1439177381}
   freeFirstSelect: {fileID: 927077267}
+  freePlayButton: {fileID: 769713805}
+  level2: {fileID: 1703830581}
+  level3: {fileID: 1137014599}
 --- !u!114 &1078194210
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,10 +36,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     private float JumpInputHoldTime = 0.2f;
 
-    private void Start()
-    {
-        print(playerInput.currentActionMap);
-    }
 
     private void Update()
     {
