@@ -23,10 +23,8 @@ public class GameManager : MonoBehaviour
         story, free
     }
 
-    [HideInInspector]
-    public bool blackFade;
+    public static int currentLevel;
 
-    public int currentLevel;
 
     private void Awake()
     {
@@ -34,6 +32,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeGame();
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
@@ -56,6 +55,11 @@ public class GameManager : MonoBehaviour
         {
             currentLevel = 3;
         }
+    }
+
+    private void InitializeGame()
+    {
+        PlayerPrefs.SetInt("beatGame", 0);
     }
 
     #region Change Player Action

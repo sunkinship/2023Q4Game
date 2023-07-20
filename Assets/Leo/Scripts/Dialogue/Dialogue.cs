@@ -172,6 +172,7 @@ public class Dialogue : MonoBehaviour
         }
         else if (menuAfterDialogue)
         {
+            PlayerPrefs.SetInt("beatGame", 1);
             if (blackFadeAfter)
             {
                 Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadMainMenu);

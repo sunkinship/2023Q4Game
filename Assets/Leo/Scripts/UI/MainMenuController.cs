@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static GameManager;
@@ -173,15 +172,15 @@ public class MainMenuController : UIController
         free.SetActive(true);
         menuSubLevel = 2;
         SetLastSelectedButton(free);
-        if (Instance.currentLevel == 1)
+        if (GameManager.currentLevel == 1)
         {
             SelectButton(freeFirstSelect);
         }
-        else if (Instance.currentLevel == 2)
+        else if (GameManager.currentLevel == 2)
         {
             SelectButton(level2);
         }
-        else if (Instance.currentLevel == 3)
+        else if (GameManager.currentLevel == 3)
         {
             SelectButton(level3);
         }
