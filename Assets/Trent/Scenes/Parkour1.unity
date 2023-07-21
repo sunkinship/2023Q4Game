@@ -21572,6 +21572,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8301938934594203232, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
   m_PrefabInstance: {fileID: 421522480}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &421522482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8301938934594203234, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
+  m_PrefabInstance: {fileID: 421522480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e8847a51aff2c43a0fe98f46582d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &496461088
 GameObject:
   m_ObjectHideFlags: 0
@@ -24335,6 +24346,7 @@ MonoBehaviour:
   playDialogueOnLoad: 0
   secondsToWaitBeforePlay: 0
   loadLevelAfterDialogue: 0
+  menuAfterDialogue: 0
   blackFadeAfter: 0
   lines:
   - 0How did I end up here?
@@ -24438,6 +24450,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1487106632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487106634}
+  - component: {fileID: 1487106633}
+  m_Layer: 0
+  m_Name: InitializeLevelData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1487106633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487106632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75579a2bccb41445b6bf6655f37edb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  player: {fileID: 421522482}
+--- !u!4 &1487106634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487106632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1487159655 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3909592374644332759, guid: 471a95fec173819458687f5e04203f40, type: 3}

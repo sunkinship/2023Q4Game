@@ -71,8 +71,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private ParticleSystem dashParticle;
     #endregion
- 
-    private void Awake()
+
+
+    private void Start()
     {
         StateMachine = new PlayerStateMachine();
 
@@ -85,10 +86,7 @@ public class Player : MonoBehaviour
         FinishDashState = new PlayerFinishDashState(this, StateMachine, playerData, "Finish Dash");
         BounceState = new PlayerBounceState(this, StateMachine, playerData, "Jump");
         DeathState = new PlayerDeathState(this, StateMachine, playerData, "Death");
-    }
 
-    private void Start()
-    {
         PlayerRb2 = GetComponent<Rigidbody2D>();
         PlayerCollider = GetComponent<Collider2D>();
         PlayerSr = GetComponent<SpriteRenderer>();

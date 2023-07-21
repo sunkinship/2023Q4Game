@@ -43,5 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce59e11b930dd34d9fe03a675c2d8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 0
-  blackFade: 0
+  playerData:
+  - {fileID: 11400000, guid: 40c5ff727b08d364bb3b1366f1c00e0b, type: 2}
+  - {fileID: 11400000, guid: bbbd52f0872eed64d8604db1e7d5649d, type: 2}
+  - {fileID: 11400000, guid: 4de0e7f63a3806c479800facdf409a31, type: 2}
+  - {fileID: 11400000, guid: 5789900f06337a3408613e498ba81ee5, type: 2}

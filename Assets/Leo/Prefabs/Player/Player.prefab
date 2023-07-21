@@ -4865,7 +4865,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -396333161
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_RenderMode: 0
   m_SortMode: 0
@@ -9727,7 +9727,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -396333161
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_RenderMode: 0
   m_SortMode: 0
@@ -14531,7 +14531,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -396333161
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
@@ -19335,7 +19335,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -396333161
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_RenderMode: 0
   m_SortMode: 0
@@ -24232,7 +24232,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -396333161
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_RenderMode: 0
   m_SortMode: 0
@@ -24300,9 +24300,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8301938934181214374}
+  - component: {fileID: 2061960413}
   m_Layer: 0
   m_Name: FeetPos
-  m_TagString: Untagged
+  m_TagString: FeetPos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24321,6 +24322,32 @@ Transform:
   m_Father: {fileID: 7677801887204883020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2061960413
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301938934181214369}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.001967907, y: 0.0023049414}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.651124, y: 0.16548127}
+  m_EdgeRadius: 0
 --- !u!1 &8301938934594203241
 GameObject:
   m_ObjectHideFlags: 0
@@ -24396,7 +24423,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -276502313
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 55f5ca2c750c37148af6e2efd009f6f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -24421,12 +24448,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e8847a51aff2c43a0fe98f46582d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 1f0ed823a5f17724288b38d7a98d9e8a, type: 2}
+  playerData: {fileID: 11400000, guid: bbbd52f0872eed64d8604db1e7d5649d, type: 2}
   feetPos: {fileID: 8301938934181214374}
   bodyPos: {fileID: 81984221}
   canDash: 0
+  cameraScript: {fileID: 0}
   currentCheckPoint: {fileID: 0}
-  Fade: {fileID: 0}
   jumpBurstParticle: {fileID: 112357814}
   jumpFollowParticle: {fileID: 6851015319777152358}
   doubleJumpParticle: {fileID: 101462049571266847}

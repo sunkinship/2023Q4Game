@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [HideInInspector]
-    public PlayerState playerState;
-    [HideInInspector]
-    public GameState gameState; 
+    public PlayerData[] playerData;
 
+    [HideInInspector]
+    public static PlayerState playerState;
+    [HideInInspector]
+    public static GameState gameState; 
 
     public enum PlayerState 
     {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
         story, free
     }
 
-    public static int currentLevel;
+    public static int abilityState;
 
 
     private void Awake()
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeGame();
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            //SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -41,26 +42,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.buildIndex == 2)
-        {
-            currentLevel = 1;
-        }
-        else if (scene.buildIndex == 6)
-        {
-            currentLevel = 2;
-        }
-        if (scene.buildIndex == 10)
-        {
-            currentLevel = 3;
-        }
-    }
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
 
+    //}
+
+    #region Initialize
     private void InitializeGame()
     {
-        PlayerPrefs.SetInt("beatGame", 0);
+        InitializePlayerPrefs();
     }
+
+    private void InitializePlayerPrefs()
+    {
+        if (PlayerPrefs.HasKey("loginOnce"))
+            return;
+        else
+        {
+            PlayerPrefs.SetInt("loginOnce", 1);
+            PlayerPrefs.SetInt("beatGame", 0);
+            PlayerPrefs.SetFloat("masterVolume", 5);
+            PlayerPrefs.SetFloat("musicVolume", 5);
+            PlayerPrefs.SetFloat("sfxVolume", 5);
+        }
+    }
+    #endregion
 
     #region Change Player Action
     public void SetActionPlay()

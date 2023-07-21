@@ -62,7 +62,7 @@ public class Dialogue : MonoBehaviour
     {
         while (Transition.Instance.GetFadeEnd() == false)
             yield return null;
-        if (playDialogueOnLoad && GameManager.Instance.gameState == GameManager.GameState.story)
+        if (playDialogueOnLoad && GameManager.gameState == GameManager.GameState.story)
             InitializeDialgue();
         else
             GameManager.Instance.SetActionPlay();

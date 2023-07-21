@@ -6,7 +6,7 @@ public class DestroyDialogueCheck : MonoBehaviour
 {
     void Start()
     {
-        if (GameManager.Instance.gameState != GameManager.GameState.story)
+        if (GameManager.gameState != GameManager.GameState.story)
         {
             Destroy(gameObject);
         }
