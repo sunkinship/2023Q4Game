@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
         story, free
     }
 
-    public static int abilityState;
+    public static int currentLevel, abilityStateStory;
+    private static int secretFoundCount;
 
 
     private void Awake()
@@ -61,10 +62,30 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("loginOnce", 1);
             PlayerPrefs.SetInt("beatGame", 0);
+            PlayerPrefs.SetInt("secretFoundCount", 1);
             PlayerPrefs.SetFloat("masterVolume", 5);
             PlayerPrefs.SetFloat("musicVolume", 5);
             PlayerPrefs.SetFloat("sfxVolume", 5);
         }
+    }
+    #endregion
+
+    #region Ability State
+    public static void IncreaseAbilityState()
+    {
+        secretFoundCount++;
+        PlayerPrefs.SetInt("secretFoundCount", secretFoundCount);
+    }
+
+    public static void ResetAbilityState()
+    {
+        secretFoundCount = 1;
+        PlayerPrefs.SetInt("secretFoundCount", secretFoundCount);
+    }
+
+    public static int GetAbilityState()
+    {
+        return secretFoundCount;
     }
     #endregion
 
@@ -110,6 +131,18 @@ public class GameManager : MonoBehaviour
     public bool LoadNextNextNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        return true;
+    }
+
+    public bool LoadGoodFinalScene()
+    {
+        SceneManager.LoadScene(14);
+        return true;
+    }
+
+    public bool LoadBadFinalScene()
+    {
+        SceneManager.LoadScene(13);
         return true;
     }
     #endregion

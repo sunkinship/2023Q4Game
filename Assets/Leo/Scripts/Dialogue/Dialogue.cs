@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     public bool playDialogueOnLoad;
     public float secondsToWaitBeforePlay;
     public bool loadLevelAfterDialogue;
+    public bool loadFinalScene;
     public bool menuAfterDialogue;
     public bool blackFadeAfter;
 
@@ -168,6 +169,17 @@ public class Dialogue : MonoBehaviour
             else
             {
                 Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextScene);
+            }
+        }
+        else if (loadFinalScene)
+        {
+            if (GameManager.abilityStateStory > 2)
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadGoodFinalScene);
+            }
+            else
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadBadFinalScene);
             }
         }
         else if (menuAfterDialogue)

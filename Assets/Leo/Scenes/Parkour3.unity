@@ -91901,6 +91901,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2025406844}
     m_Modifications:
     - target: {fileID: 4929446457292060585, guid: a06445b9a8deaa64f801149712c7a437, type: 3}
+      propertyPath: giveAbility
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929446457292060585, guid: a06445b9a8deaa64f801149712c7a437, type: 3}
       propertyPath: isSecretExit
       value: 1
       objectReference: {fileID: 0}

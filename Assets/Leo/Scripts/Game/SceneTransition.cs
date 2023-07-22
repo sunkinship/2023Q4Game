@@ -5,7 +5,8 @@ using UnityEngine;
 public class SceneTransition : MonoBehaviour
 {
     [SerializeField]
-    private bool isSecretExit;
+    private bool isSecretExit, giveAbility;
+    
 
     public void ChangeScenes()
     {
@@ -17,7 +18,7 @@ public class SceneTransition : MonoBehaviour
             }
             else
             {
-                GameManager.abilityState++;
+                IncreaseAbilityValues();
                 Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextNextNextScene);
             }
         }
@@ -31,6 +32,17 @@ public class SceneTransition : MonoBehaviour
             {
                 Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextScene);
             }
+        }
+    }
+
+    private void IncreaseAbilityValues()
+    {
+        if (giveAbility) 
+        {
+            GameManager.abilityStateStory++;
+            if (GameManager.GetAbilityState() > 2)
+                return;
+            GameManager.IncreaseAbilityState();
         }
     }
 }

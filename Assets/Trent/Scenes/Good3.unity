@@ -717,6 +717,8 @@ MonoBehaviour:
   playDialogueOnLoad: 1
   secondsToWaitBeforePlay: 2
   loadLevelAfterDialogue: 1
+  loadFinalScene: 1
+  menuAfterDialogue: 0
   blackFadeAfter: 0
   lines:
   - 0I'm back!

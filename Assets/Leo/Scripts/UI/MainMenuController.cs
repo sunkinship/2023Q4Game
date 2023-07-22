@@ -24,11 +24,16 @@ public class MainMenuController : UIController
     protected override void Start()
     {
         base.Start();
-        abilityState = 1;
         if (gameState == GameState.free)
         {
             JumpToLevelSeclect();
         }
+        ResetValues();
+    }
+
+    private void ResetValues()
+    {
+        abilityStateStory = 1;
     }
 
     #region Main Menu Buttons
@@ -173,15 +178,15 @@ public class MainMenuController : UIController
         free.SetActive(true);
         menuSubLevel = 2;
         SetLastSelectedButton(free);
-        if (GameManager.abilityState == 1)
+        if (currentLevel == 1)
         {
             SelectButton(freeFirstSelect);
         }
-        else if (GameManager.abilityState == 2)
+        else if (currentLevel == 2)
         {
             SelectButton(level2);
         }
-        else if (GameManager.abilityState == 3)
+        else if (currentLevel == 3)
         {
             SelectButton(level3);
         }
