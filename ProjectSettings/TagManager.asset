@@ -8,6 +8,7 @@ TagManager:
   - Music Source
   - SFX Source
   - Input
+  - FeetPos
   layers:
   - Default
   - TransparentFX
@@ -50,6 +51,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 4242614767
+    locked: 0
+  - name: FrontBackground
+    uniqueID: 3091875051
     locked: 0
   - name: Foreground
     uniqueID: 3898634135

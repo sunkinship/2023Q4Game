@@ -9,13 +9,46 @@ EditorBuildSettings:
     path: Assets/Leo/Scenes/Main Menu.unity
     guid: ea95225c538222349b08cebb5e051f19
   - enabled: 1
+    path: Assets/Trent/Scenes/IntroScene.unity
+    guid: 07458e151d267f6448b6474767985bdf
+  - enabled: 1
     path: Assets/Trent/Scenes/Parkour1.unity
     guid: 30c479cef75d81243947551b937c2c01
+  - enabled: 1
+    path: Assets/Trent/Scenes/BarScene.unity
+    guid: 5bb7b4591789e66458f1a3963e955ee1
+  - enabled: 1
+    path: Assets/Trent/Scenes/Good1.unity
+    guid: d00b39aa36cff074daaacd078b53902c
+  - enabled: 1
+    path: Assets/Trent/Scenes/tutorial1.unity
+    guid: 3203c530884e15a4f859cb190c72fac0
   - enabled: 1
     path: Assets/Trent/Scenes/Parkour2.unity
     guid: 49c84054a7b5da346982e2aa815f6653
   - enabled: 1
+    path: Assets/Trent/Scenes/Casino.unity
+    guid: 647b7db3ca33851488bad8380fadb46c
+  - enabled: 1
+    path: Assets/Trent/Scenes/Good2.unity
+    guid: 30109d64eeac1c349b39aaa775f47640
+  - enabled: 1
+    path: Assets/Trent/Scenes/tutorial2.unity
+    guid: 8f6b353bb3184ab4b967f30f4ead07e7
+  - enabled: 1
     path: Assets/Leo/Scenes/Parkour3.unity
     guid: c906207da2425af4786b68d9e971f740
+  - enabled: 1
+    path: Assets/Trent/Scenes/DrugScene.unity
+    guid: 5a87c28788ed4d148a90740ca9f43815
+  - enabled: 1
+    path: Assets/Trent/Scenes/Good3.unity
+    guid: ddfb66f0c22eca14b93ed6b0097cfa95
+  - enabled: 1
+    path: Assets/Trent/Scenes/Final Judement1.unity
+    guid: 80a97e67f7fe08d4bb82414b7c4d2d3f
+  - enabled: 1
+    path: Assets/Trent/Scenes/Final Judgement2.unity
+    guid: b810fd53454adb84683d7417cd1ac4e5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 330c9330e92469b4d843bb4cb56f0ae3, type: 2}

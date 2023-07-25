@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Processors;
 
 public class Player : MonoBehaviour
 {
@@ -73,7 +72,8 @@ public class Player : MonoBehaviour
     private ParticleSystem dashParticle;
     #endregion
 
-    private void Awake()
+
+    private void Start()
     {
         StateMachine = new PlayerStateMachine();
 
@@ -86,10 +86,7 @@ public class Player : MonoBehaviour
         FinishDashState = new PlayerFinishDashState(this, StateMachine, playerData, "Finish Dash");
         BounceState = new PlayerBounceState(this, StateMachine, playerData, "Jump");
         DeathState = new PlayerDeathState(this, StateMachine, playerData, "Death");
-    }
 
-    private void Start()
-    {
         PlayerRb2 = GetComponent<Rigidbody2D>();
         PlayerCollider = GetComponent<Collider2D>();
         PlayerSr = GetComponent<SpriteRenderer>();
@@ -352,7 +349,7 @@ public class Player : MonoBehaviour
         if (currentCheckPoint.faceRight)
             FlipPlayer(1);
         else
-            FlipPlayer(0);
+            FlipPlayer(-1);
         isDead = false;
         ShowPlayer();
         cameraScript.EnableCameraFollow();

@@ -26,7 +26,7 @@ public class UIController : MonoBehaviour
     protected int menuSubLevel = 0;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
     }
@@ -34,6 +34,7 @@ public class UIController : MonoBehaviour
     protected virtual void Update()
     {
         ReceiveCancelInput();
+        //print(EventSystem.current.currentSelectedGameObject.name);
     }
 
     #region Button Methods
@@ -74,6 +75,11 @@ public class UIController : MonoBehaviour
         mostRecentlySelected = EventSystem.current.currentSelectedGameObject;
     }
 
+    protected void SetLastSelectedButton(GameObject button)
+    {
+        mostRecentlySelected = button;
+    }
+
     //protected void SetSelectedButton(GameObject deafultSelect, bool forceDefault)
     //{
     //    if (forceDefault == false)
@@ -101,6 +107,16 @@ public class UIController : MonoBehaviour
         }
         EventSystem.current.SetSelectedGameObject(deafultSelect);
         previouslySelected.Push(mostRecentlySelected); 
+    }
+
+    protected void SelectButton(GameObject button)
+    {
+        EventSystem.current.SetSelectedGameObject(button);
+    }
+
+    protected void AddToButtonStack(GameObject button)
+    {
+        previouslySelected.Push(button);
     }
     #endregion
 

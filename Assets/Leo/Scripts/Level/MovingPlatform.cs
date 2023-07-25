@@ -41,19 +41,21 @@ public class MovingPlatform : MonoBehaviour
         return wayPoints[currentWaypointIndex];
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("FeetPos"))
         {
-            collision.gameObject.transform.SetParent(transform);
+            //collision.gameObject.transform.SetParent(transform);
+            collision.transform.parent.gameObject.transform.parent.gameObject.transform.SetParent(transform);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("FeetPos"))
         {
-            collision.gameObject.transform.SetParent(null);
+            //collision.gameObject.transform.SetParent(null);
+            collision.transform.parent.gameObject.transform.parent.gameObject.transform.SetParent(null);
         }
     }
 }

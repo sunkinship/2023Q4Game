@@ -20,7 +20,7 @@ public class ButtonIndicator : MonoBehaviour
         thisRect = GetComponent<RectTransform>();
     }
 
-    void Update()
+    private void Update()
     {
         SetCurrentButtonInfo();
         SetIndicatorOffset();
@@ -41,7 +41,7 @@ public class ButtonIndicator : MonoBehaviour
 
     private void SetIndicatorPosition()
     {
-        Vector2 buttonPos = new Vector2(currentButton.anchoredPosition.x, 0);
+        //Vector2 buttonPos = new Vector2(currentButton.anchoredPosition.x, 0);
         indicator1.anchoredPosition = indicatorOffsetVector;
         indicator2.anchoredPosition = Vector2.zero - indicatorOffsetVector;
     }

@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [HideInInspector]
-    public PlayerState playerState;
-    [HideInInspector]
-    public GameState gameState; 
+    public PlayerData[] playerData;
 
+    [HideInInspector]
+    public static PlayerState playerState;
+    [HideInInspector]
+    public static GameState gameState; 
 
     public enum PlayerState 
     {
@@ -24,10 +24,9 @@ public class GameManager : MonoBehaviour
         story, free
     }
 
-    [HideInInspector]
-    public bool blackFade;
+    public static int currentLevel, abilityStateStory;
+    private static int secretFoundCount;
 
-    private int currentLevel;
 
     private void Awake()
     {
@@ -35,18 +34,60 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeGame();
+            //SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
-        //SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     //{
-    //    Debug.Log("loaded");
+
     //}
+
+    #region Initialize
+    private void InitializeGame()
+    {
+        InitializePlayerPrefs();
+    }
+
+    private void InitializePlayerPrefs()
+    {
+        if (PlayerPrefs.HasKey("loginOnce"))
+            return;
+        else
+        {
+            PlayerPrefs.SetInt("loginOnce", 1);
+            PlayerPrefs.SetInt("beatGame", 0);
+            PlayerPrefs.SetInt("secretFoundCount", 1);
+            PlayerPrefs.SetFloat("masterVolume", 5);
+            PlayerPrefs.SetFloat("musicVolume", 5);
+            PlayerPrefs.SetFloat("sfxVolume", 5);
+        }
+    }
+    #endregion
+
+    #region Ability State
+    public static void IncreaseAbilityState()
+    {
+        secretFoundCount++;
+        PlayerPrefs.SetInt("secretFoundCount", secretFoundCount);
+    }
+
+    public static void ResetAbilityState()
+    {
+        secretFoundCount = 1;
+        PlayerPrefs.SetInt("secretFoundCount", secretFoundCount);
+    }
+
+    public static int GetAbilityState()
+    {
+        return secretFoundCount;
+    }
+    #endregion
 
     #region Change Player Action
     public void SetActionPlay()
@@ -87,9 +128,21 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    public bool LoadNextNextScene()
+    public bool LoadNextNextNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        return true;
+    }
+
+    public bool LoadGoodFinalScene()
+    {
+        SceneManager.LoadScene(14);
+        return true;
+    }
+
+    public bool LoadBadFinalScene()
+    {
+        SceneManager.LoadScene(13);
         return true;
     }
     #endregion

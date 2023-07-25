@@ -9,7 +9,11 @@ public class Dialogue : MonoBehaviour
     public static Dialogue Instance;
 
     [Header("Load Settings")]
+    public bool playDialogueOnLoad;
+    public float secondsToWaitBeforePlay;
     public bool loadLevelAfterDialogue;
+    public bool loadFinalScene;
+    public bool menuAfterDialogue;
     public bool blackFadeAfter;
 
     [Header("Dialogue Settings")]
@@ -44,10 +48,7 @@ public class Dialogue : MonoBehaviour
     {
         inputHandler = GameObject.FindGameObjectWithTag("Input").GetComponent<PlayerInputHandler>();
 
-        if (GameManager.Instance.gameState == GameManager.GameState.story)
-            InitializeDialgue();
-        else
-            GameManager.Instance.SetActionPlay();
+        StartCoroutine(WaitToSetAction());
     }
 
     private void Update()
@@ -58,17 +59,27 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    private void InitializeDialgue()
+    private IEnumerator WaitToSetAction()
+    {
+        while (Transition.Instance.GetFadeEnd() == false)
+            yield return null;
+        if (playDialogueOnLoad && GameManager.gameState == GameManager.GameState.story)
+            InitializeDialgue();
+        else
+            GameManager.Instance.SetActionPlay();
+        Transition.Instance.ResetFadeEnd();
+    }
+
+    public void InitializeDialgue()
     {
         currentLines = lines;
         currentPortraits = portraits;
-        GameManager.Instance.SetActionDialogue();
         StartCoroutine(WaitToStart());
     }
 
     private IEnumerator WaitToStart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(secondsToWaitBeforePlay);
         StartDialogueSequence();
     }
 
@@ -153,11 +164,34 @@ public class Dialogue : MonoBehaviour
         {
             if (blackFadeAfter)
             {
-                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextNextScene);
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadNextNextNextScene);
             }
             else
             {
                 Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextScene);
+            }
+        }
+        else if (loadFinalScene)
+        {
+            if (GameManager.abilityStateStory > 2)
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadGoodFinalScene);
+            }
+            else
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadBadFinalScene);
+            }
+        }
+        else if (menuAfterDialogue)
+        {
+            PlayerPrefs.SetInt("beatGame", 1);
+            if (blackFadeAfter)
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadMainMenu);
+            }
+            else
+            {
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
             }
         }
         else

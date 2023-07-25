@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2bc76d96248e0b48ad2f706a1556f06, type: 3}
-  m_Name: playerData 3
+  m_Name: playerData cheater
   m_EditorClassIdentifier: 
   walkSpeed: 8
   defaultGravity: 5
   jumpStrength: 12
   maxJumpTime: 0.3
-  amountOfJumps: 2
+  amountOfJumps: 5
   bounceStrengh: 25
   dashSpeed: 20
   dashTime: 0.3
-  amountOfDashes: 1
+  amountOfDashes: 5
   dashCD: 0.2
   collisionCheckRadius: 0.2
   ground:
