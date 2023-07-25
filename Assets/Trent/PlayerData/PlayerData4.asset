@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: PlayerData4
   m_EditorClassIdentifier: 
   walkSpeed: 8
+  defaultGravity: 0
   jumpStrength: 12
   maxJumpTime: 0.3
   amountOfJumps: 2
+  bounceStrengh: 0
   dashSpeed: 20
   dashTime: 0.5
   amountOfDashes: 1
@@ -24,4 +26,25 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
+  bounce:
+    serializedVersion: 2
+    m_Bits: 128
+  checkPoint:
+    serializedVersion: 2
+    m_Bits: 1024
+  hazard:
+    serializedVersion: 2
+    m_Bits: 512
+  camChange:
+    serializedVersion: 2
+    m_Bits: 256
+  sceneChange:
+    serializedVersion: 2
+    m_Bits: 2048
+  startDialogue:
+    serializedVersion: 2
+    m_Bits: 4096
   groundCheckRadius: 0.2
+  walkClip: {fileID: 0}
+  jumpClip: {fileID: 0}
+  doubleJumpClip: {fileID: 0}
