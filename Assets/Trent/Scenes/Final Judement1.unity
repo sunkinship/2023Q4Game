@@ -1143,8 +1143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playDialogueOnLoad: 1
   secondsToWaitBeforePlay: 4
-  loadLevelAfterDialogue: 0
-  menuAfterDialogue: 1
+  loadLevel: 0
+  loadFinalScene: 0
+  loadMenu: 1
   blackFadeAfter: 1
   lines:
   - ....

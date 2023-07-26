@@ -8,12 +8,14 @@ public class Dialogue : MonoBehaviour
 {
     public static Dialogue Instance;
 
-    [Header("Load Settings")]
+    [Header("On Load Settings")]
     public bool playDialogueOnLoad;
     public float secondsToWaitBeforePlay;
-    public bool loadLevelAfterDialogue;
+
+    [Header("Load After Settings")]
+    public bool loadLevel;
     public bool loadFinalScene;
-    public bool menuAfterDialogue;
+    public bool loadMenu;
     public bool blackFadeAfter;
 
     [Header("Dialogue Settings")]
@@ -160,7 +162,7 @@ public class Dialogue : MonoBehaviour
         inDialogue = false;
         dialogueBox.SetActive(false); 
         StopTalkVoiceAndAni(currentLines[lineIndex][0]);
-        if (loadLevelAfterDialogue)
+        if (loadLevel)
         {
             if (blackFadeAfter)
             {
@@ -182,7 +184,7 @@ public class Dialogue : MonoBehaviour
                 Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadBadFinalScene);
             }
         }
-        else if (menuAfterDialogue)
+        else if (loadMenu)
         {
             PlayerPrefs.SetInt("beatGame", 1);
             if (blackFadeAfter)

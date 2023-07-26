@@ -135,7 +135,7 @@ public class MainMenuController : UIController
     private bool LoadNewGame()
     {
         inputHandler.UseInteractInput();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
         return true;
     }
 
