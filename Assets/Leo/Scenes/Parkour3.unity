@@ -90814,8 +90814,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playDialogueOnLoad: 1
   secondsToWaitBeforePlay: 0
-  loadLevelAfterDialogue: 0
-  menuAfterDialogue: 0
+  loadLevel: 0
+  loadFinalScene: 0
+  loadMenu: 0
   blackFadeAfter: 0
   lines:
   - 0How did I end up here?
@@ -91112,7 +91113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1864489235
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -128,6 +128,12 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    public bool LoadNextNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        return true;
+    }
+
     public bool LoadNextNextNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);

@@ -22,7 +22,7 @@ public class SceneTransition : MonoBehaviour
             else
             {
                 IncreaseAbilityValues();
-                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextNextNextScene);
+                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextNextScene);
             }
         }
         else
