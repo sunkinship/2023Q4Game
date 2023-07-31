@@ -14768,13 +14768,15 @@ MonoBehaviour:
   loadMenu: 0
   blackFadeAfter: 0
   lines:
-  - .Huh?
-  - .What happened?
-  - .Agh... My head...
-  - ....
-  - ....
-  - .Woah.
-  - .What is this place?
+  - .You now have the ability to double jump!
+  - .With one big flap of  your wings, you'll be able to reach new heights!
+  - .You can activate the double jump by pressing the jump button again while mid-air.
+  - .If only those wings let you fly...
+  - .Imagine how much better that would be.
+  - .What a shame.
+  - '0... '
+  - .Anyways...
+  - .Try your newfound power out!
   lines2:
   - ....
   - 0AHHHHHHHHH!
@@ -14787,13 +14789,15 @@ MonoBehaviour:
   - 1You'll find out soon enough...
   - 1There's no escape for scum like you.
   portraits:
-  - {fileID: 21300000, guid: b81b5b58985af874697e4fac44b303b8, type: 3}
-  - {fileID: 21300000, guid: b81b5b58985af874697e4fac44b303b8, type: 3}
-  - {fileID: 21300000, guid: 1f40a5f7508974f4ca745a8bff4f88fd, type: 3}
-  - {fileID: 21300000, guid: bc60e1570359a7146a6b94417787a586, type: 3}
-  - {fileID: 21300000, guid: 17d9071120da19f498fb1007d959f37f, type: 3}
-  - {fileID: 21300000, guid: 9321abcb242050a4a9e9cefe6f7f9412, type: 3}
-  - {fileID: 21300000, guid: 9321abcb242050a4a9e9cefe6f7f9412, type: 3}
+  - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+  - {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
+  - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+  - {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
+  - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+  - {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
+  - {fileID: 21300000, guid: aad8ac8aa752a3747976cdb1279a8da2, type: 3}
+  - {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
+  - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
   portraits2:
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   - {fileID: 21300000, guid: cac5d9eaecebb9b4c9172fa77b0e1f20, type: 3}
