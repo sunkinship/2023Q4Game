@@ -8,10 +8,6 @@ public class UIController : MonoBehaviour
     [HideInInspector]
     protected PlayerInputHandler inputHandler;
 
-    [Header("Button Indicator")]
-    [SerializeField]
-    protected GameObject indicators;
-
     [Header("General Menus")]
     [SerializeField] protected GameObject menu;
     [SerializeField] protected GameObject options;

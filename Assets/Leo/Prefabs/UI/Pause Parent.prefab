@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 4532615497078930568}
   - component: {fileID: 4532615497078930567}
   m_Layer: 5
-  m_Name: 'Pause Canvas '
+  m_Name: Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1166,7 +1166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3d6fe60adf6544e98662a8345f0df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicators: {fileID: 6406997767132614989}
   menu: {fileID: 4532615497560769535}
   options: {fileID: 4532615498274096797}
   menuFirstSelect: {fileID: 4532615498209098933}
@@ -3820,11 +3819,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8708639258645b4181b3f7c1cb77217, type: 3}
---- !u!1 &6406997767132614989 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7353585725110264208, guid: f8708639258645b4181b3f7c1cb77217, type: 3}
-  m_PrefabInstance: {fileID: 4532615496700113117}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6406997767132614988 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7353585725110264209, guid: f8708639258645b4181b3f7c1cb77217, type: 3}

@@ -26636,7 +26636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037170455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 86.97374, y: -6.7217875, z: 0}
+  m_LocalPosition: {x: 86.97374, y: -6.67, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 378612220}
@@ -27355,6 +27355,7 @@ MonoBehaviour:
   playerVoices: {fileID: 8300000, guid: 50b1a147d0a587947b7368b769ccc7ff, type: 3}
   npcVoices: {fileID: 8300000, guid: c5fb8cfa602955e41b2b26a9fda9cc48, type: 3}
   textSpeed: 0.05
+  voiceLength: 0.13
   playerAnimator: {fileID: 125385961}
   npcAnimator: {fileID: 1037170458}
   dialogueBox: {fileID: 1592180838}

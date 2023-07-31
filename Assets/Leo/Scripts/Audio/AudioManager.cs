@@ -63,6 +63,47 @@ public class AudioManager : MonoBehaviour
     public void ResumeMusic() => musicSource.Play();
     #endregion
 
+    #region Transition
+    public void FadeOutMusic()
+    {
+        StartCoroutine(WaitToFadeOut());   
+    }
+
+    private IEnumerator WaitToFadeOut()
+    {
+        float elapsedTime = 0f;
+        float percentageComplete;
+        float startVolume = musicSource.volume;
+        while (musicSource.volume > 0f)
+        {
+            elapsedTime += Time.deltaTime;
+            percentageComplete = elapsedTime / 2;
+            musicSource.volume = Mathf.Lerp(startVolume, 0f, percentageComplete);
+            yield return null;
+        }
+    }
+
+    //private void FadeInMusic()
+    //{
+    //    musicSource.volume = 0;
+    //    StartCoroutine(WaitToFadeIn());
+    //}
+
+    //private IEnumerator WaitToFadeIn()
+    //{
+    //    float elapsedTime = 0f;
+    //    float percentageComplete;
+    //    float targetVolume = PlayerPrefs.GetFloat("musicVolume") * 0.1f;
+    //    while (musicSource.volume < targetVolume)
+    //    {
+    //        elapsedTime += Time.deltaTime;
+    //        percentageComplete = elapsedTime / 1;
+    //        musicSource.volume = Mathf.Lerp(0, targetVolume, percentageComplete);
+    //        yield return null;
+    //    }
+    //}
+    #endregion
+
     #region Change Volume
     public void ChangeMasterVolume(float volume)
     {

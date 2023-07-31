@@ -263,6 +263,17 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1a05862d-cea9-43c3-88b8-0038b62cb60c"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""77021a4a-420f-4555-aa77-c81dec6339c5"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -626,6 +637,17 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1a5e5d68-bc5d-4d16-80fd-34d0a9433e73"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""2898bda7-d94f-4a17-9917-b66b47106485"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -645,6 +667,15 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""769c3249-5b76-4210-8770-14d17a5774b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a31f5ba-e53e-4211-8844-3dd41e7d6918"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -695,6 +726,39 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""161fe03c-62d5-4344-8dd3-50f8dadcaa93"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""125bdf6d-903e-4db1-a9de-7225383ceb54"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aef990b6-ce75-4c6e-953f-921afe4668e3"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -717,6 +781,7 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_Interact = m_Dialogue.FindAction("Interact", throwIfNotFound: true);
+        m_Dialogue_Pause = m_Dialogue.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -899,11 +964,13 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Dialogue;
     private IDialogueActions m_DialogueActionsCallbackInterface;
     private readonly InputAction m_Dialogue_Interact;
+    private readonly InputAction m_Dialogue_Pause;
     public struct DialogueActions
     {
         private @PlayerBinds m_Wrapper;
         public DialogueActions(@PlayerBinds wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Dialogue_Interact;
+        public InputAction @Pause => m_Wrapper.m_Dialogue_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -916,6 +983,9 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_DialogueActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_DialogueActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_DialogueActionsCallbackInterface.OnInteract;
+                @Pause.started -= m_Wrapper.m_DialogueActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_DialogueActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_DialogueActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_DialogueActionsCallbackInterface = instance;
             if (instance != null)
@@ -923,6 +993,9 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -945,5 +1018,6 @@ public partial class @PlayerBinds : IInputActionCollection2, IDisposable
     public interface IDialogueActions
     {
         void OnInteract(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

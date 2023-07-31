@@ -22,7 +22,7 @@ public class Dialogue : MonoBehaviour
     public string[] lines, lines2;
     public Sprite[] portraits, portraits2;
     public AudioClip playerVoices, npcVoices;
-    public float textSpeed;
+    public float textSpeed, voiceLength;
 
     [Header("Animator References")]
     public Animator playerAnimator;
@@ -38,7 +38,8 @@ public class Dialogue : MonoBehaviour
     private string[] currentLines;
     private Sprite[] currentPortraits;
     private int lineIndex;
-    private bool inDialogue, isWriting;
+    private bool inDialogue;
+    private bool isWriting;
 
 
     private void Awake()
@@ -235,10 +236,9 @@ public class Dialogue : MonoBehaviour
     {
         while (isWriting)
         {
-            float clipLength = voiceClip.length;
             float startTime = Time.time;
             AudioManager.Instance.PlaySFX(voiceClip);
-            while (Time.time <= startTime + clipLength)
+            while (Time.time <= startTime + voiceLength)
                 yield return null;
         }
         yield break;

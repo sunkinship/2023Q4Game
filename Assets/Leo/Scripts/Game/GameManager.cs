@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
         story, free
     }
 
-    public static int currentLevel, abilityStateStory;
+    public static int currentLevel;
+    public static int abilityStateStory = 1;
     private static int secretFoundCount;
 
 

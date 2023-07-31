@@ -958,7 +958,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 50b1a147d0a587947b7368b769ccc7ff, type: 3}
     - target: {fileID: 3909592375795846378, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: DialogueCanvas1
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375795846378, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: m_IsActive
@@ -1147,6 +1147,7 @@ MonoBehaviour:
   playerVoices: {fileID: 8300000, guid: 50b1a147d0a587947b7368b769ccc7ff, type: 3}
   npcVoices: {fileID: 8300000, guid: c5fb8cfa602955e41b2b26a9fda9cc48, type: 3}
   textSpeed: 0.05
+  voiceLength: 0.1
   playerAnimator: {fileID: 143700080}
   npcAnimator: {fileID: 0}
   dialogueBox: {fileID: 418054895}
@@ -10750,6 +10751,81 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1147307113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147307116}
+  - component: {fileID: 1147307115}
+  - component: {fileID: 1147307114}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1147307114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147307113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: d57b0234c26e6a142a0f728bc0b793ca, type: 3}
+  m_PointAction: {fileID: 0}
+  m_MoveAction: {fileID: 3783771372686118242, guid: d57b0234c26e6a142a0f728bc0b793ca, type: 3}
+  m_SubmitAction: {fileID: 6842110361612337198, guid: d57b0234c26e6a142a0f728bc0b793ca, type: 3}
+  m_CancelAction: {fileID: -8894233468677477562, guid: d57b0234c26e6a142a0f728bc0b793ca, type: 3}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+--- !u!114 &1147307115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147307113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1147307116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147307113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1344458924
 GameObject:
   m_ObjectHideFlags: 0
@@ -11172,7 +11248,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 50b1a147d0a587947b7368b769ccc7ff, type: 3}
     - target: {fileID: 3909592375795846378, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: m_Name
-      value: Canvas2
+      value: DialogueCanvas1
       objectReference: {fileID: 0}
     - target: {fileID: 3909592375795846378, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: m_IsActive
@@ -11265,7 +11341,7 @@ PrefabInstance:
     - target: {fileID: 3909592375795846383, guid: 471a95fec173819458687f5e04203f40, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 877933184}
     m_RemovedComponents:
     - {fileID: 4341481760820515352, guid: 471a95fec173819458687f5e04203f40, type: 3}
     - {fileID: 3909592375204993732, guid: 471a95fec173819458687f5e04203f40, type: 3}
@@ -11314,8 +11390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cbaafb9b7442042906941aabb06cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playDialogueOnLoad: 0
-  secondsToWaitBeforePlay: 0
+  playDialogueOnLoad: 1
+  secondsToWaitBeforePlay: 2
   loadLevel: 0
   loadFinalScene: 0
   loadMenu: 0
@@ -11361,6 +11437,7 @@ MonoBehaviour:
   playerVoices: {fileID: 8300000, guid: 50b1a147d0a587947b7368b769ccc7ff, type: 3}
   npcVoices: {fileID: 8300000, guid: c5fb8cfa602955e41b2b26a9fda9cc48, type: 3}
   textSpeed: 0.05
+  voiceLength: 0.1
   playerAnimator: {fileID: 143700080}
   npcAnimator: {fileID: 0}
   dialogueBox: {fileID: 1506129008}
