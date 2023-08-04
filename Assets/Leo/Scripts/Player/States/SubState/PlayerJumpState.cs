@@ -34,7 +34,9 @@ public class PlayerJumpState : PlayerMoveState
             return false;
     }
 
-    public void ResetAmountOfJumpsLeft() => amountOfJumpsLeft = playerData.amountOfJumps;
+    public void ResetAmountOfJumpsLeft() => amountOfJumpsLeft = totalJumps;
+
+    public void ResetDoubleJumps() => amountOfJumpsLeft = totalJumps - 1;
 
     public void DecreaseAmountOfJumpsLeft() => amountOfJumpsLeft -= 1;
 
@@ -43,6 +45,11 @@ public class PlayerJumpState : PlayerMoveState
     public int GetAmountOfJumpsLeft()
     {
         return amountOfJumpsLeft;
+    }
+
+    public int GetTotalJumps()
+    {
+        return totalJumps;
     }
 
     public virtual void PlaySound()

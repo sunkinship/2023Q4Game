@@ -11,6 +11,7 @@ public class Dialogue : MonoBehaviour
     [Header("On Load Settings")]
     public bool playDialogueOnLoad;
     public float secondsToWaitBeforePlay;
+    public bool jumpscare;
 
     [Header("Load After Settings")]
     public bool loadLevel;
@@ -32,6 +33,7 @@ public class Dialogue : MonoBehaviour
     public GameObject dialogueBox;
     public TextMeshProUGUI textBox;
     public Image dialoguePortrait;
+    public Animator scareAni;
 
     private PlayerInputHandler inputHandler;
 
@@ -154,7 +156,10 @@ public class Dialogue : MonoBehaviour
         //end dialogue
         else
         {
-            ExitDialogue();
+            if (jumpscare)
+                Jumpscare();
+            else
+                ExitDialogue();
         }
     }
 
@@ -188,20 +193,22 @@ public class Dialogue : MonoBehaviour
         else if (loadMenu)
         {
             PlayerPrefs.SetInt("beatGame", 1);
-            if (blackFadeAfter)
-            {
-                Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadMainMenu);
-            }
-            else
-            {
-                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
-            }
+            Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
         }
         else
         {
             GameManager.Instance.SetActionPlay();
         }
     }
+
+    #region Jumpscare
+    private void Jumpscare()
+    {
+        PlayerPrefs.SetInt("beatGame", 1);
+        scareAni.enabled = true;
+        scareAni.SetTrigger("Scare");
+    }
+    #endregion
 
     #region Audio and Animation
     private void StartTalkVoiceAndAni(char talkerID)

@@ -266,7 +266,7 @@ public class Player : MonoBehaviour
     private IEnumerator WaitToResetDoubleJump()
     {
         yield return new WaitForSeconds(0.2f);
-        JumpState.SetAmountOfJumpsLeft(1); 
+        JumpState.ResetDoubleJumps();
     }
     #endregion
 
@@ -359,7 +359,7 @@ public class Player : MonoBehaviour
     public void DeathTransition()
     {
         HidePlayer();
-        Transition.Instance.TriggerFadeBoth("StartQuickBlack", "EndQuickBlack", Respawn);
+        Transition.Instance.TriggerFadeBothDeath("StartQuickBlack", "EndQuickBlack", Respawn);
     }
     #endregion
 

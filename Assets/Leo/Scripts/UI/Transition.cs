@@ -40,9 +40,18 @@ public class Transition : MonoBehaviour
 
     #region Fade Animation
     public void TriggerFadeBoth(string start, string end, Func<bool> functionToCall)
-    { 
+    {
         DisableInput();
         AudioManager.Instance.FadeOutMusic();
+        ani.SetTrigger(start);
+        fadeStartFinished = false;
+        fadeEndFinished = false;
+        StartCoroutine(WaitForFade(end, functionToCall));
+    }
+
+    public void TriggerFadeBothDeath(string start, string end, Func<bool> functionToCall)
+    { 
+        DisableInput();
         ani.SetTrigger(start);
         fadeStartFinished = false;
         fadeEndFinished = false;

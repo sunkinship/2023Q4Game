@@ -90898,8 +90898,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cbaafb9b7442042906941aabb06cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playDialogueOnLoad: 1
+  playDialogueOnLoad: 0
   secondsToWaitBeforePlay: 0
+  jumpscare: 0
   loadLevel: 0
   loadFinalScene: 0
   loadMenu: 0
@@ -90925,6 +90926,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 1775837516}
   textBox: {fileID: 1775837515}
   dialoguePortrait: {fileID: 1775837514}
+  scareAni: {fileID: 0}
 --- !u!1 &1783161265
 GameObject:
   m_ObjectHideFlags: 0
