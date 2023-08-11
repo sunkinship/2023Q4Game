@@ -20,6 +20,7 @@ public class MainMenuController : UIController
     public GameObject freePlayButton;
     public GameObject level2;
     public GameObject level3;
+    public GameObject level4;
 
     protected override void Start()
     {
@@ -113,6 +114,12 @@ public class MainMenuController : UIController
         Instance.SetGameFree();
         TriggerFade(LoadLevel3);
     }
+
+    public void Level4Button()
+    {
+        Instance.SetGameFree();
+        TriggerFade(LoadLevel4);
+    }
     #endregion
 
     #region Cancel
@@ -160,6 +167,13 @@ public class MainMenuController : UIController
         return true;
     }
 
+    private bool LoadLevel4()
+    {
+        inputHandler.UseInteractInput();
+        SceneManager.LoadScene(15);
+        return true;
+    }
+
     private bool QuitGame()
     {
         Application.Quit();
@@ -189,6 +203,14 @@ public class MainMenuController : UIController
         else if (currentLevel == 3)
         {
             SelectButton(level3);
+        }
+        else if (currentLevel == 3)
+        {
+            SelectButton(level3);
+        }
+        else if (currentLevel == 4)
+        {
+            SelectButton(level4);
         }
     }
     #endregion

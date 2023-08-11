@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     public static int currentLevel;
     public static int abilityStateStory = 1;
-    private static int secretFoundCount;
 
 
     private void Awake()
@@ -63,6 +62,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("loginOnce", 1);
             PlayerPrefs.SetInt("beatGame", 0);
+            PlayerPrefs.SetInt("goodEnd", 0);
             PlayerPrefs.SetInt("secretFoundCount", 1);
             PlayerPrefs.SetFloat("masterVolume", 5);
             PlayerPrefs.SetFloat("musicVolume", 5);
@@ -74,19 +74,17 @@ public class GameManager : MonoBehaviour
     #region Ability State
     public static void IncreaseAbilityState()
     {
-        secretFoundCount++;
-        PlayerPrefs.SetInt("secretFoundCount", secretFoundCount);
+        PlayerPrefs.SetInt("secretFoundCount", GetAbilityState() + 1);
     }
 
     public static void ResetAbilityState()
     {
-        secretFoundCount = 1;
-        PlayerPrefs.SetInt("secretFoundCount", secretFoundCount);
+        PlayerPrefs.SetInt("secretFoundCount", 1);
     }
 
     public static int GetAbilityState()
     {
-        return secretFoundCount;
+        return PlayerPrefs.GetInt("secretFoundCount");
     }
     #endregion
 

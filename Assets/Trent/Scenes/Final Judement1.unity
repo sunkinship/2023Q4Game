@@ -1431,7 +1431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playDialogueOnLoad: 1
-  secondsToWaitBeforePlay: 4
+  secondsToWaitBeforePlay: 3
   jumpscare: 1
   loadLevel: 0
   loadFinalScene: 0

@@ -1101,7 +1101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playDialogueOnLoad: 1
-  secondsToWaitBeforePlay: 2
+  secondsToWaitBeforePlay: 1.5
+  jumpscare: 0
   loadLevel: 0
   loadFinalScene: 0
   loadMenu: 0
@@ -1153,6 +1154,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 418054895}
   textBox: {fileID: 418054894}
   dialoguePortrait: {fileID: 418054893}
+  scareAni: {fileID: 0}
 --- !u!1 &445043641
 GameObject:
   m_ObjectHideFlags: 0
@@ -10504,7 +10506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877933179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 3.5, z: -10}
+  m_LocalPosition: {x: 6, y: 3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11392,6 +11394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playDialogueOnLoad: 1
   secondsToWaitBeforePlay: 2
+  jumpscare: 0
   loadLevel: 0
   loadFinalScene: 0
   loadMenu: 0
@@ -11443,6 +11446,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 1506129008}
   textBox: {fileID: 1506129007}
   dialoguePortrait: {fileID: 1506129006}
+  scareAni: {fileID: 0}
 --- !u!1 &1532477411
 GameObject:
   m_ObjectHideFlags: 0

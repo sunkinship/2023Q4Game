@@ -989,7 +989,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playDialogueOnLoad: 1
-  secondsToWaitBeforePlay: 2
+  secondsToWaitBeforePlay: 1.5
+  jumpscare: 0
   loadLevel: 1
   loadFinalScene: 0
   loadMenu: 0
@@ -1029,6 +1030,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 991581066}
   textBox: {fileID: 991581065}
   dialoguePortrait: {fileID: 991581064}
+  scareAni: {fileID: 0}
 --- !u!1 &1009503986
 GameObject:
   m_ObjectHideFlags: 0

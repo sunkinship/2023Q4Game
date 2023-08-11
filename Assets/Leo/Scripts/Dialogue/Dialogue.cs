@@ -168,6 +168,7 @@ public class Dialogue : MonoBehaviour
         inDialogue = false;
         dialogueBox.SetActive(false); 
         StopTalkVoiceAndAni(currentLines[lineIndex][0]);
+        playerAnimator.SetBool("isTalking", false);
         if (loadLevel)
         {
             if (blackFadeAfter)
@@ -176,7 +177,7 @@ public class Dialogue : MonoBehaviour
             }
             else
             {
-                Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadNextScene);
+                Transition.Instance.TriggerFadeBoth("StartQuickWhite", "EndQuickWhite", GameManager.Instance.LoadNextScene);
             }
         }
         else if (loadFinalScene)
@@ -193,6 +194,7 @@ public class Dialogue : MonoBehaviour
         else if (loadMenu)
         {
             PlayerPrefs.SetInt("beatGame", 1);
+            PlayerPrefs.SetInt("goodEnd", 1);
             Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
         }
         else

@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8301938934594203232, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.67
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8301938934594203232, guid: a4d70a37de8c48c4fa456d30dde8f5e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13852,7 +13852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537220659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 6.5, z: -10}
+  m_LocalPosition: {x: 4.5, y: 6.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14762,7 +14762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playDialogueOnLoad: 1
-  secondsToWaitBeforePlay: 2
+  secondsToWaitBeforePlay: 1.5
+  jumpscare: 0
   loadLevel: 0
   loadFinalScene: 0
   loadMenu: 0
@@ -14818,6 +14819,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 1104440544}
   textBox: {fileID: 1104440543}
   dialoguePortrait: {fileID: 1104440542}
+  scareAni: {fileID: 0}
 --- !u!1 &1282550274
 GameObject:
   m_ObjectHideFlags: 0

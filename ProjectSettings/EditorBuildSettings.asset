@@ -50,5 +50,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Trent/Scenes/Final Judgement2.unity
     guid: b810fd53454adb84683d7417cd1ac4e5
+  - enabled: 1
+    path: Assets/Leo/Scenes/Parkour4.unity
+    guid: 18c82c99153144f4c8da2e8f4ee7d8ad
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 330c9330e92469b4d843bb4cb56f0ae3, type: 2}

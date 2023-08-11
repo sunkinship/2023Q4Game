@@ -431,7 +431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playDialogueOnLoad: 1
-  secondsToWaitBeforePlay: 2
+  secondsToWaitBeforePlay: 1.5
+  jumpscare: 0
   loadLevel: 1
   loadFinalScene: 0
   loadMenu: 0
@@ -485,6 +486,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 30998254}
   textBox: {fileID: 30998251}
   dialoguePortrait: {fileID: 30998253}
+  scareAni: {fileID: 0}
 --- !u!114 &30998253 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3909592376647890191, guid: 471a95fec173819458687f5e04203f40, type: 3}

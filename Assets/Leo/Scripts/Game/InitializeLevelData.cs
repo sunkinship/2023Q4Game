@@ -10,15 +10,22 @@ public class InitializeLevelData : MonoBehaviour
 
     public Player player;
 
+    public bool finalLevel;
+
     private void Awake()
     {
         currentLevel = level;
+
+        if (finalLevel)
+            return; 
+
         if (gameState == GameState.story)
         {
             player.playerData = Instance.playerData[abilityStateStory];
         }
         else
         {
+            print(GetAbilityState());
             if (level == 1)
                 player.playerData = Instance.playerData[level];
             else if (level == 2)

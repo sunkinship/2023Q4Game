@@ -8,6 +8,11 @@ public class ChangeCameraBounds : MonoBehaviour
 
     [SerializeField] protected Vector2 newMin, newMax;
 
+    public ChangeBackground background;
+
+    public bool changeBG;
+
+
     private void Start()
     {
         cam = Camera.main.GetComponent<CameraScript>();
@@ -17,5 +22,8 @@ public class ChangeCameraBounds : MonoBehaviour
     {
         cam.minPos = newMin;
         cam.maxPos = newMax;
+
+        if (changeBG)
+            background.ChangeBG();
     }
 }
