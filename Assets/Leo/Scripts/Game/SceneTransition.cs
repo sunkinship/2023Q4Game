@@ -17,6 +17,7 @@ public class SceneTransition : MonoBehaviour
         {
             if (GameManager.gameState == GameManager.GameState.free)
             {
+                SetTime();
                 Transition.Instance.TriggerFadeBoth("StartLongWhite", "EndLongWhite", GameManager.Instance.LoadMainMenu);
             }
             else
@@ -29,6 +30,7 @@ public class SceneTransition : MonoBehaviour
         {
             if (GameManager.gameState == GameManager.GameState.free)
             {
+                SetTime();
                 Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", GameManager.Instance.LoadMainMenu);
             }
             else
@@ -63,4 +65,6 @@ public class SceneTransition : MonoBehaviour
             GameManager.IncreaseAbilityState();
         }
     }
+
+    private void SetTime() => TimerManager.Instance.SetFinalTime();
 }

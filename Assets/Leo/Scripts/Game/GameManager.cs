@@ -151,4 +151,22 @@ public class GameManager : MonoBehaviour
         return true;
     }
     #endregion
+
+    #region Speed Run Times
+    public void SetLevel1Time(int seconds) => PlayerPrefs.SetInt("level1Time", seconds);
+
+    public void SetLevel2Time(int seconds) => PlayerPrefs.SetInt("level2Time", seconds);
+
+    public void SetLevel3Time(int seconds) => PlayerPrefs.SetInt("level3Time", seconds);
+
+    public void SetLevel4Time(int seconds) => PlayerPrefs.SetInt("level4Time", seconds);
+
+    public int GetLevel1Time() => PlayerPrefs.GetInt("level1Time");
+
+    public int GetLevel2Time() => PlayerPrefs.GetInt("level2Time");
+
+    public int GetLevel3Time() => PlayerPrefs.GetInt("level3Time");
+
+    public int GetLevel4Time() => PlayerPrefs.GetInt("level4Time");
+    #endregion
 }

@@ -5,8 +5,7 @@ using static GameManager;
 
 public class InitializeLevelData : MonoBehaviour
 {
-    [SerializeField]
-    private int level = 0;
+    public int level = 0;
 
     public Player player;
 
@@ -17,7 +16,7 @@ public class InitializeLevelData : MonoBehaviour
         currentLevel = level;
 
         if (finalLevel)
-            return; 
+            Destroy(gameObject); 
 
         if (gameState == GameState.story)
         {
@@ -25,7 +24,6 @@ public class InitializeLevelData : MonoBehaviour
         }
         else
         {
-            print(GetAbilityState());
             if (level == 1)
                 player.playerData = Instance.playerData[level];
             else if (level == 2)

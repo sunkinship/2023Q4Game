@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 using static GameManager;
 
 public class MainMenuController : UIController
@@ -22,9 +23,16 @@ public class MainMenuController : UIController
     public GameObject level3;
     public GameObject level4;
 
+    [Header("Level Times")]
+    public TextMeshProUGUI level1Time;
+    public TextMeshProUGUI level2Time;
+    public TextMeshProUGUI level3Time;
+    public TextMeshProUGUI level4Time;
+
     protected override void Start()
     {
         base.Start();
+        SetTimes();
         if (gameState == GameState.free)
         {
             JumpToLevelSeclect();
@@ -178,6 +186,20 @@ public class MainMenuController : UIController
     {
         Application.Quit();
         return true;
+    }
+    #endregion
+
+    #region Speed Run Times
+    private void SetTimes()
+    {
+        if (PlayerPrefs.HasKey("level1Time"))
+            level1Time.text = string.Format("TIME: {0}:{1:00}", (PlayerPrefs.GetInt("level1Time") / 60), (PlayerPrefs.GetInt("level1Time") % 60));
+        if (PlayerPrefs.HasKey("level2Time"))
+            level2Time.text = string.Format("TIME: {0}:{1:00}", (PlayerPrefs.GetInt("level2Time") / 60), (PlayerPrefs.GetInt("level2Time") % 60));
+        if (PlayerPrefs.HasKey("level3Time"))
+            level3Time.text = string.Format("TIME: {0}:{1:00}", (PlayerPrefs.GetInt("level3Time") / 60), (PlayerPrefs.GetInt("level3Time") % 60));
+        if (PlayerPrefs.HasKey("level4Time"))
+            level4Time.text = string.Format("TIME: {0}:{1:00}", (PlayerPrefs.GetInt("level4Time") / 60), (PlayerPrefs.GetInt("level4Time") % 60));
     }
     #endregion
 
