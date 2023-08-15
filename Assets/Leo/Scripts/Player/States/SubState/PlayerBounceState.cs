@@ -11,7 +11,7 @@ public class PlayerBounceState : PlayerMoveState
     public override void Enter()
     {
         base.Enter();
-        player.Bounce(player.InputHandler.JumpInput);
+        player.Bounce(player.InputHandler.JumpHoldInput);
         stateMachine.ChangeState(player.InAirState);
     }
 

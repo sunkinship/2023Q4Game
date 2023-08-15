@@ -242,10 +242,10 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapCircle(feetPos.position, playerData.groundCheckRadius, playerData.bounce);
     }
 
-    public void Bounce(bool jumpInput)
+    public void Bounce(bool jumpHoldInput)
     {
         DashState.ResetAmountOfDashesLeft();
-        if (jumpInput == false)
+        if (jumpHoldInput == false)
         {
             PlayerRb2.velocity = new Vector2(CurrentVelocity.x, playerData.bounceStrengh);
             CurrentVelocity = PlayerRb2.velocity;

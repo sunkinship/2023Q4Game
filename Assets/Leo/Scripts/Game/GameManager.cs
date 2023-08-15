@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     #region Initialize
     private void InitializeGame()
     {
+        Cursor.visible = false;
         InitializePlayerPrefs();
     }
 
