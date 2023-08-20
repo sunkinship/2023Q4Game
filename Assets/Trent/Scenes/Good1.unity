@@ -480,8 +480,21 @@ MonoBehaviour:
   - .It's going to be hard but you need to believe in yourself.
   - 0Ok I think I understand.
   - 0Thanks good spirit!
-  - .I hope to see you again soon.
-  - .Believe in yourself.
+  - .Before you go...
+  - .I must bestow you a parting gift.
+  - .Close your eyes.
+  - 0Why?
+  - .Just close your eyes.
+  - 0Ok...
+  - ...
+  - ...
+  - ...
+  - 0Woah!
+  - 0What did you do to me?
+  - .You are now quicker than lightning.
+  - .You can phase through any obstacle in your path.
+  - .You now have the ability to dash.
+  - .Let's try it out shall we?
   lines2: []
   portraits:
   - {fileID: 21300000, guid: e72089a86ab521e43a60bee07f898533, type: 3}
@@ -511,6 +524,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 09ac7c4d5b8f38c409f6129d5a5925ee, type: 3}
   - {fileID: 21300000, guid: 09ac7c4d5b8f38c409f6129d5a5925ee, type: 3}
   - {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
+  - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+  - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+  - {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
+  - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
+  - {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
+  - {fileID: 21300000, guid: 9d43b8947fa450548805be4b1c282b6a, type: 3}
+  - {fileID: 21300000, guid: 2506413bc3e6c8142a2a3fcd013ce850, type: 3}
+  - {fileID: 21300000, guid: 812f104d43f863540ab062a36abb0df7, type: 3}
+  - {fileID: 21300000, guid: fe3763b282680c34bb8c8809481dea96, type: 3}
+  - {fileID: 21300000, guid: fe3763b282680c34bb8c8809481dea96, type: 3}
+  - {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
+  - {fileID: 21300000, guid: b9563426bd6f28440aed7086d8eae83f, type: 3}
+  - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
   - {fileID: 21300000, guid: 7a1e89567d00d9a4e9dccb43568284d9, type: 3}
   portraits2: []
   playerVoices: {fileID: 8300000, guid: 50b1a147d0a587947b7368b769ccc7ff, type: 3}

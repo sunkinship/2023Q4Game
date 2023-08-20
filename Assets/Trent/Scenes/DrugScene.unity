@@ -653,27 +653,29 @@ MonoBehaviour:
   blackFadeAfter: 1
   lines:
   - .!
-  - 1Took you long enough...
-  - 1You can't let anything go can you?
-  - 1And you wonder why everyone hates you?
-  - ....
-  - 1You've already gambled your life away.
-  - 1You have nothing else to bet on.
+  - 1Ah.
+  - 1Who could've guessed you'd be back so soon?
+  - 1I guess your just begging for it to end aren't you?
   - 0Please stop!
+  - 1HAHAHAHA!
+  - 1YOUR SO PATHETIC!
+  - 1NO MATTER HOW MANY TIMES YOU SCREW EVERYTHING UP,
+  - 1YOU ALWAYS COME BACK TO MAKE THINGS WORSE!
   - ....
-  - 1I think it's time you meet your fate.
-  - 1Your final judgement.
+  - 1How about we get things over with shall we?
+  - 1Your final judgement awaits!
   lines2: []
   portraits:
   - {fileID: 21300000, guid: 8b8a8a2b27c0fb041a8b54cc88cb7426, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
-  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 2798f9b3ed61edf4083ce8c11af7e8d5, type: 3}
+  - {fileID: 21300000, guid: 7343f581c02556c4d89a75350003372f, type: 3}
+  - {fileID: 21300000, guid: 92002a4ef973b36418e90e5e9e3d7ae3, type: 3}
+  - {fileID: 21300000, guid: 61603cad472159b498ca20b4bb325ef8, type: 3}
+  - {fileID: 21300000, guid: 61603cad472159b498ca20b4bb325ef8, type: 3}
+  - {fileID: 21300000, guid: 61603cad472159b498ca20b4bb325ef8, type: 3}
   - {fileID: 21300000, guid: b7b3f107a562dc149a6398a026ab8444, type: 3}
-  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
-  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
-  - {fileID: 21300000, guid: 7343f581c02556c4d89a75350003372f, type: 3}
-  - {fileID: 21300000, guid: 7343f581c02556c4d89a75350003372f, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   - {fileID: 21300000, guid: 2798f9b3ed61edf4083ce8c11af7e8d5, type: 3}
   portraits2: []

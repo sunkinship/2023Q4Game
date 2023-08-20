@@ -1446,7 +1446,21 @@ MonoBehaviour:
   - 1Should've known you couldn't piece things together.
   - 1I overestimated you.
   - 1Don't play stupid, you know exactly why you're here.
-  - 1Have a seat.
+  - 0This can't be.
+  - 1You remember this place all too well.
+  - 1It's like a second home to you.
+  - 0Please don't remind me of this place.
+  - 1It's too late.
+  - 1Your already being judged as we speak.
+  - 0Judged?
+  - 1Yes.
+  - 1Soon will come your,
+  - 1Final Judgement!
+  - 1Your going to relive all of your bad habits.
+  - 0I don't want to!
+  - 1Hahaha!
+  - 1We both know all too well...
+  - 1You won't be able to resist.
   lines2: []
   portraits:
   - {fileID: 21300000, guid: 4fbe171187be91341b471d2f4f9de1e2, type: 3}
@@ -1459,6 +1473,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d9d89b44b559e6644a8f9dfbbe8c303a, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: e72089a86ab521e43a60bee07f898533, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 5eb43d1207a6a0f44b928a1b279bac6f, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 5eb43d1207a6a0f44b928a1b279bac6f, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 92002a4ef973b36418e90e5e9e3d7ae3, type: 3}
+  - {fileID: 21300000, guid: 92002a4ef973b36418e90e5e9e3d7ae3, type: 3}
+  - {fileID: 21300000, guid: b7b3f107a562dc149a6398a026ab8444, type: 3}
+  - {fileID: 21300000, guid: 92002a4ef973b36418e90e5e9e3d7ae3, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   - {fileID: 21300000, guid: 2798f9b3ed61edf4083ce8c11af7e8d5, type: 3}
   portraits2: []

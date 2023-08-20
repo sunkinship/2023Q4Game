@@ -998,28 +998,26 @@ MonoBehaviour:
   lines:
   - .!
   - 1Took you long enough...
-  - 1You can't let anything go can you?
-  - 1And you wonder why everyone hates you?
+  - 1You can't resist the urge to gamble your life away.
+  - 1Leaving everything up to chance.
+  - 1Your friends,
+  - 1Family,
+  - 1You've ruined everything from gambling.
+  - 1Yet you keep coming back.
   - ....
-  - 1You've already gambled your life away.
-  - 1You have nothing else to bet on.
-  - 0Please stop!
-  - ....
-  - 1I think it's time you meet your fate.
-  - 1Your final judgement.
+  - 1You truly are hopeless.
   lines2: []
   portraits:
-  - {fileID: 21300000, guid: 8b8a8a2b27c0fb041a8b54cc88cb7426, type: 3}
+  - {fileID: 21300000, guid: e72089a86ab521e43a60bee07f898533, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
-  - {fileID: 21300000, guid: b7b3f107a562dc149a6398a026ab8444, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
-  - {fileID: 21300000, guid: 7343f581c02556c4d89a75350003372f, type: 3}
-  - {fileID: 21300000, guid: 7343f581c02556c4d89a75350003372f, type: 3}
   - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
-  - {fileID: 21300000, guid: 2798f9b3ed61edf4083ce8c11af7e8d5, type: 3}
+  - {fileID: 21300000, guid: 70a5648a8d882c84c9b230c6303217a6, type: 3}
+  - {fileID: 21300000, guid: 5eb43d1207a6a0f44b928a1b279bac6f, type: 3}
+  - {fileID: 21300000, guid: 92002a4ef973b36418e90e5e9e3d7ae3, type: 3}
   portraits2: []
   playerVoices: {fileID: 8300000, guid: 50b1a147d0a587947b7368b769ccc7ff, type: 3}
   npcVoices: {fileID: 8300000, guid: c5fb8cfa602955e41b2b26a9fda9cc48, type: 3}
