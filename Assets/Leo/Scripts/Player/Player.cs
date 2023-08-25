@@ -84,8 +84,8 @@ public class Player : MonoBehaviour
         DashState = new PlayerDashState(this, StateMachine, playerData, "Dash");
         LandState = new PlayerLandState(this, StateMachine, playerData, "Land");
         FinishDashState = new PlayerFinishDashState(this, StateMachine, playerData, "Finish Dash");
-        BounceState = new PlayerBounceState(this, StateMachine, playerData, "Jump");
-        DeathState = new PlayerDeathState(this, StateMachine, playerData, "Death");
+        BounceState = new PlayerBounceState(this, StateMachine, playerData, "Jump", playerData.bounceClip);
+        DeathState = new PlayerDeathState(this, StateMachine, playerData, "Death", playerData.deathClip);
 
         PlayerRb2 = GetComponent<Rigidbody2D>();
         PlayerCollider = GetComponent<Collider2D>();

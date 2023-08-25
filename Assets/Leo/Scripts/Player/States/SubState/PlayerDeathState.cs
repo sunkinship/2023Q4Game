@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlayerDeathState : PlayerAnimState
 {
-    public PlayerDeathState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    protected AudioClip deathClip;
+
+    public PlayerDeathState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName, AudioClip deathClip) : base(player, stateMachine, playerData, animBoolName)
     {
+        this.deathClip = deathClip;
     }
 
     public override void Enter()
     {
         base.Enter();
+
+        PlaySound();
         player.cameraScript.DisableCameraFollow();
         player.transform.SetParent(null);
         player.DisableCollision();
@@ -31,5 +36,10 @@ public class PlayerDeathState : PlayerAnimState
             player.DeathTransition();
             stateMachine.ChangeState(player.IdleState);
         }
+    }
+
+    public virtual void PlaySound()
+    {
+        AudioManager.Instance.PlaySFX(deathClip);
     }
 }

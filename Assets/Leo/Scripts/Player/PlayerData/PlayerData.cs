@@ -36,4 +36,6 @@ public class PlayerData : ScriptableObject
     public AudioClip walkClip;
     public AudioClip jumpClip;
     public AudioClip doubleJumpClip;
+    public AudioClip bounceClip;
+    public AudioClip deathClip;
 }

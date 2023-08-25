@@ -46,5 +46,7 @@ MonoBehaviour:
     m_Bits: 4096
   groundCheckRadius: 0.34
   walkClip: {fileID: 8300000, guid: bb4a36f98f888054195ebe69b0fc3d96, type: 3}
-  jumpClip: {fileID: 8300000, guid: f668290ba0d0b474a870d58d91f6f053, type: 3}
+  jumpClip: {fileID: 8300000, guid: fa88514006a1c4e459dd0730f255908d, type: 3}
   doubleJumpClip: {fileID: 8300000, guid: bd187e59bfa22f2408d099ae48389b63, type: 3}
+  bounceClip: {fileID: 8300000, guid: 7d6784f7a6a61554280fa569db68ea4a, type: 3}
+  deathClip: {fileID: 8300000, guid: 4846850f1b129954b96f7e8cb07adc97, type: 3}
