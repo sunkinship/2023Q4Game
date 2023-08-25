@@ -23,7 +23,7 @@ public class ChangeCameraBounds : MonoBehaviour
         cam.minPos = newMin;
         cam.maxPos = newMax;
 
-        if (changeBG)
+        if (changeBG && background != null)
             background.ChangeBG();
     }
 }

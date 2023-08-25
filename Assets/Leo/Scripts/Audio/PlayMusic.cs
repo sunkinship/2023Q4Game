@@ -9,5 +9,6 @@ public class PlayMusic : MonoBehaviour
     void Start()
     {
         AudioManager.Instance.PlayMusic(musicTrack, true);
+        Destroy(gameObject);
     }
 }

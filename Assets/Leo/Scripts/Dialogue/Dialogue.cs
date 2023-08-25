@@ -11,13 +11,16 @@ public class Dialogue : MonoBehaviour
     [Header("On Load Settings")]
     public bool playDialogueOnLoad;
     public float secondsToWaitBeforePlay;
-    public bool jumpscare;
 
     [Header("Load After Settings")]
     public bool loadLevel;
     public bool loadFinalScene;
     public bool loadMenu;
     public bool blackFadeAfter;
+
+    [Header("Final Scene Setting")]
+    public bool jumpscare;
+    public bool playEndMusic;
 
     [Header("Dialogue Settings")]
     public string[] lines, lines2;
@@ -110,6 +113,7 @@ public class Dialogue : MonoBehaviour
     private void StartDialogueLine()
     {
         textBox.text = string.Empty;
+        CheckToPlayMusic();
         StartTalkVoiceAndAni(currentLines[lineIndex][0]);
         dialoguePortrait.sprite = currentPortraits[lineIndex];
         StartCoroutine(WriteLine());
@@ -203,12 +207,23 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    #region Jumpscare
+    #region Final Scene Checks
     private void Jumpscare()
     {
         PlayerPrefs.SetInt("beatGame", 1);
         scareAni.enabled = true;
         scareAni.SetTrigger("Scare");
+    }
+
+    private void CheckToPlayMusic()
+    {
+        if (playEndMusic)
+            if (currentLines[lineIndex][0] == '3')
+            {
+                playEndMusic = false;
+                AudioManager.Instance.StopMusic();
+                GetComponent<PlayFinalMusic>().PlayMusic();
+            }
     }
     #endregion
 

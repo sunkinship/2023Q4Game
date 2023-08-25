@@ -16,6 +16,7 @@ public class MainMenuController : UIController
     public GameObject creditsFirstSelect;
     public GameObject playFirstSelect;
     public GameObject freeFirstSelect;
+    public GameObject creditsButton;
 
     [Header("Free Play Buttons")]
     public GameObject freePlayButton;
@@ -36,6 +37,10 @@ public class MainMenuController : UIController
         if (gameState == GameState.free)
         {
             JumpToLevelSeclect();
+        }
+        else if (AudioManager.Instance.persistMusic)
+        {
+            JumpToCredits();
         }
         ResetValues();
     }
@@ -234,6 +239,18 @@ public class MainMenuController : UIController
         {
             SelectButton(level4);
         }
+    }
+
+    private void JumpToCredits()
+    {
+        AddToButtonStack(menuFirstSelect);
+        menu.SetActive(false);
+        credits.SetActive(true);
+        menuSubLevel = 1;
+        AddToButtonStack(creditsButton);
+        SetLastSelectedButton(creditsButton);
+        SelectButton(creditsFirstSelect);
+        AudioManager.Instance.persistMusic = false;
     }
     #endregion
 }

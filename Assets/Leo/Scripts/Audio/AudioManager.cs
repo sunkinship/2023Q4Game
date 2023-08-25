@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource musicSource, sfxSource;
 
+    [HideInInspector] public bool persistMusic;
+
 
     private void Awake()
     {
@@ -16,6 +18,7 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            GetAudioSources();
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
@@ -24,11 +27,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void GetAudioSources()
     {
         musicSource = GameObject.FindGameObjectWithTag("Music Source").GetComponent<AudioSource>();
         sfxSource = GameObject.FindGameObjectWithTag("SFX Source").GetComponent<AudioSource>();
+    }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         SetMasterVolume();
         SetMusicVolume();
         SetSFXVolume();
@@ -45,6 +51,10 @@ public class AudioManager : MonoBehaviour
     #region Music
     public void PlayMusic(AudioClip clip, bool canLoop)
     {
+        if (persistMusic)
+        {
+            return;
+        }
         musicSource.clip = clip;
         musicSource.loop = canLoop;
         musicSource.Play();
@@ -52,6 +62,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip, bool canLoop, float volume)
     {
+        if (persistMusic)
+        {
+            return;
+        }
         musicSource.clip = clip;
         musicSource.volume = volume;
         musicSource.loop = canLoop;
@@ -60,28 +74,30 @@ public class AudioManager : MonoBehaviour
 
     public void StopMusic() => musicSource.Stop();
 
+    public void PauseMusic() => musicSource.Pause();
+
     public void ResumeMusic() => musicSource.Play();
     #endregion
 
     #region Transition
-    public void FadeOutMusic()
-    {
-        StartCoroutine(WaitToFadeOut());   
-    }
+    //public void FadeOutMusic()
+    //{
+    //    StartCoroutine(WaitToFadeOut());   
+    //}
 
-    private IEnumerator WaitToFadeOut()
-    {
-        float elapsedTime = 0f;
-        float percentageComplete;
-        float startVolume = musicSource.volume;
-        while (musicSource.volume > 0f)
-        {
-            elapsedTime += Time.deltaTime;
-            percentageComplete = elapsedTime / 2;
-            musicSource.volume = Mathf.Lerp(startVolume, 0f, percentageComplete);
-            yield return null;
-        }
-    }
+    //private IEnumerator WaitToFadeOut()
+    //{
+    //    float elapsedTime = 0f;
+    //    float percentageComplete;
+    //    float startVolume = musicSource.volume;
+    //    while (musicSource.volume > 0f)
+    //    {
+    //        elapsedTime += Time.deltaTime;
+    //        percentageComplete = elapsedTime / 0.5f;
+    //        musicSource.volume = Mathf.Lerp(startVolume, 0f, percentageComplete);
+    //        yield return null;
+    //    }
+    //}
 
     //private void FadeInMusic()
     //{

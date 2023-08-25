@@ -42,7 +42,6 @@ public class Transition : MonoBehaviour
     public void TriggerFadeBoth(string start, string end, Func<bool> functionToCall)
     {
         DisableInput();
-        AudioManager.Instance.FadeOutMusic();
         ani.SetTrigger(start);
         fadeStartFinished = false;
         fadeEndFinished = false;
