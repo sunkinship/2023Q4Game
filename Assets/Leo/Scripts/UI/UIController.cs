@@ -8,6 +8,10 @@ public class UIController : MonoBehaviour
     [HideInInspector]
     protected PlayerInputHandler inputHandler;
 
+    [Header("Audio Clips")]
+    [SerializeField] protected AudioClip selectClip;
+    [SerializeField] protected AudioClip changeClip;
+
     [Header("General Menus")]
     [SerializeField] protected GameObject menu;
     [SerializeField] protected GameObject options;
@@ -118,5 +122,17 @@ public class UIController : MonoBehaviour
 
     #region Fade
     protected void TriggerFade(Func<bool> functionToCall) => Transition.Instance.TriggerFadeBoth("StartLongBlack", "EndLongBlack", functionToCall);
+    #endregion
+
+    #region Audio 
+    public void OnSelectAudio()
+    {
+        AudioManager.Instance.PlaySFX(selectClip);
+    }
+
+    public void OnChangeAudio()
+    {
+        AudioManager.Instance.PlaySFX(changeClip);
+    }
     #endregion
 }

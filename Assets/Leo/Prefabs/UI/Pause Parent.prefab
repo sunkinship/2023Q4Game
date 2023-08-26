@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4532615496565658513}
   - component: {fileID: 4532615496565658512}
   - component: {fileID: 4532615496565658511}
-  - component: {fileID: 4532615496565658510}
+  - component: {fileID: 1159012547516971879}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -134,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4532615496565658510
+--- !u!114 &1159012547516971879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,10 +147,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 4532615497486807519}
+          m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+          m_MethodName: OnSelectAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4532615496634435087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,6 +1178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3d6fe60adf6544e98662a8345f0df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectClip: {fileID: 8300000, guid: 9980874776bc5c7418685d18bfbf9deb, type: 3}
+  changeClip: {fileID: 8300000, guid: 82c94e5903ee3a14ea5e7fbdbcfc5e81, type: 3}
   menu: {fileID: 4532615497560769535}
   options: {fileID: 4532615498274096797}
   menuFirstSelect: {fileID: 4532615498209098933}
@@ -1230,7 +1244,7 @@ GameObject:
   - component: {fileID: 4532615497609786316}
   - component: {fileID: 4532615497609786315}
   - component: {fileID: 4532615497609786314}
-  - component: {fileID: 4532615497609786313}
+  - component: {fileID: 5187342381033072674}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -1352,7 +1366,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4532615497609786313
+--- !u!114 &5187342381033072674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1365,10 +1379,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 4532615497486807519}
+          m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+          m_MethodName: OnSelectAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4532615497627516713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4532615497640678575}
   - component: {fileID: 4532615497640678576}
+  - component: {fileID: 6095298838410272448}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1667,7 +1694,48 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4532615497486807519}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OnChangeAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6095298838410272448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532615497640678574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4532615497486807519}
+          m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+          m_MethodName: OnSelectAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4532615497653879317
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4532615497653879318}
   - component: {fileID: 4532615497653879319}
+  - component: {fileID: 9164178433830259770}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1757,7 +1826,48 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4532615497486807519}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OnChangeAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9164178433830259770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532615497653879317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4532615497486807519}
+          m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+          m_MethodName: OnSelectAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4532615497838668315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2526,6 +2636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4532615498151874739}
   - component: {fileID: 4532615498151874740}
+  - component: {fileID: 6731013346608665906}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2605,7 +2716,48 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4532615497486807519}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OnChangeAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6731013346608665906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532615498151874738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4532615497486807519}
+          m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+          m_MethodName: OnSelectAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4532615498209098933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,7 +2770,7 @@ GameObject:
   - component: {fileID: 4532615498209098937}
   - component: {fileID: 4532615498209098936}
   - component: {fileID: 4532615498209098935}
-  - component: {fileID: 4532615498209098934}
+  - component: {fileID: 2734669636623062757}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -2740,7 +2892,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4532615498209098934
+--- !u!114 &2734669636623062757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2753,10 +2905,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 4532615497486807519}
+          m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+          m_MethodName: OnSelectAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4532615498274096797
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,7 +3711,7 @@ GameObject:
   - component: {fileID: 4532615498638335216}
   - component: {fileID: 4532615498638335215}
   - component: {fileID: 4532615498638335214}
-  - component: {fileID: 4532615498638335213}
+  - component: {fileID: 6775814611437042598}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -3669,7 +3833,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4532615498638335213
+--- !u!114 &6775814611437042598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3682,10 +3846,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 4532615497486807519}
+          m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+          m_MethodName: OnSelectAudio
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4532615498701950348
 GameObject:
   m_ObjectHideFlags: 0
